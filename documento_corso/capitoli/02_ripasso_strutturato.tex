@@ -1,0 +1,779 @@
+\chapter{I Grandi Concetti della Programmazione}
+\label{chap:grandi-concetti}
+
+\begin{quote}
+\itshape
+\small
+``I linguaggi di programmazione cambiano e le tecnologie si evolvono, ma i principi fondamentali della logica, della memoria e delle strutture di controllo restano invariati ovunque si scriva codice.''
+\end{quote}
+\vspace{1em}
+
+\noindent\textbf{Riferimento Didattico:} Lezione del 22 Settembre 2026 -- Laboratorio di Programmazione 2\\
+\textbf{Progetto Guida Annuale:} \textbf{\color{PiazzaPrimary}Vending Machine Manager} (Distributore Automatico Modulare)\\
+\textbf{Competenze Chiave:} Padronanza del modello Input--Elaborazione--Output, gestione rigorosa della memoria RAM (variabili, costanti, sistemi di tipi), algebra booleana, controllo di flusso condizionale (\texttt{if/else}), strutture iterative (\texttt{while}, \texttt{for}), manipolazione di collezioni indicizzate da zero (array e stringhe) e tecniche di debugging sistematico.
+
+\vspace{1.5em}
+
+% ==============================================================================
+\section{Il Modello Computazionale e la Mappa dei Concetti}
+% ==============================================================================
+
+All'inizio del secondo anno di laboratorio è essenziale consolidare una visione d'insieme chiara e solida: prima ancora di scegliere una sintassi o un linguaggio specifico (sia esso C++, Python, Java o C\#), ogni sistema software poggia su \textbf{\underline{cinque pilastri logici universali}}:
+
+\begin{enumerate}
+  \item \textbf{\underline{Il Ragionamento (Algoritmi \& Logica):}} La sequenza ordinata e non ambigua di passi che trasforma i dati in ingresso nella risposta richiesta.
+  \item \textbf{\underline{La Memoria (Variabili, Costanti \& Tipi):}} Le celle fisiche della memoria RAM etichettate da un identificatore, vincolate a uno specifico tipo di dato e deputate a conservare lo stato del sistema.
+  \item \textbf{\underline{Le Scelte (Controlli \& Bivi Condizionali):}} La logica binaria pura (\textbf{\underline{VERO}} / \textbf{\underline{FALSO}}), gli operatori di confronto e le congiunzioni booleane (\texttt{AND}, \texttt{OR}, \texttt{NOT}) che consentono al processore di imboccare percorsi di esecuzione alternativi.
+  \item \textbf{\underline{L'Automazione (Cicli \& Iterazioni):}} La capacità intrinseca dell'elaboratore di ripetere blocchi di istruzioni milioni di volte a velocità strabiliante senza affaticamento, governata da condizioni di permanenza (\texttt{while}) o da conteggi definiti (\texttt{for}).
+  \item \textbf{\underline{Le Collezioni (Vettori \& Sequenze):}} L'organizzazione di dati contigui in memoria accessibili mediante una posizione numerica (\textbf{\underline{indice}}), rigorosamente calcolata a partire da \textbf{\underline{zero}}.
+\end{enumerate}
+
+\subsection{Che cos'è formalmente un Algoritmo?}
+
+Nel linguaggio quotidiano usiamo la nostra intuizione per colmare le lacune delle istruzioni umane. Al contrario, il microcontrollore o il microprocessore del nostro \textbf{Vending Machine Manager} non possiede alcuna intuizione, fantasia o capacità di interpretare il non detto: esso esegue passivamente e pedissequamente comandi binari elementari.
+
+\begin{concetto}[Definizione Formale di Algoritmo]
+Un \textbf{\underline{algoritmo}} è un elenco \textbf{\underline{finito}} e \textbf{\underline{ordinato}} di operazioni \textbf{\underline{non ambigue}} (deterministiche) che, ricevendo un insieme di dati di ingresso (\emph{input}), produce con certezza matematica il risultato voluto (\emph{output}).
+\end{concetto}
+
+\subsection{Lo Schema Universale: \texorpdfstring{Input $\to$ Algoritmo $\to$ Output}{Input -> Algoritmo -> Output}}
+
+Qualsiasi sistema informatico, dal più minuscolo firmware per macchinette del caffè fino ai grandi centri dati per il cloud computing, opera secondo lo schema universale di elaborazione. Nel nostro progetto guida annuale la corrispondenza è immediata:
+
+\begin{center}
+\begin{tcolorbox}[colback=white,colframe=PiazzaGray!40,width=0.96\textwidth,arc=2mm,halign=center]
+\textbf{\color{BoxAmber}1. INPUT (Dati Esterni)} $\longrightarrow$ 
+\colorbox{PiazzaPrimary!10}{\textbf{\color{PiazzaPrimary}~[ 2. ALGORITMO (Elaborazione) ]~}} $\longrightarrow$ 
+\textbf{\color{BoxGreen}3. OUTPUT (Risultato Tangibile)}
+\end{tcolorbox}
+\end{center}
+
+\begin{itemize}
+  \item \textbf{\underline{Input:}} Gli stimoli e i dati immessi dall'esterno:
+  \begin{itemize}
+    \item Monete inserite nella gettoniera ottico-magnetica (es. \texttt{1.50\,\euro}).
+    \item Codice alfanumerico digitato dal cliente sulla tastiera (es. \texttt{"B2"}).
+    \item Segnali booleani provenienti dai sensori fisici (es. finecorsa dello sportello chiuso).
+  \end{itemize}
+  \item \textbf{\underline{Algoritmo (Scatola Nera del Software):}} Le regole di business e di controllo interno:
+  \begin{itemize}
+    \item Verifica se il codice \texttt{"B2"} corrisponde a un prodotto valido nel listino.
+    \item Controllo se il magazzino interno dispone di scorte residue (\texttt{scorte > 0}).
+    \item Confronto fra credito versato e prezzo nominale (\texttt{credito >= PREZZO}).
+    \item Calcolo del resto dovuto e comando elettrico di attivazione del motore a spirale.
+  \end{itemize}
+  \item \textbf{\underline{Output:}} La risposta prodotta verso l'utente e il mondo reale:
+  \begin{itemize}
+    \item Caduta meccanica dello snack nel cassetto di ritiro.
+    \item Erogazione delle monete di resto dalla cassa.
+    \item Messaggio di riepilogo o cortesia visualizzato sul display LCD.
+  \end{itemize}
+\end{itemize}
+
+\subsection{Le Tre Regole Fondamentali di un Algoritmo}
+
+Affinché una procedura logica sia computabile e formalmente corretta, deve soddisfare contemporaneamente tre proprietà inviolabili:
+
+\begin{enumerate}
+  \item \textbf{\underline{Finitezza:}} L'esecuzione deve \textbf{\underline{terminare obbligatoriamente}} dopo un numero finito di passi elementari. Se il motore del distributore girasse all'infinito senza mai arrestarsi, brucerebbe l'avvolgimento del circuito elettrico violando il principio di finitezza.
+  \item \textbf{\underline{Definitezza (Non ambiguità):}} Ogni singola istruzione deve risultare univoca, priva di dubbi o interpretazioni soggettive. Non possiamo istruire la macchina dicendo \emph{``versa un po' di latte caldo''}: dobbiamo ordinare tassativamente \emph{``apri l'elettrovalvola del latte per 40 millilitri a 65 gradi centigradi''}.
+  \item \textbf{\underline{Generalità:}} L'algoritmo non deve risolvere un singolo conteggio contingente, bensì deve essere in grado di risolvere \textbf{\underline{l'intera classe di problemi}} per cui è stato concepito.
+\end{enumerate}
+
+\begin{attenzione}[Il Divieto Assoluto di Hardcoding]
+L'algoritmo di calcolo del resto del nostro distributore non deve funzionare esclusivamente nel caso in cui un cliente acquisti un caffè da $1.00\,\text{\euro}$ pagando con una moneta da $2.00\,\text{\euro}$. Deve funzionare per \textbf{\underline{qualsiasi prezzo di listino}} e per \textbf{\underline{qualsiasi combinazione di denaro}} inserito!
+
+\vspace{0.5em}
+\noindent Scrivere formule con valori fissi cablati a mano nel codice (\emph{hardcoding}) svuota l'informatica della sua utilità:
+\begin{center}
+\textbf{\underline{Formula Universale:}} \quad \texttt{resto = credito\_totale - prezzo\_prodotto}
+\end{center}
+Attraverso le \textbf{\underline{variabili}} e i \textbf{\underline{parametri}} il codice diventa universale, resiliente ed eternamente riutilizzabile.
+\end{attenzione}
+
+% ==============================================================================
+\section{La Gestione della Memoria: Variabili, Costanti e Tipi}
+% ==============================================================================
+
+La memoria di lavoro (RAM) può essere paragonata a un immenso casellario postale composto da miliardi di cellette microscopiche. Scrivere codice macchina indicando gli indirizzi esadecimali fisici di queste celle sarebbe insostenibile per la mente umana; per questa ragione i linguaggi di programmazione ad alto livello mettono a disposizione le \textbf{\underline{variabili}}.
+
+\begin{concetto}[La Variabile come Contenitore Tipizzato]
+Una \textbf{\underline{variabile}} è una porzione di memoria RAM dotata di:
+\begin{itemize}
+  \item Un \textbf{\underline{nome simbolico (identificatore):}} scelto dal programmatore secondo nomi autoesplicativi (es. \texttt{credito\_inserito}).
+  \item Un \textbf{\underline{tipo di dato:}} che determina la dimensione in byte riservata e l'insieme delle operazioni ammissibili.
+  \item Un \textbf{\underline{valore corrente:}} che può essere letto e sovrascritto più volte durante l'esecuzione del programma.
+\end{itemize}
+\end{concetto}
+
+\subsection{La Dinamica dell'Assegnazione: Da Destra a Sinistra}
+
+L'assegnazione è l'azione attiva con cui si deposita un'informazione all'interno di una cella di memoria. In molti linguaggi essa si esprime con il singolo carattere \texttt{=} (o in pseudocodice tramite la freccia $\leftarrow$).
+
+\begin{concetto}[La Regola d'Oro dell'Assegnazione]
+L'istruzione di assegnazione:
+\begin{enumerate}
+  \item Valuta e calcola interamente l'espressione situata a \textbf{\underline{DESTRA}} dell'operatore.
+  \item Deposita (sovrascrivendolo) il valore risultante all'interno della variabile posta a \textbf{\underline{SINISTRA}}.
+\end{enumerate}
+\textbf{\underline{Si legge e si interpreta sempre rigorosamente da destra verso sinistra!}}
+\end{concetto}
+
+\begin{esempio}[Evoluzione dello Stato del Credito nel Tempo]
+Osserviamo come il valore conservato nella variabile \texttt{credito} muta dinamicamente mentre l'utente introduce monete successive nel distributore:
+\begin{lstlisting}[language=C++]
+// 1. All'inizio della transazione la memoria viene azzerata:
+credito = 0.00;
+
+// 2. Il cliente inserisce 50 centesimi (0.50 euro):
+// Si calcola a destra: 0.00 + 0.50 = 0.50, e si salva a sinistra:
+credito = credito + 0.50;  // Ora credito contiene: 0.50
+
+// 3. Il cliente inserisce una moneta da 1.00 euro:
+// Si calcola a destra: 0.50 + 1.00 = 1.50, e si salva a sinistra:
+credito = credito + 1.00;  // Ora credito contiene: 1.50
+\end{lstlisting}
+In matematica l'equazione $x = x + 1$ sarebbe assurda e priva di soluzioni reali; in informatica l'istruzione \texttt{x = x + 1} rappresenta invece l'operazione elementare per eccellenza: \textbf{\underline{l'incremento di stato}} della memoria.
+\end{esempio}
+
+\subsection{Le Costanti: Valori Protetti in Sola Lettura}
+
+Non tutti i dati possono o devono essere modificati a piacimento. I prezzi base dei prodotti, i limiti fisici della cassa o i pin hardware di comando del microcontrollore devono rimanere stabili e intoccabili durante l'intera sessione operativa.
+
+\begin{concetto}[Definizione di Costante]
+Una \textbf{\underline{costante}} (espressa con la parola chiave \texttt{const} in C++ o mediante la convenzione di scrittura in \textbf{\underline{TUTTO MAIUSCOLO}}) è una locazione di memoria il cui valore viene fissato in fase di inizializzazione e \textbf{\underline{non può mai essere sovrascritto}} da alcuna istruzione successiva.
+\end{concetto}
+
+\begin{lstlisting}[language=C++]
+const float PREZZO_ESPRESSO = 1.00;     // Prezzo immutabile del caffe'
+const float PREZZO_SNACK    = 1.50;     // Prezzo immutabile dello snack
+const float MAX_CAPIENZA_CASSA = 100.00; // Limite capienza monete
+\end{lstlisting}
+
+L'impiego sistematico delle costanti offre due benefici architetturali immensi:
+\begin{itemize}
+  \item \textbf{\underline{Sicurezza di esecuzione:}} Impedisce che una svista di programmazione azzeri per errore il costo di uno snack (rendendo il distributore una fonte di perdite economiche). Se si tenta di scrivere \texttt{PREZZO\_SNACK = 0.00;}, il compilatore blocca immediatamente il programma segnalando errore.
+  \item \textbf{\underline{Manutenibilità immediata:}} Quando l'inflazione o un cambio fornitore richiede di ritoccare il listino, basta modificare \textbf{\underline{una sola riga in testa al programma}}, anziché ricercare e sostituire a mano il numero \texttt{1.50} sparso in centinaia di punti del sorgente.
+\end{itemize}
+
+\subsection{Il Catalogo dei Tipi di Dato Fondamentali}
+
+Il calcolatore non conosce concetti umani come ``denaro'', ``nomi'' o ``temperature'': memorizza solo sequenze di bit (0 e 1). Il \textbf{\underline{tipo di dato}} comunica all'elaboratore quanti byte riservare e come decodificare quei bit.
+
+\begin{table}[htbp]
+\centering
+\small
+\begin{tabular}{|l|l|p{4.8cm}|p{4.5cm}|}
+\hline
+\rowcolor{PiazzaPrimary!15}
+\textbf{Tipo di Dato} & \textbf{Nome Tecnico} & \textbf{Natura e Caratteristiche} & \textbf{Esempio nel Vending Machine} \\
+\hline
+\textbf{\underline{Intero}} & \texttt{int} & Valori numerici privi di virgola. Conteggi discreti e indici. & \texttt{cialde = 25;} \newline \texttt{monete = 48;} \\
+\hline
+\textbf{\underline{Decimale}} & \texttt{float} / \texttt{double} & Numeri reali con virgola mobile. Notazione col \textbf{\underline{punto decimale}} (\texttt{.}). & \texttt{prezzo = 1.80;} \newline \texttt{temperatura = 3.8;} \\
+\hline
+\textbf{\underline{Booleano}} & \texttt{bool} & Occupa 1 bit logico. Due soli stati: \textbf{\underline{true}} (1) o \textbf{\underline{false}} (0). & \texttt{vano\_aperto = false;} \newline \texttt{snack\_caduto = true;} \\
+\hline
+\textbf{\underline{Testo}} & \texttt{char} / \texttt{string} & Singoli caratteri (\texttt{'A'}) o sequenze ordinate di simboli (\texttt{"B2"}). & \texttt{codice = "B2";} \newline \texttt{msg = "INSERIRE RESTO";} \\
+\hline
+\end{tabular}
+\caption{Panoramica sinottica dei tipi di dato fondamentali nel software del Vending Machine.}
+\label{tab:tipi-dati}
+\end{table}
+
+\begin{concetto}[I Booleani e il Mondo Fisico dei Sensori]
+Nel mondo reale, tutti i sensori elettromeccanici del distributore comunicano con la CPU tramite stati booleani binari:
+\begin{itemize}
+  \item Il microswitch dello sportello: \texttt{false} se la porta è regolarmente chiusa, \texttt{true} se aperta.
+  \item La barriera ottica a infrarossi del vano di caduta: quando lo snack cade, interrompe il fascio luminoso facendo scattare \texttt{prodotto\_sganciato = true}.
+\end{itemize}
+\end{concetto}
+
+\begin{attenzione}[Attenzione: Numero vs Testo (La Trappola del Più)]
+L'operatore \texttt{+} assume comportamenti radicalmente diversi a seconda dei tipi coinvolti:
+\begin{itemize}
+  \item \textbf{\underline{Somma Matematica:}} Se operiamo su numeri:
+  \begin{center}
+  \texttt{10 + 5} $\quad\longrightarrow\quad$ produce il risultato numerico intero \textbf{\underline{15}}.
+  \end{center}
+  \item \textbf{\underline{Concatenazione di Testo:}} Se operiamo su stringhe racchiuse tra virgolette:
+  \begin{center}
+  \texttt{"10" + "5"} $\quad\longrightarrow\quad$ produce la parola composta \textbf{\underline{"105"}}!
+  \end{center}
+\end{itemize}
+È il tipo di dato che impone al processore quale micro-operazione hardware eseguire!
+\end{attenzione}
+
+% ==============================================================================
+\section{Aritmetica del Calcolatore e l'Operatore Modulo (\%)}
+% ==============================================================================
+
+La gestione contabile di un distributore automatico richiede il calcolo continuo di totali, incassi e differenze:
+
+\begin{itemize}
+  \item \textbf{Addizione (\texttt{+}) e Sottrazione (\texttt{-}):} Calcolo immediato dell'avanzo dovuto al cliente:
+  \begin{lstlisting}[language=C++]
+resto = credito_inserito - PREZZO_SNACK;
+  \end{lstlisting}
+  \item \textbf{Moltiplicazione (\texttt{*}):} Calcolo degli incassi totali prodotti da una corsia:
+  \begin{lstlisting}[language=C++]
+incasso_corsia = lattine_vendute * PREZZO_LATTINA;
+  \end{lstlisting}
+  \item \textbf{Divisione Reale (\texttt{/}) contro Divisione Intera:} Se dividiamo due numeri decimali otteniamo la media esatta (\texttt{totale / 5.0}). Se invece operiamo tra interi (es. in C++), la frazione viene troncata: \texttt{7 / 2} produce \textbf{\underline{3}}, non 3.5. Questo è utilissimo per calcolare quanti tubi completi da 10 monete possiamo confezionare: \texttt{monete / 10}.
+\end{itemize}
+
+\subsection{L'Operatore Speciale Modulo (\%)}
+
+Nel contesto dell'aritmetica discreta e della programmazione, il simbolo \textbf{\underline{\%}} non rappresenta la percentuale, bensì l'operatore matematico di \textbf{\underline{modulo}}.
+
+\begin{concetto}[Definizione di Modulo (\%)]
+L'operatore \textbf{\underline{modulo (\%)}} calcola e restituisce il \textbf{\underline{resto della divisione intera}} tra due numeri.
+\begin{center}
+Dati due interi $A$ e $B$: \quad $A = (Q \times B) + R \quad \Longrightarrow \quad A \pmod B = R$
+\end{center}
+\end{concetto}
+
+L'operatore modulo trova due applicazioni cruciali nel nostro laboratorio:
+
+\begin{esempio}[Applicazione 1: L'Erogazione a Tagli di Moneta]
+Supponiamo che il distributore debba restituire un resto totale di \textbf{70 centesimi} e intenda utilizzare il taglio più grande a disposizione (monete da 50 centesimi):
+\begin{lstlisting}[language=C++]
+// Quante monete piene da 50 centesimi possiamo restituire?
+monete_da_50 = 70 / 50;  // Divisione intera: eroga 1 moneta
+
+// Quanto denaro avanza ancora da restituire con tagli minori?
+resto_residuo = 70 % 50; // Operatore modulo: restano 20 centesimi!
+\end{lstlisting}
+Grazie al modulo, il controller sa istantaneamente che dopo la moneta da 50 cent deve attivare il motore delle monete da 20 cent.
+\end{esempio}
+
+\begin{esempio}[Applicazione 2: La Verifica Infallibile di Parità]
+In qualunque linguaggio, il modulo per 2 rappresenta il test matematico universale per verificare se una cifra è pari o dispari:
+\begin{lstlisting}[language=C++]
+if (numero % 2 == 0) {
+    mostra("Numero PARI (resto della divisione per 2 uguale a zero)");
+} else {
+    mostra("Numero DISPARI (resto della divisione per 2 uguale a uno)");
+}
+\end{lstlisting}
+\end{esempio}
+
+% ==============================================================================
+\section{La Logica Booleana e il Controllo di Flusso}
+% ==============================================================================
+
+I calcolatori elettronici elaborano la realtà mediante l'algebra binaria formulata da George Boole: non esistono gradazioni sfumate come ``forse'', ``probabilmente'' o ``quasi''. Una condizione formulata alla CPU può collassare unicamente in due stati deterministici:
+\begin{itemize}
+  \item \textbf{\underline{VERO (True / 1):}} La condizione è pienamente soddisfatta $\to$ il blocco di codice subordinato viene mandato in esecuzione.
+  \item \textbf{\underline{FALSO (False / 0):}} La condizione non è rispettata $\to$ il blocco di codice subordinato viene completamente ignorato e scavalcato.
+\end{itemize}
+
+\subsection{Gli Operatori Relazionali di Confronto}
+
+Per interrogare lo stato della memoria ed effettuare paragoni si utilizzano gli operatori relazionali:
+
+\begin{table}[htbp]
+\centering
+\small
+\begin{tabular}{|c|l|l|l|}
+\hline
+\rowcolor{PiazzaPrimary!15}
+\textbf{Operatore} & \textbf{Significato Logico} & \textbf{Esempio nel Vending Machine} & \textbf{Significato nel Dominio} \\
+\hline
+\texttt{==} & \textbf{\underline{Uguale a?}} & \texttt{credito == 1.50} & Il denaro versato è l'importo esatto senza resto. \\
+\hline
+\texttt{!=} & \textbf{\underline{Diverso da?}} & \texttt{codice\_digitato != ""} & Il cliente ha premuto almeno un tasto. \\
+\hline
+\texttt{>=} & \textbf{\underline{Maggiore o uguale?}} & \texttt{credito >= PREZZO} & Il denaro versato è sufficiente all'acquisto. \\
+\hline
+\texttt{>} & \textbf{\underline{Strettamente maggiore?}} & \texttt{scorte\_prodotto > 0} & Lo snack è fisicamente presente nella corsia. \\
+\hline
+\texttt{<=} & \textbf{\underline{Minore o uguale?}} & \texttt{monete\_cassa <= MAX} & La vaschetta monete non è ancora straripante. \\
+\hline
+\texttt{<} & \textbf{\underline{Strettamente minore?}} & \texttt{credito < PREZZO} & Denaro insufficiente: occorre chiedere altre monete. \\
+\hline
+\end{tabular}
+\caption{Operatori relazionali e loro interpretazione nel software gestionale.}
+\label{tab:operatori-confronto}
+\end{table}
+
+\subsection{Il Tranello Mortale: Assegnazione (\texttt{=}) contro Confronto (\texttt{==})}
+
+\begin{attenzione}[Il Bug Più Famoso e Distruttivo della Storia del Software]
+Uno dei primi e più gravi errori commessi dai programmatori consiste nel confondere l'uguale singolo con il doppio uguale:
+\begin{itemize}
+  \item \textbf{\underline{Singolo Uguale (=) $\to$ ASSEGNAZIONE:}} È un'istruzione imperativa attiva. Apre la scatola di memoria e sovrascrive il dato:
+  \begin{center}
+  \texttt{credito = 1.50;} $\quad\longrightarrow\quad$ \emph{``Scrivi 1.50 all'interno della variabile credito.''}
+  \end{center}
+  \item \textbf{\underline{Doppio Uguale (==) $\to$ CONFRONTO:}} È una domanda passiva. Non altera minimamente la memoria:
+  \begin{center}
+  \texttt{if (credito == 1.50)} $\quad\longrightarrow\quad$ \emph{``Il credito equivale attualmente a 1.50? (Sì / No)''}
+  \end{center}
+\end{itemize}
+
+\vspace{0.5em}
+\noindent Se in C++ scriviamo erroneamente dentro a un blocco condizionale:\\
+\texttt{if (credito = 1.50)} \quad $\Longleftarrow$ \textbf{\underline{ERRORE GRAVISSIMO!}}\\
+Il compilatore esegue l'assegnazione, fissa il credito a 1.50 (cancellando il dato autentico immesso dal cliente) e poi, valutando che 1.50 è diverso da zero, considera la condizione \textbf{\underline{sempre vera}}! Il programma compila senza segnalare errori sintattici ma genera un bug logico silente disastroso.
+\end{attenzione}
+
+\subsection{Gli Operatori Logici Booleani: AND, OR, NOT}
+
+Spesso una decisione complessa richiede la combinazione di più premesse contemporanee:
+
+\subsubsection{1. L'Operatore Logico AND (\texttt{\&\&})}
+Restituisce \textbf{\underline{VERO unicamente se TUTTE le condizioni}} collegate sono contemporaneamente vere. Se anche una sola condizione risulta falsa, l'intera espressione crolla a \textbf{\underline{FALSO}}:
+
+\begin{center}
+\small
+\begin{tabular}{|c|c|c|l|}
+\hline
+\rowcolor{PiazzaPrimary!15}
+\textbf{Credito Sufficiente?} & \textbf{Scorte Residue > 0?} & \textbf{Esito AND (\texttt{\&\&})} & \textbf{Comportamento Hardware} \\
+\hline
+\rowcolor{BoxGreen!10}
+\textbf{VERO} & \textbf{VERO} & \textbf{\color{BoxGreen}VERO} & \textbf{Eroga snack e sblocca spirale} \\
+\hline
+\textbf{VERO} & \textbf{FALSO} & \textbf{\color{BoxRed}FALSO} & Rifiuta: Snack esaurito in vetrina! \\
+\hline
+\textbf{FALSO} & \textbf{VERO} & \textbf{\color{BoxRed}FALSO} & Rifiuta: Denaro mancante! \\
+\hline
+\textbf{FALSO} & \textbf{FALSO} & \textbf{\color{BoxRed}FALSO} & Rifiuta categorized \\
+\hline
+\end{tabular}
+\end{center}
+
+\begin{lstlisting}[language=C++]
+if (credito >= PREZZO_SNACK && scorte_rimaste > 0) {
+    avvia_motore_spirale();
+} else {
+    mostra("Impossibile procedere: credito scarso o scorte esaurite.");
+}
+\end{lstlisting}
+
+\subsubsection{2. L'Operatore Logico OR (\texttt{||})}
+Restituisce \textbf{\underline{VERO se ALMENO UNA delle condizioni}} collegate è verificata. Risulta falso solo nell'unico caso in cui tutti i predicati sono falsi contemporaneamente:
+
+\begin{lstlisting}[language=C++]
+// Accettazione delle sole monete di taglio autorizzato:
+if (moneta_introdotta == 1.00 || moneta_introdotta == 2.00) {
+    credito = credito + moneta_introdotta;
+} else {
+    espelli_moneta(); // Rifiuta rondelle di ferro o tagli non previsti
+}
+\end{lstlisting}
+
+\subsubsection{3. L'Operatore Logico NOT (\texttt{!})}
+È l'operatore unario di \textbf{\underline{inversione logica}}: trasforma il vero in falso e il falso in vero:
+\begin{lstlisting}[language=C++]
+bool cassa_in_avaria = false;
+
+// Se NON e' in avaria, la macchina opera regolarmente:
+if (!cassa_in_avaria) {
+    mostra("Distributore Pronto. Inserisci moneta.");
+} else {
+    mostra("FUORI SERVIZIO PER GUASTO");
+}
+\end{lstlisting}
+
+\subsection{Espressioni Booleane Composte e la Precedenza delle Parentesi}
+
+In logica matematica formale, l'operatore \textbf{\underline{AND ha la precedenza naturale sull'operatore OR}} (esattamente allo stesso modo in cui nella normale algebra l'operazione di moltiplicazione ha priorità sull'addizione).
+
+\begin{consiglio}[La Regola Aurea delle Parentesi Tonde]
+Per evitare qualunque ambiguità logica e prevenire errori subdoli, \textbf{\underline{utilizziamo sempre le parentesi tonde}} per raggruppare visivamente e gerarchicamente i criteri decisionali:
+\begin{lstlisting}[language=C++]
+// L'acquisto e' valido se:
+// (L'utente ha pagato con contanti SUFFICIENTI OPPURE con chiavetta valida)
+// E CONTEMPORANEAMENTE ci sono scorte nel vano!
+if ( (credito >= PREZZO || chiavetta_inserita) && scorte_disponibili > 0 ) {
+    eroga_prodotto();
+}
+\end{lstlisting}
+Senza le parentesi esterne attorno all'OR, la condizione verrebbe letta dal processore come: \texttt{credito >= PREZZO || (chiavetta \&\& scorte > 0)}, permettendo l'erogazione in contanti anche se le scorte sono zero!
+\end{consiglio}
+
+\subsection{Le Strutture di Selezione: IF, ELSE e Scelte Multiple}
+
+\subsubsection{La Selezione Bivalente (IF - ELSE)}
+Rappresenta il bivio logico fondamentale. Il principio cardine di questa struttura è la \textbf{\underline{mutua esclusione}}: o viene eseguito il ramo del vero, o viene eseguito il ramo del falso. \textbf{\underline{Non accadrà mai che vengano eseguiti entrambi!}}
+
+\begin{lstlisting}[language=C++]
+if (credito >= PREZZO_SNACK) {
+    mostra("Snack erogato! Ritira il prodotto dal vano.");
+    credito = credito - PREZZO_SNACK;
+    eroga_resto(credito);
+} else {
+    float mancanti = PREZZO_SNACK - credito;
+    mostra("Credito insufficiente. Inserisci altri centesimi.");
+}
+\end{lstlisting}
+
+\subsubsection{La Selezione Multipla a Cascata (IF - ELSE IF - ELSE)}
+Quando le alternative possibili sono più di due (ad esempio la decodifica dei tasti premuti sul tastierino alfanumerico), si organizza una sequenza controllata a cascata:
+
+\begin{lstlisting}[language=C++]
+if (codice == "A1") {
+    prodotto_selezionato = "Caffe' Espresso";
+} else if (codice == "A2") {
+    prodotto_selezionato = "Cappuccino";
+} else if (codice == "B1") {
+    prodotto_selezionato = "Acqua Naturale 500ml";
+} else if (codice == "B2") {
+    prodotto_selezionato = "Croccantelle al Prosciutto";
+} else {
+    // La clausola finale raccoglie qualsiasi combinazione non valida:
+    mostra("Errore: codice slot inesistente sul listino!");
+}
+\end{lstlisting}
+La cascata viene valutata sequenzialmente dall'alto verso il basso. \textbf{\underline{Nel momento esatto in cui un controllo risulta VERO, il microprocessore ne esegue il corpo e salta istantaneamente fuori da tutta la struttura}}, senza sprecare cicli di clock a valutare le alternative sottostanti.
+
+% ==============================================================================
+\section{L'Automazione: Cicli e Iterazioni}
+% ==============================================================================
+
+Scrivere a mano righe di codice identiche ripetute per decine o centinaia di volte è inefficiente, prono a errori di battitura e anti-ingegneristico.
+
+\begin{concetto}[Il Principio DRY (Don't Repeat Yourself)]
+Uno dei canoni supremi dell'ingegneria del software stabilisce: \textbf{\underline{non duplicare mai la logica}}. Se un'operazione deve ripetersi, si deve ricorrere a una struttura ciclica (\emph{loop}), demandando alla velocità dell'hardware il compito dell'iterazione.
+\end{concetto}
+
+\subsection{Il Ciclo Pre-Condizionale (WHILE)}
+
+Il ciclo \textbf{\underline{WHILE}} (mentre/finché) è la struttura iterativa per eccellenza quando \textbf{\underline{non si conosce a priori quanti passaggi saranno necessari}}, poiché la ripetizione dipende da un evento asincrono esterno (l'utente che infila monete o un sensore che rileva un passaggio).
+
+\begin{concetto}[Funzionamento del Ciclo WHILE]
+La condizione di test viene esaminata \textbf{\underline{PRIMA di ogni singolo giro}}:
+\begin{itemize}
+  \item Se la condizione è \textbf{VERA}: esegue tutte le istruzioni del blocco interno e risale in cima a rivalutare la condizione.
+  \item Se la condizione è \textbf{FALSA}: il ciclo termina all'istante e l'elaborazione prosegue oltre.
+  \item Se la condizione è falsa sin dal primissimo istante, il blocco interno \textbf{\underline{non viene eseguito nemmeno una volta}}.
+\end{itemize}
+\end{concetto}
+
+\begin{lstlisting}[language=C++]
+credito = 0.00;
+const float PREZZO_MINIMO = 1.50;
+
+// Continua a chiedere monete finche' la soglia non viene raggiunta:
+while (credito < PREZZO_MINIMO) {
+    mostra("Credito attuale: " + credito + " euro. Inserisci moneta...");
+    credito = credito + leggi_valore_da_gettoniera();
+}
+
+mostra("Credito sufficiente! Sblocca la selezione del prodotto.");
+\end{lstlisting}
+
+\begin{attenzione}[Allarme Loop Infinito: Il Blocco della Macchina]
+Se all'interno del corpo del ciclo \texttt{WHILE} ci si dimentica di inserire l'istruzione che aggiorna la variabile testata nella condizione:
+\begin{lstlisting}[language=C++]
+// ESEMPIO DI ERRORE FATALE:
+credito = 0.00;
+while (credito < 1.50) {
+    mostra("Inserisci moneta...");
+    // ERRORE: credito non viene MAI incrementato!
+}
+\end{lstlisting}
+La condizione \texttt{0.00 < 1.50} rimarrà vera in eterno. Il programma saturerà il $100\%$ del microprocessore in un vortice senza uscita (\textbf{\underline{loop infinito}}), paralizzando la macchina fino al riavvio forzato.
+
+\vspace{0.5em}
+\noindent\textbf{\underline{La Regola di Chiusura:}} Nel corpo di ogni \texttt{while} deve sempre esistere un'istruzione che avvicini la variabile di controllo alla condizione di uscita.
+\end{attenzione}
+
+\subsection{Il Ciclo a Conteggio Prefissato (FOR)}
+
+Il ciclo \textbf{\underline{FOR}} è lo strumento naturale da adottare quando il numero di iterazioni da compiere è \textbf{\underline{noto a priori}} (ad esempio far compiere esattamente 3 giri alla spirale meccanica per disincagliare uno snack):
+
+\begin{concetto}[I Tre Elementi Costitutivi del FOR]
+Ogni ciclo \texttt{FOR} governa in un'unica riga compatta tre momenti chiave:
+\begin{enumerate}
+  \item \textbf{\underline{Inizializzazione:}} Assegna il valore di partenza al contatore (es. \texttt{int giro = 1}). Viene eseguita una sola volta all'avvio.
+  \item \textbf{\underline{Condizione di permanenza:}} Espressione booleana testata prima di ogni ciclo (es. \texttt{giro <= 3}).
+  \item \textbf{\underline{Passo di avanzamento:}} L'incremento applicato al termine di ciascun giro (es. \texttt{giro++}).
+\end{enumerate}
+\end{concetto}
+
+\begin{lstlisting}[language=C++]
+// Comanda l'avvolgimento del motore a spirale per 3 rotazioni complete:
+for (int giro = 1; giro <= 3; giro++) {
+    attiva_motore_spirale_360_gradi();
+    mostra("Completata rotazione numero: " + giro);
+}
+mostra("Prodotto caduto nel cassetto di ritiro!");
+\end{lstlisting}
+
+\subsection{Guida di Scelta Architetturale: WHILE o FOR?}
+
+\begin{table}[htbp]
+\centering
+\small
+\begin{tabular}{|p{7cm}|p{7cm}|}
+\hline
+\rowcolor{PiazzaPrimary!15}
+\textbf{Adotta il ciclo WHILE quando...} & \textbf{Adotta il ciclo FOR quando...} \\
+\hline
+\textbf{\underline{Non conosci in anticipo}} quanti giri occorreranno per terminare il compito. & \textbf{\underline{Conosci con certezza il numero}} prefissato di passaggi da compiere all'avvio. \\
+\hline
+La fine del ciclo dipende dall'\textbf{\underline{interazione con l'utente}} (es. attendere monete o codici PIN). & Vuoi \textbf{\underline{scorrere ordinatamente}} tutti gli elementi di una collezione, lista o vettore di memoria. \\
+\hline
+La condizione è guidata da un \textbf{\underline{sensore fisico}} (es. far ruotare la spirale \emph{finché} la fotocellula non rileva l'avvenuta caduta). & Vuoi eseguire un conteggio numerico progressivo o regressivo tra due estremi noti. \\
+\hline
+\end{tabular}
+\caption{Criteri di selezione della struttura iterativa ottimale.}
+\label{tab:while-vs-for}
+\end{table}
+
+% ==============================================================================
+\section{Collezioni e Sequenze: Vettori (Array) e Stringhe}
+% ==============================================================================
+
+Se dovessimo gestire un distributore con 50 prodotti differenti creando 50 variabili isolate (\texttt{p1}, \texttt{p2}, \dots, \texttt{p50}), il nostro codice risulterebbe illeggibile e ingestibile. Per raggruppare dati omogenei la computer science impiega i \textbf{\underline{vettori (array)}}.
+
+\begin{concetto}[Definizione di Vettore (Array)]
+Un \textbf{\underline{vettore (o array)}} è una struttura dati lineare composta da una sequenza di celle contigue in memoria RAM:
+\begin{itemize}
+  \item Tutte le celle appartengono al \textbf{\underline{medesimo tipo di dato}} (es. tutte stringhe o tutti numeri decimali).
+  \item Ogni elemento è individuato e accessibile mediante la sua posizione numerica, detta \textbf{\underline{indice}}.
+\end{itemize}
+\end{concetto}
+
+\subsection{La Regola Sacra dell'Indice da ZERO}
+
+\begin{concetto}[L'Indice come Offset di Memoria]
+In informatica, l'indice \textbf{\underline{NON rappresenta il numero d'ordine umano}}, bensì un \textbf{\underline{offset}} (la distanza in celle fisiche a partire dall'indirizzo di base del vettore):
+\begin{center}
+\textbf{\underline{La prima cella del vettore si trova a distanza ZERO dall'inizio: ha indice [0]!}}
+\end{center}
+\end{concetto}
+
+\begin{lstlisting}[language=C++]
+// Definizione di un vettore di 3 prodotti:
+string vetrina[3] = {"Patatine", "Cioccolato", "Biscotti"};
+
+// Accesso posizionale:
+vetrina[0]; // Restituisce "Patatine"   (Offset 0: PRIMO elemento assoluto!)
+vetrina[1]; // Restituisce "Cioccolato" (Offset 1: SECONDO elemento)
+vetrina[2]; // Restituisce "Biscotti"   (Offset 2: TERZO e ULTIMO elemento)
+\end{lstlisting}
+
+\begin{attenzione}[Attenzione: Accesso Fuori Limite (Out of Bounds)]
+Se un vettore ha dimensione totale pari a \textbf{\underline{$N$ elementi}}, gli unici indici legali e accessibili sono compresi nell'intervallo chiuso:
+\begin{center}
+\textbf{\underline{Da $0$ fino a $N - 1$}}
+\end{center}
+Cercare di accedere all'indice \texttt{vetrina[3]} quando il vettore contiene solo 3 elementi costituisce una grave \textbf{\underline{violazione di memoria}} (\emph{Index Out of Bounds} o \emph{Segmentation Fault} in C++). Il programma tenterà di leggere una cella non riservata, causando crash istantaneo o corruzione imprevedibile dei dati!
+\end{attenzione}
+
+\subsection{Scorrere un Vettore: Il Binomio Perfetto FOR + Array}
+
+Il pattern universale per ispezionare, stampare o elaborare tutti gli elementi di una collezione consiste nell'accoppiare un ciclo a conteggio con l'accesso indicizzato:
+
+\begin{lstlisting}[language=C++]
+string bevande[3] = {"Espresso", "Ginseng", "Te' al Limone"};
+const int N = 3;
+
+// Scansione lineare: l'indice 'i' spazia ordinatamente da 0 a N - 1:
+for (int i = 0; i < N; i++) {
+    mostra("Corsia " + i + " contiene: " + bevande[i]);
+}
+\end{lstlisting}
+\textbf{Cosa compie la CPU passo dopo passo?}
+\begin{itemize}
+  \item Passo 0: \texttt{i = 0} $\to$ accede alla cella di base \texttt{bevande[0]} ed espone \texttt{"Espresso"}.
+  \item Passo 1: \texttt{i = 1} $\to$ si sposta alla cella \texttt{bevande[1]} ed espone \texttt{"Ginseng"}.
+  \item Passo 2: \texttt{i = 2} $\to$ raggiunge la cella finale \texttt{bevande[2]} ed espone \texttt{"Te' al Limone"}.
+  \item Passo 3: \texttt{i = 3} $\to$ la condizione \texttt{3 < 3} risulta falsa; il ciclo termina in totale sicurezza.
+\end{itemize}
+
+\subsection{Le Stringhe come Vettori Ordinati di Caratteri}
+
+Nel calcolatore anche una stringa di testo (come il codice alfanumerico \texttt{"B2"} digitato dal cliente) non è un'entità monolitica, bensì un \textbf{\underline{vettore ordinato di singoli caratteri}} codificati secondo la tabella ASCII:
+
+\begin{lstlisting}[language=C++]
+string codice_tasto = "B2";
+
+// Possiamo estrarre i singoli caratteri mediante le parentesi quadre:
+char lettera_piano   = codice_tasto[0]; // Estrae il carattere 'B' (indice 0)
+char numero_spirale  = codice_tasto[1]; // Estrae il carattere '2' (indice 1)
+\end{lstlisting}
+Questo permette al microcontrollore di scomporre la scelta del cliente: il carattere \texttt{'B'} indirizza il relè del secondo ripiano, mentre il carattere \texttt{'2'} accende l'attuatore della seconda molla rotante.
+
+% ==============================================================================
+\section{Laboratorio Pratico: Le Tre Sfide alla LIM e Debugging}
+% ==============================================================================
+
+Durante l'attività in classe abbiamo analizzato tre classici errori concettuali che affliggono i software gestionali. Rivediamo le sfide con la loro analisi diagnostica rigorosa:
+
+\subsection{Sfida 1: Il Tranello nel Controllo Condizionale}
+
+\begin{esercizio}[Individua il Bug nel Controllo]
+Analizza il seguente frammento di codice destinato all'accettazione del credito:
+\begin{lstlisting}[language=C++]
+float moneta = 1.00;
+float credito = 0.00;
+
+SE (moneta = 1.00) {
+    credito = credito + moneta;
+}
+\end{lstlisting}
+Quale errore metodologico è stato commesso e quali conseguenze comporta?
+\end{esercizio}
+
+\begin{soluzione}[Diagnosi e Correzione della Sfida 1]
+\textbf{\underline{Errore Rilevato:}} È stato adoperato l'operatore di \textbf{\underline{assegnazione singola (=)}} invece dell'operatore relazionale di \textbf{\underline{uguaglianza (==)}}.
+
+\vspace{0.3em}
+\textbf{\underline{Conseguenza:}} L'istruzione non interroga il valore di \texttt{moneta}, bensì le assegna imperativamente il valore \texttt{1.00}. Tale operazione produce come valore risultante \texttt{1.00} che, essendo diverso da zero, viene interpretato come \textbf{\underline{sempre VERO}}, inducendo la macchina ad accreditare denaro fittizio anche se nella feritoia fosse stata inserita una moneta contraffatta o di taglio differente.
+
+\vspace{0.3em}
+\textbf{\underline{Istruzione Corretta:}}
+\begin{lstlisting}[language=C++]
+SE (moneta == 1.00) {
+    credito = credito + moneta;
+}
+\end{lstlisting}
+\end{soluzione}
+
+\subsection{Sfida 2: L'Iterazione Paralizzata nel Ciclo}
+
+\begin{esercizio}[Individua il Bug nel Ciclo]
+Considera il seguente loop per l'attesa del denaro:
+\begin{lstlisting}[language=C++]
+float credito = 0.00;
+const float PREZZO = 1.50;
+
+MENTRE (credito < PREZZO) {
+    mostra("Inserisci moneta da 50 centesimi...");
+}
+\end{lstlisting}
+Perché questo programma non uscirà mai dall'iterazione?
+\end{esercizio}
+
+\begin{soluzione}[Diagnosi e Correzione della Sfida 2]
+\textbf{\underline{Errore Rilevato:}} Violazione della regola di chiusura del ciclo \texttt{WHILE}. All'interno delle parentesi graffe manca totalmente l'istruzione di aggiornamento della variabile di controllo.
+
+\vspace{0.3em}
+\textbf{\underline{Conseguenza:}} Il valore di \texttt{credito} resta inchiodato a \texttt{0.00} per sempre. La condizione \texttt{0.00 < 1.50} continua a risultare vera all'infinito, bloccando il distributore e intasando il display di messaggi a ciclo continuo (\textbf{\underline{loop infinito}}).
+
+\vspace{0.3em}
+\textbf{\underline{Istruzione Corretta:}}
+\begin{lstlisting}[language=C++]
+MENTRE (credito < PREZZO) {
+    mostra("Inserisci moneta da 50 centesimi...");
+    credito = credito + attendi_e_leggi_moneta(); // Avanzamento di stato!
+}
+\end{lstlisting}
+\end{soluzione}
+
+\subsection{Sfida 3: L'Accesso Oltre il Confine del Vettore}
+
+\begin{esercizio}[Individua il Bug nel Vettore]
+Osserva il caricamento e l'erogazione dei prodotti:
+\begin{lstlisting}[language=C++]
+string prodotti[2] = {"Patatine", "Cioccolato"}; // Dimensione: 2 elementi
+int scelta = 2;
+
+mostra("Erogazione in corso: " + prodotti[scelta]);
+\end{lstlisting}
+Perché questo comando genera un errore fatale a runtime?
+\end{esercizio}
+
+\begin{soluzione}[Diagnosi e Correzione della Sfida 3]
+\textbf{\underline{Errore Rilevato:}} Violazione dei limiti di allocazione del vettore (\textbf{\underline{Index Out of Bounds}}).
+
+\vspace{0.3em}
+\textbf{\underline{Conseguenza:}} Il vettore contiene $N = 2$ elementi. In virtù della regola sacra dell'indice da zero, le sole posizioni legali sono:
+\begin{itemize}
+  \item \texttt{prodotti[0]} $\to$ corrisponde a \texttt{"Patatine"}
+  \item \texttt{prodotti[1]} $\to$ corrisponde a \texttt{"Cioccolato"}
+\end{itemize}
+L'indice \texttt{[2]} tenta di accedere a una terza cella inesistente nell'array, sconfinando in aree di memoria non autorizzate e provocando il crash immediato dell'applicazione.
+
+\vspace{0.3em}
+\textbf{\underline{Istruzione Corretta:}} Per selezionare il secondo prodotto (il Cioccolato), l'indice da indicare è \textbf{\underline{1}}:
+\begin{lstlisting}[language=C++]
+int scelta = 1; // Seleziona il secondo elemento (Cioccolato)
+mostra("Erogazione in corso: " + prodotti[scelta]);
+\end{lstlisting}
+\end{soluzione}
+
+% ==============================================================================
+\section{Modellazione Completa del Vending Machine Manager}
+% ==============================================================================
+
+A coronamento della panoramica didattica, integriamo tutti i concetti esaminati (tipi, costanti, assegnazione, logica booleana, selezione e cicli) nella modellazione completa del nostro progetto di laboratorio.
+
+\subsection{1. Modellazione della Struttura Dati di Memoria}
+
+Prima di redigere le istruzioni operative, un buon ingegnere del software organizza la configurazione e le variabili di stato:
+
+\begin{lstlisting}[language=C++]
+// =============================================================================
+// SEZIONE 1: COSTANTI DI CONFIGURAZIONE (Sola Lettura)
+// =============================================================================
+const float PREZZO_SNACK       = 1.50;  // Prezzo fisso di vendita
+const int   MAX_CAPIENZA_SLOT  = 10;    // Capienza massima spirale
+const float VALORE_MINIMO_MONETA = 0.10; // Taglio minimo accettabile
+
+// =============================================================================
+// SEZIONE 2: STATO DINAMICO DELLA MACCHINA (Variabili in RAM)
+// =============================================================================
+float credito_attuale   = 0.00;  // Saldo accumulato per la vendita corrente
+int   scorte_rimaste    = 5;     // Scorte residue nello slot selezionato
+bool  cassa_in_servizio = true;  // Stato di efficienza del distributore
+string codice_selezionato = "B2"; // Codice slot digitato
+\end{lstlisting}
+
+\subsection{2. L'Algoritmo Unificato di Acquisto ed Erogazione}
+
+Ecco l'algoritmo di compravendita completo con controllo di sicurezza a due fattori, aggiornamento del magazzino, calcolo matematico dell'avanzo ed estinzione del credito:
+
+\begin{lstlisting}[language=C++]
+// =============================================================================
+// SEZIONE 3: ALGORITMO OPERATIVO DI VENDITA
+// =============================================================================
+
+// 1. Controllo di fattibilita': la cassa e' attiva, il denaro basta 
+//    E il cassetto dispone di almeno uno snack disponibile?
+if (cassa_in_servizio && credito_attuale >= PREZZO_SNACK && scorte_rimaste > 0) {
+    
+    mostra("Transazione autorizzata. Avvio motore a spirale...");
+    
+    // 2. Azionamento meccanico: 3 giri per far cadere il pacchetto
+    for (int giro = 1; giro <= 3; giro++) {
+        ruota_motore_spirale();
+    }
+    
+    // 3. Scarico dell'inventario di magazzino:
+    scorte_rimaste = scorte_rimaste - 1;
+    mostra("Snack ritirabile nel cassetto. Scorte rimanenti: " + scorte_rimaste);
+    
+    // 4. Calcolo rigoroso del resto dovuto:
+    float resto_dovuto = credito_attuale - PREZZO_SNACK;
+    
+    if (resto_dovuto > 0.00) {
+        mostra("Erogazione resto in corso: " + resto_dovuto + " euro");
+        eroga_monete_resto(resto_dovuto);
+    }
+    
+    // 5. Azzeramento del credito per chiudere la sessione cliente:
+    credito_attuale = 0.00;
+    mostra("Transazione completata con successo. Arrivederci!");
+    
+} else {
+    
+    // Gestione mirata dell'anomalia per informare l'utente:
+    if (!cassa_in_servizio) {
+        mostra("Distributore attualmente FUORI SERVIZIO.");
+    } else if (scorte_rimaste <= 0) {
+        mostra("Prodotto esaurito! Premere tasto di reso monete.");
+    } else {
+        float mancano = PREZZO_SNACK - credito_attuale;
+        mostra("Credito insufficiente. Inserire ancora: " + mancano + " euro.");
+    }
+}
+\end{lstlisting}
+
+Questo frammento racchiude l'intera essenza del corso: \textbf{\underline{variabili}} e \textbf{\underline{costanti}} per gestire le risorse, \textbf{\underline{operatori aritmetici}} per la contabilità, \textbf{\underline{logica booleana composta}} per la sicurezza, \textbf{\underline{cicli definiti}} per l'attuazione fisica e \textbf{\underline{strutture condizionali a cascata}} per la comunicazione amichevole con il cliente.
+Su queste solide basi struttureremo nel prossimo modulo l'architettura a oggetti (\textbf{OOP}) del nostro intero gestionale!

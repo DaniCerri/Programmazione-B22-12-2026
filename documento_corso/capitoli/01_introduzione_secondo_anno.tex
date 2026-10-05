@@ -1,0 +1,95 @@
+\chapter{Benvenuti al Secondo Anno: Metodologia e OOP}
+\label{chap:intro-secondo-anno}
+
+\begin{quote}
+\itshape
+\small
+``Scrivere codice che un computer comprende è facile. Scrivere codice che gli esseri umani sanno leggere, mantenere ed estendere nel tempo è la vera arte della programmazione.''
+\end{quote}
+\vspace{1em}
+
+\noindent\textbf{Corso:} Programmazione 2 -- Laboratorio di Sviluppo Software\\
+\textbf{Obiettivo del secondo anno:} Passare dalla programmazione procedurale di base alla progettazione modulare e orientata agli oggetti, acquisendo standard professionali di sviluppo.
+
+\vspace{1.5em}
+
+% ------------------------------------------------------------------------------
+\section{Dal Pensiero Algoritmico allo Sviluppo Software}
+% ------------------------------------------------------------------------------
+
+Nel corso della prima annualità abbiamo esplorato i mattoni fondamentali dell'informatica: la sequenza logica, le condizioni (\texttt{if/else}), i cicli (\texttt{while}, \texttt{for}) e le prime funzioni.
+
+Nel secondo anno compiamo un salto di qualità decisivo: non ci limiteremo a scrivere script che ``funzionano'', ma impareremo a progettare \textbf{architetture software robuste}, manutenibili e modulari.
+
+\begin{concetto}[L'Approccio del Secondo Anno]
+Un programma professionale non è un monolite disordinato di centinaia di righe, ma un sistema ordinato di componenti indipendenti che collaborano tra loro scambiandosi messaggi e dati validati.
+\end{concetto}
+
+% ------------------------------------------------------------------------------
+\section{I Pilastri del Programma Annuale}
+% ------------------------------------------------------------------------------
+
+Il percorso di Programmazione 2 si articolerà attorno a quattro direttrici principali:
+
+\begin{enumerate}
+  \item \textbf{Programmazione Orientata agli Oggetti (OOP):}
+  \begin{itemize}
+    \item Concetto di Classe vs Istanza (Oggetto).
+    \item Incapsulamento: attributi, metodi e protezione dello stato interno.
+    \item Ereditarietà e Polimorfismo: riutilizzo intelligente del codice.
+  \end{itemize}
+
+  \item \textbf{Strutture Dati Dinamiche e Collezioni:}
+  \begin{itemize}
+    \item Liste avanzate, dizionari (tabelle chiave-valore), insiemi e tuple.
+    \item Algoritmi di ricerca e ordinamento a confronto.
+  \end{itemize}
+
+  \item \textbf{Persistenza dei Dati e Gestione degli Errori:}
+  \begin{itemize}
+    \item Lettura e scrittura di file (testo, CSV, JSON).
+    \item Gestione professionale delle eccezioni (\texttt{try / catch / finally}) per prevenire crash imprevisti.
+  \end{itemize}
+
+  \item \textbf{Progetto Pratico di Fine Anno:}
+  \begin{itemize}
+    \item Realizzazione in team di un applicativo completo, con interfaccia utente, gestione dello stato e salvataggio dei dati.
+  \end{itemize}
+\end{enumerate}
+
+% ------------------------------------------------------------------------------
+\section{Standard di Laboratorio e Buone Pratiche}
+% ------------------------------------------------------------------------------
+
+Durante tutte le sessioni di laboratorio adotteremo rigorosi standard professionali:
+
+\begin{consiglio}[Le Regole d'Oro del Laboratorio]
+\begin{enumerate}
+  \item \textbf{Nomi parlanti:} I nomi di variabili e funzioni devono spiegare \emph{cosa fanno}, non essere sigle oscure come \texttt{a}, \texttt{x1}, \texttt{temp2}.
+  \item \textbf{Una funzione, un solo compito:} Ogni funzione deve avere una responsabilità chiara e circoscritta.
+  \item \textbf{Controllo di Versione (Git):} Ogni sessione di lavoro prevede il commit delle modifiche con messaggi chiari e significativi.
+\end{enumerate}
+\end{consiglio}
+
+% ------------------------------------------------------------------------------
+\section{Esercizio di Riscaldamento: Verso gli Oggetti}
+% ------------------------------------------------------------------------------
+
+Per riscaldare la logica prima di addentrarci nella OOP formale, analizziamo come rappresentare un'entità del mondo reale.
+
+\begin{esercizio}[Modellare uno Studente]
+Immagina di dover gestire i dati di una classe di studenti.
+\begin{enumerate}
+  \item Quali caratteristiche (dati) identificano univocamente ogni studente?
+  \item Quali azioni (operazioni) possono essere compiute su uno studente (es. aggiungere un voto, calcolare la media)?
+\end{enumerate}
+\end{esercizio}
+
+\begin{soluzione}[Dalla Scheda al Modello Dati]
+Nel paradigma a oggetti separeremo nettamente:
+\begin{itemize}
+  \item \textbf{Stato (Attributi):} \texttt{nome}, \texttt{cognome}, \texttt{matricola}, \texttt{elenco\_voti}.
+  \item \textbf{Comportamento (Metodi):} \texttt{aggiungi\_voto(voto)}, \texttt{calcola\_media()}, \texttt{is\_promosso()}.
+\end{itemize}
+Nel prossimo capitolo tradurremo questo modello nella nostra prima classe software!
+\end{soluzione}

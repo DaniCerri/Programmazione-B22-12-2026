@@ -1,0 +1,131 @@
+\documentclass[11pt,a4paper,openany]{book}
+
+% Stile personalizzato Piazza dei Mestieri
+\usepackage{stile}
+
+\begin{document}
+
+% ==============================================================================
+% COPERTINA MODERNA ED ELEGANTE
+% ==============================================================================
+\begin{titlepage}
+  \newgeometry{top=3cm,bottom=3cm,left=3cm,right=3cm}
+  \pagecolor{PiazzaPaper}
+
+  \begin{flushleft}
+    {\fontsize{13}{16}\selectfont\bfseries\color{PiazzaPrimary}PIAZZA DEI MESTIERI -- TORINO}\\[0.25em]
+    {\fontsize{10}{13}\selectfont\color{PiazzaGray}IeFP -- Operatore Informatico | Seconda Annualità (Classe B22-12-2026-0)}
+  \end{flushleft}
+
+  \vspace{3.5cm}
+
+  \noindent{\color{PiazzaPrimary}\rule{\textwidth}{3pt}}
+  \vspace{1.5cm}
+
+  \begin{flushleft}
+    {\fontsize{34}{40}\selectfont\bfseries\color{PiazzaDark}PROGRAMMAZIONE 2}\\[0.5em]
+    {\fontsize{18}{22}\selectfont\color{PiazzaGray}Sviluppo Software Avanzato, OOP e Metodologie di Progetto}\\[1.5em]
+    {\fontsize{11}{14}\selectfont\color{PiazzaPrimary}\bfseries Manuale Didattico Ufficiale del Corso di Laboratorio}
+  \end{flushleft}
+
+  \vspace{1.5cm}
+  \noindent{\color{PiazzaPrimary!40}\rule{\textwidth}{1pt}}
+
+  \vfill
+
+  \begin{flushleft}
+    \textbf{\color{PiazzaDark}Docente:}\hspace{1.5em}{\color{PiazzaDark}Daniele Cerrina}\\
+    \textbf{\color{PiazzaDark}Email:}\hspace{2.4em}{\small\texttt{daniele.cerrina@immaginazioneelavoro.it}}\\
+    \textbf{\color{PiazzaDark}Anno Formativo:}\hspace{0.5em}2026 / 2027
+  \end{flushleft}
+
+  \restoregeometry
+\end{titlepage}
+\pagecolor{white}
+
+% ==============================================================================
+% PARTE INTRODUTTIVA (FRONTMATTER)
+% ==============================================================================
+\frontmatter
+
+% Pagina del Colophon / Info sul corso
+\thispagestyle{empty}
+\vspace*{12cm}
+\begin{flushleft}
+  \small\color{PiazzaGray}
+  \textbf{Programmazione 2 -- Sviluppo Software e Metodologie}\\
+  Percorso triennale IeFP per la Qualifica di Operatore Informatico.\\
+  \textcopyright~2026--2027 Piazza dei Mestieri / Immaginazione e Lavoro.\\
+  Docente: Daniele Cerrina.\\
+  \vspace{0.8em}
+  Documento didattico in continuo aggiornamento durante l'anno formativo.\\
+  Compilato con \LaTeX\ e \textsf{pdflatex}.
+\end{flushleft}
+
+\clearpage
+
+% Introduzione e Presentazione del Corso
+\chapter*{Presentazione del Volume}
+\addcontentsline{toc}{chapter}{Presentazione del Volume}
+
+Questo volume accompagna gli studenti della seconda annualità del corso per \textbf{Operatore Informatico} presso la Piazza dei Mestieri di Torino nel percorso avanzato di \textbf{Programmazione 2}.
+
+Durante questo secondo anno il focus si sposta dall'apprendimento della sintassi di base all'ingegneria del software applicata:
+\begin{itemize}
+  \item Progettazione a oggetti (Classi, incapsulamento, ereditarietà).
+  \item Gestione di strutture dati avanzate e collezioni complesse.
+  \item Manipolazione di file e persistenza dello stato.
+  \item Gestione delle eccezioni, testing e debugging avanzato.
+  \item Sviluppo cooperativo e architettura di un progetto software completo.
+\end{itemize}
+
+\vspace{1em}
+\noindent\textbf{Come consultare questo documento:}
+Il libro è strutturato con un \textbf{indice interattivo e cliccabile}. Cliccando su qualunque voce dell'indice o dei segnalibri PDF è possibile saltare istantaneamente alla sezione d'interesse.
+
+\clearpage
+
+% INDICE GENERALE CLICCABILE
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents
+\clearpage
+
+% ==============================================================================
+% PARTE PRINCIPALE (MAINMATTER)
+% ==============================================================================
+\mainmatter
+
+% ------------------------------------------------------------------------------
+% MODULO 1: METODOLOGIA E RIPASSO
+% ------------------------------------------------------------------------------
+\part{Metodologia di Sviluppo e Consolidamento}
+
+% Capitolo 1: Benvenuto e Metodo
+\input{capitoli/01_introduzione_secondo_anno}
+
+% Capitolo 2: I Grandi Concetti della Programmazione (Ripasso Strutturato)
+\input{capitoli/02_ripasso_strutturato}
+
+% \part{La Programmazione Orientata agli Oggetti (OOP)}
+% \input{capitoli/03_classi_e_oggetti}
+% \input{capitoli/04_incapsulamento_e_metodi}
+% \input{capitoli/05_ereditarieta_e_polimorfismo}
+
+% \part{Strutture Dati e Persistenza}
+% \input{capitoli/06_collezioni_avanzate}
+% \input{capitoli/07_file_json_e_csv}
+% \input{capitoli/08_gestione_eccezioni}
+
+% \part{Progetto Software Annuale}
+% \input{capitoli/09_architettura_progetto}
+% \input{capitoli/10_rilascio_e_documentazione}
+
+% ==============================================================================
+% PARTE CONCLUSIVA (BACKMATTER)
+% ==============================================================================
+\backmatter
+
+\chapter{Riferimento Rapido e Cheat-Sheet}
+\noindent Tavole sinottiche di riferimento rapido per le convenzioni di codice, comandi Git di frequente utilizzo e pattern di progettazione.
+
+\end{document}

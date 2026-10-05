@@ -1,0 +1,19 @@
+# File di sistema e cache
+.DS_Store
+Thumbs.db
+*.tmp
+
+# Python cache ed ambienti
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# File ausiliari LaTeX
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz
+*.fls
+*.fdb_latexmk

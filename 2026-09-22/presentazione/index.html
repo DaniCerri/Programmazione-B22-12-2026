@@ -1,0 +1,2277 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Concetti Generali di Programmazione | Vending Machine Manager - Piazza dei Mestieri</title>
+  
+  <!-- Typography: Outfit (Body) & Bricolage Grotesque (Headings & Accents) & Roboto Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Outfit:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <!-- Google Material Symbols Outlined -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="m3-paper">
+
+  <!-- Progress Bar Superiore -->
+  <div class="m3-progress-container">
+    <div id="progressBar" class="m3-progress-bar"></div>
+  </div>
+
+  <!-- Barra Superiore -->
+  <header class="m3-top-app-bar">
+    <div class="app-bar-leading">
+      <span class="material-symbols-outlined icon-main">local_cafe</span>
+      <div class="app-bar-title-group">
+        <span class="app-bar-title">Programmazione 2 &bull; Concetti Fondamentali</span>
+        <span class="app-bar-subtitle">Operatore Informatico &bull; Seconda Annualità &bull; Piazza dei Mestieri</span>
+      </div>
+    </div>
+
+    <div class="app-bar-actions">
+      <button id="btnOverview" class="m3-icon-button" title="Indice delle slide (O)">
+        <span class="material-symbols-outlined">grid_view</span>
+      </button>
+      <button id="btnNotes" class="m3-icon-button" title="Note Docente (N)">
+        <span class="material-symbols-outlined">notes</span>
+      </button>
+      <button id="btnExportPdf" class="m3-icon-button" title="Esporta slide in PDF (P)">
+        <span class="material-symbols-outlined">picture_as_pdf</span>
+      </button>
+      <button id="btnFullscreen" class="m3-icon-button" title="Schermo intero (F)">
+        <span class="material-symbols-outlined">fullscreen</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Slide Deck Main Container -->
+  <main class="deck-container">
+
+    <!-- ==========================================================================
+         SLIDE 1: COPERTINA
+         ========================================================================== -->
+    <section class="slide active" data-slide="1">
+      <div class="slide-content cover-slide-layout">
+        <div class="cover-tag">A.F. 2026 / 2027 &bull; LABORATORIO DI PROGRAMMAZIONE 2</div>
+        <h1 class="main-title">
+          I Grandi Concetti della <br><span class="cherry-text">Programmazione</span>
+        </h1>
+        <p class="main-lead">
+          Logica, memoria, controlli e cicli: ripassiamo le strutture universali che regolano ogni software informatico, applicandole al nostro progetto annuale: il <strong>Vending Machine Manager</strong>.
+        </p>
+
+        <div class="cover-specs-row">
+          <div class="spec-cell">
+            <span class="spec-label">PROGETTO GUIDA</span>
+            <span class="spec-value cherry-text">Vending Machine Manager</span>
+          </div>
+          <div class="spec-cell">
+            <span class="spec-label">DOCENTE</span>
+            <span class="spec-value">Daniele Cerrina</span>
+          </div>
+          <div class="spec-cell">
+            <span class="spec-label">EMAIL DOCENTE</span>
+            <span class="spec-value spec-email">daniele.cerrina@immaginazioneelavoro.it</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="speaker-notes">
+        Benvenuto alla classe seconda. Oggi ripassiamo la LOGICA pura dei concetti: ciò che avete visto l'anno scorso (in C++) e che vale per qualsiasi linguaggio di programmazione al mondo.
+      </div>
+
+      <div class="slide-cartiglio">
+        <div class="cartiglio-left">
+          <span class="cartiglio-brand">PIAZZA DEI MESTIERI</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-course">Programmazione 2 &bull; Concetti Generali</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-year">A.F. 2026/2027</span>
+        </div>
+        <div class="cartiglio-right">
+          <span class="cartiglio-teacher"><span class="material-symbols-outlined icon-mini">school</span> D. Cerrina</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-num">SLIDE 01 / 36</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SLIDE 2: LA MAPPA DEI CONCETTI (1/2)
+         ========================================================================== -->
+    <section class="slide" data-slide="2">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">PANORAMICA (PARTE 1)</span>
+          <h2>La Mappa dei Concetti: Ragionare e Memorizzare</h2>
+          <p class="section-lead">I primi tre mattoni per strutturare qualsiasi programma al calcolatore.</p>
+        </div>
+
+        <div class="grid-3">
+          <div class="m3-card">
+            <div class="card-header-row">
+              <div class="card-icon-pill"><span class="material-symbols-outlined">psychology</span></div>
+              <div class="card-title-group">
+                <span class="card-tag">1. RAGIONAMENTO</span>
+                <h3>Algoritmi &amp; Logica</h3>
+              </div>
+            </div>
+            <p class="card-body-text">Input iniziale &rarr; Istruzioni ordinate e non ambigue &rarr; Risultato desiderato.</p>
+          </div>
+
+          <div class="m3-card">
+            <div class="card-header-row">
+              <div class="card-icon-pill amber"><span class="material-symbols-outlined">memory</span></div>
+              <div class="card-title-group">
+                <span class="card-tag">2. MEMORIA</span>
+                <h3>Variabili &amp; Tipi</h3>
+              </div>
+            </div>
+            <p class="card-body-text">Celle di memoria con un nome, un tipo (interi, decimali, caratteri) e un valore.</p>
+          </div>
+
+          <div class="m3-card">
+            <div class="card-header-row">
+              <div class="card-icon-pill green"><span class="material-symbols-outlined">alt_route</span></div>
+              <div class="card-title-group">
+                <span class="card-tag">3. SCELTE</span>
+                <h3>Controlli &amp; Bivi</h3>
+              </div>
+            </div>
+            <p class="card-body-text">Logica binaria (VERO / FALSO), confronti relazionali e algebra booleana (AND, OR, NOT).</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="speaker-notes">
+        Introdurre i primi tre pilastri: prima di scrivere codice dobbiamo capire il flusso, dove memorizzare i dati e quali decisioni prendere.
+      </div>
+
+      <div class="slide-cartiglio">
+        <div class="cartiglio-left">
+          <span class="cartiglio-brand">PIAZZA DEI MESTIERI</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-course">Programmazione 2 &bull; Concetti Generali</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-year">A.F. 2026/2027</span>
+        </div>
+        <div class="cartiglio-right">
+          <span class="cartiglio-teacher"><span class="material-symbols-outlined icon-mini">school</span> D. Cerrina</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-num">SLIDE 02 / 36</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SLIDE 3: LA MAPPA DEI CONCETTI (2/2)
+         ========================================================================== -->
+    <section class="slide" data-slide="3">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">PANORAMICA (PARTE 2)</span>
+          <h2>La Mappa dei Concetti: Automatizzare e Organizzare</h2>
+          <p class="section-lead">Come evitare il lavoro manuale e gestire insiemi ordinati di informazioni.</p>
+        </div>
+
+        <div class="grid-2">
+          <div class="m3-card">
+            <div class="card-header-row">
+              <div class="card-icon-pill blue"><span class="material-symbols-outlined">sync</span></div>
+              <div class="card-title-group">
+                <span class="card-tag">4. AUTOMAZIONE</span>
+                <h3>Cicli e Iterazioni</h3>
+              </div>
+            </div>
+            <p class="card-body-text" style="font-size: 1.05rem; line-height: 1.5;">
+              La vera forza del computer: ripetere operazioni milioni di volte senza stancarsi.<br><br>
+              &bull; <strong>WHILE:</strong> ripete finché una condizione si mantiene vera.<br>
+              &bull; <strong>FOR:</strong> ripete per un numero prestabilito di conteggi.
+            </p>
+          </div>
+
+          <div class="m3-card">
+            <div class="card-header-row">
+              <div class="card-icon-pill"><span class="material-symbols-outlined">view_list</span></div>
+              <div class="card-title-group">
+                <span class="card-tag">5. COLLEZIONI</span>
+                <h3>Vettori e Sequenze</h3>
+              </div>
+            </div>
+            <p class="card-body-text" style="font-size: 1.05rem; line-height: 1.5;">
+              Raggruppare dati contigui in memoria:<br><br>
+              &bull; <strong>Array / Vettori:</strong> celle ordinate accessibili per posizione.<br>
+              &bull; <strong>Regola Sacra:</strong> l'indice parte rigorosamente da <strong>zero</strong>.<br>
+              &bull; <strong>Stringhe:</strong> sequenze ordinate di singoli caratteri.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="speaker-notes">
+        I cicli e i vettori sono gli strumenti che permettono di passare da un calcolatore da tavolo a un vero software gestionale.
+      </div>
+
+      <div class="slide-cartiglio">
+        <div class="cartiglio-left">
+          <span class="cartiglio-brand">PIAZZA DEI MESTIERI</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-course">Programmazione 2 &bull; Concetti Generali</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-year">A.F. 2026/2027</span>
+        </div>
+        <div class="cartiglio-right">
+          <span class="cartiglio-teacher"><span class="material-symbols-outlined icon-mini">school</span> D. Cerrina</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-num">SLIDE 03 / 36</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SLIDE 4: COS'È UN ALGORITMO?
+         ========================================================================== -->
+    <section class="slide" data-slide="4">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">PILASTRO 1: IL RAGIONAMENTO</span>
+          <h2>Che cos'è un Algoritmo?</h2>
+          <p class="section-lead">La sequenza logica di istruzioni che trasforma i dati iniziali nel risultato desiderato.</p>
+        </div>
+
+        <div class="m3-card">
+          <h3 style="margin-bottom: 10px; font-size: 1.35rem;">La Definizione Formale</h3>
+          <p class="card-body-text" style="font-size: 1.15rem; line-height: 1.55;">
+            Un <strong>algoritmo</strong> è un elenco <strong>finito</strong> e <strong>ordinato</strong> di operazioni <strong>non ambigue</strong> che, partendo da dati iniziali, porta con certezza al compimento di un compito.
+          </p>
+
+          <div class="callout-box" style="margin-top: 14px;">
+            <span class="material-symbols-outlined callout-icon">local_cafe</span>
+            <div class="callout-content" style="font-size: 1.05rem;">
+              <strong>Zero intuito:</strong> Il microcontrollore del distributore automatico non possiede fantasia. Non può interpretare ordini generici: deve ricevere ed eseguire comandi categorici, uno dopo l'altro.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="speaker-notes">
+        Sottolineare che l'algoritmo esiste prima del codice: si può progettare su carta con frecce e diagrammi di flusso prima di toccare la tastiera.
+      </div>
+
+      <div class="slide-cartiglio">
+        <div class="cartiglio-left">
+          <span class="cartiglio-brand">PIAZZA DEI MESTIERI</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-course">Programmazione 2 &bull; Concetti Generali</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-year">A.F. 2026/2027</span>
+        </div>
+        <div class="cartiglio-right">
+          <span class="cartiglio-teacher"><span class="material-symbols-outlined icon-mini">school</span> D. Cerrina</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-num">SLIDE 04 / 36</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SLIDE 5: SCHEMA INPUT -> ALGORITMO -> OUTPUT
+         ========================================================================== -->
+    <section class="slide" data-slide="5">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">STRUTTURA DI UN SISTEMA</span>
+          <h2>Lo Schema Universale: Input &rarr; Algoritmo &rarr; Output</h2>
+          <p class="section-lead">Come interagiscono dati di ingresso, elaborazione logica e risultato finale nel Vending Machine.</p>
+        </div>
+
+        <div class="grid-3" style="align-items: stretch;">
+          <div class="m3-card" style="border-color: var(--amber-primary); background-color: var(--amber-container);">
+            <div class="card-header-row">
+              <span class="material-symbols-outlined amber-text" style="font-size: 32px;">payments</span>
+              <h3 style="color: var(--amber-text);">1. INPUT</h3>
+            </div>
+            <p class="card-body-text" style="color: var(--amber-text); font-size: 1.02rem; line-height: 1.45;">
+              I dati che entrano nel sistema:<br><br>
+              &bull; Monete inserite nella feritoia (es. 1.50€)<br>
+              &bull; Codice digitato sulla tastiera (es. "B2")
+            </p>
+          </div>
+
+          <div class="m3-card" style="border-color: var(--cherry-primary); background-color: var(--cherry-tint);">
+            <div class="card-header-row">
+              <span class="material-symbols-outlined cherry-text" style="font-size: 32px;">settings</span>
+              <h3 style="color: var(--cherry-dark);">2. ALGORITMO</h3>
+            </div>
+            <p class="card-body-text" style="font-size: 1.02rem; line-height: 1.45;">
+              L'elaborazione logica interna:<br><br>
+              &bull; Verifica disponibilità snack<br>
+              &bull; Controllo credito sufficiente<br>
+              &bull; Attivazione motore spirale B2
+            </p>
+          </div>
+
+          <div class="m3-card" style="border-color: var(--green-true); background-color: var(--green-container);">
+            <div class="card-header-row">
+              <span class="material-symbols-outlined green-text" style="font-size: 32px;">inventory</span>
+              <h3 style="color: var(--green-text);">3. OUTPUT</h3>
+            </div>
+            <p class="card-body-text" style="color: var(--green-text); font-size: 1.02rem; line-height: 1.45;">
+              Il risultato restituito:<br><br>
+              &bull; Snack caduto nel vano di ritiro<br>
+              &bull; Resto erogato (0.50€)<br>
+              &bull; Messaggio di saluto a display
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="speaker-notes">
+        Far notare l'Input (dati esterni), l'elaborazione (la scatola nera del software) e l'Output (il risultato visibile e tangibile).
+      </div>
+
+      <div class="slide-cartiglio">
+        <div class="cartiglio-left">
+          <span class="cartiglio-brand">PIAZZA DEI MESTIERI</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-course">Programmazione 2 &bull; Concetti Generali</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-year">A.F. 2026/2027</span>
+        </div>
+        <div class="cartiglio-right">
+          <span class="cartiglio-teacher"><span class="material-symbols-outlined icon-mini">school</span> D. Cerrina</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-num">SLIDE 05 / 36</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SLIDE 6: FINITEZZA E DEFINITEZZA
+         ========================================================================== -->
+    <section class="slide" data-slide="6">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">PROPRIETÀ DI UN ALGORITMO</span>
+          <h2>Regole 1 &amp; 2: Finitezza e Definitezza</h2>
+          <p class="section-lead">Due condizioni indispensabili affinché un procedimento sia valido e calcolabile.</p>
+        </div>
+
+        <div class="grid-2">
+          <div class="m3-card">
+            <div class="card-header-row">
+              <div class="card-icon-pill"><span class="material-symbols-outlined">hourglass_top</span></div>
+              <div class="card-title-group">
+                <span class="card-tag">PROPRIETÀ 1</span>
+                <h3>Finitezza</h3>
+              </div>
+            </div>
+            <p class="card-body-text" style="font-size: 1.05rem; line-height: 1.45;">
+              L'esecuzione <strong>deve terminare sempre</strong> dopo un numero finito di passi.<br><br>
+              Se il distributore girasse il motore all'infinito senza fermarsi mai, brucerebbe l'hardware e violerebbe questa proprietà.
+            </p>
+            <div class="pill-tag red" style="margin-top: 10px; width: fit-content;">Nessun loop infinito</div>
+          </div>
+
+          <div class="m3-card">
+            <div class="card-header-row">
+              <div class="card-icon-pill amber"><span class="material-symbols-outlined">fact_check</span></div>
+              <div class="card-title-group">
+                <span class="card-tag">PROPRIETÀ 2</span>
+                <h3>Definitezza</h3>
+              </div>
+            </div>
+            <p class="card-body-text" style="font-size: 1.05rem; line-height: 1.45;">
+              Ogni singola istruzione deve essere <strong>chiara, univoca e senza dubbi</strong>.<br><br>
+              Non possiamo dire a una macchina <em>"eroga un po' di caffè"</em>: dobbiamo ordinare <em>"apri l'elettrovalvola per 30 ml d'acqua"</em>.
+            </p>
+            <div class="pill-tag amber" style="margin-top: 10px; width: fit-content;">Comandi deterministici</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="speaker-notes">
+        Chiedere: perché un umano capisce 'versa un filo d'olio' ma un computer no? Perché l'umano usa il contesto e l'esperienza, la macchina solo logica binaria.
+      </div>
+
+      <div class="slide-cartiglio">
+        <div class="cartiglio-left">
+          <span class="cartiglio-brand">PIAZZA DEI MESTIERI</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-course">Programmazione 2 &bull; Concetti Generali</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-year">A.F. 2026/2027</span>
+        </div>
+        <div class="cartiglio-right">
+          <span class="cartiglio-teacher"><span class="material-symbols-outlined icon-mini">school</span> D. Cerrina</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-num">SLIDE 06 / 36</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SLIDE 7: GENERALITÀ DEGLI ALGORITMI
+         ========================================================================== -->
+    <section class="slide" data-slide="7">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">PROPRIETÀ DI UN ALGORITMO</span>
+          <h2>Regola 3: La Generalità del Software</h2>
+          <p class="section-lead">Il nostro scopo è risolvere l'INTERA classe di problemi, non un solo calcolo specifico.</p>
+        </div>
+
+        <div class="grid-2-1">
+          <div class="m3-card">
+            <h3 style="margin-bottom: 8px;">Valido per Qualsiasi Valore</h3>
+            <p class="card-body-text" style="font-size: 1.05rem; line-height: 1.45;">
+              L'algoritmo di cassa e resto non deve funzionare solo per un caffè da 1.00€ pagato con una moneta da 2.00€.<br><br>
+              Deve funzionare per <strong>qualsiasi prezzo di listino</strong> e per <strong>qualsiasi combinazione di monete</strong> inserite!
+            </p>
+            <div class="callout-box green" style="margin-top: 12px;">
+              <span class="material-symbols-outlined callout-icon">verified</span>
+              <div class="callout-content">
+                <strong>Formula generale:</strong><br>
+                <code class="mono">resto = credito_totale - prezzo_prodotto</code><br>
+                Questa regola matematica vale sempre, per qualunque snack o bevanda.
+              </div>
+            </div>
+          </div>
+
+          <div class="m3-card" style="background-color: var(--paper-surface-muted);">
+            <div class="pill-tag cherry" style="margin-bottom: 8px;">Vietato Cablare i Dati</div>
+            <p class="card-body-text" style="font-size: 0.98rem; line-height: 1.45;">
+              Fissare numeri a mano nel codice (hardcoding) toglie ogni utilità all'informatica.<br><br>
+              Usiamo <strong>variabili e parametri</strong> affinché il nostro algoritmo sia universale e riutilizzabile all'infinito.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="speaker-notes">
+        La generalità è il motivo per cui scriviamo programmi anziché fare i conti con la calcolatrice.
+      </div>
+
+      <div class="slide-cartiglio">
+        <div class="cartiglio-left">
+          <span class="cartiglio-brand">PIAZZA DEI MESTIERI</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-course">Programmazione 2 &bull; Concetti Generali</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-year">A.F. 2026/2027</span>
+        </div>
+        <div class="cartiglio-right">
+          <span class="cartiglio-teacher"><span class="material-symbols-outlined icon-mini">school</span> D. Cerrina</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-num">SLIDE 07 / 36</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SLIDE 8: VARIABILI E ASSEGNAZIONE
+         ========================================================================== -->
+    <section class="slide" data-slide="8">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">PILASTRO 2: MEMORIA RAM</span>
+          <h2>Variabili: Scatole con Nome e Tipo</h2>
+          <p class="section-lead">Una porzione di memoria RAM a cui diamo un identificatore e che può cambiare valore.</p>
+        </div>
+
+        <div class="grid-2-1">
+          <div class="m3-card">
+            <h3 style="margin-bottom: 8px;">Come Cambia il Valore nel Tempo</h3>
+            <p class="card-body-text" style="font-size: 1.05rem;">
+              Il valore all'interno della scatola può essere sovrascritto durante l'esecuzione del programma:
+            </p>
+            <div class="code-box-clean" style="margin-top: 8px;">
+              <div class="code-body">
+<span class="c-com">// All'inizio dell'acquisto il credito è zero:</span>
+credito = <span class="c-num">0.00</span>;
+
+<span class="c-com">// L'utente inserisce 50 centesimi:</span>
+credito = credito + <span class="c-num">0.50</span>;  <span class="c-com">// ora vale 0.50</span>
+
+<span class="c-com">// L'utente inserisce 1 euro:</span>
+credito = credito + <span class="c-num">1.00</span>;  <span class="c-com">// ora vale 1.50</span></div>
+            </div>
+          </div>
+
+          <div class="m3-card" style="background-color: var(--amber-container);">
+            <div class="card-header-row">
+              <div class="card-icon-pill amber" style="background-color: white;">
+                <span class="material-symbols-outlined">arrow_back</span>
+              </div>
+              <div class="card-title-group">
+                <span class="card-tag">REGOLA D'ORO</span>
+                <h3>Il Senso dell'Assegnazione</h3>
+              </div>
+            </div>
+            <p class="card-body-text" style="font-size: 1rem; color: var(--amber-text); line-height: 1.45;">
+              L'operatore di assegnazione (il singolo <code class="mono">=</code> o <code class="mono">&larr;</code>):<br>
+              1. Calcola l'espressione a <strong>destra</strong>.<br>
+              2. La versa nella scatola a <strong>sinistra</strong>.<br><br>
+              Si legge sempre da destra a sinistra!
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="speaker-notes">
+        Ricordare che in matematica 'x = x + 1' è impossibile, ma in informatica è l'istruzione fondamentale di incremento della memoria.
+      </div>
+
+      <div class="slide-cartiglio">
+        <div class="cartiglio-left">
+          <span class="cartiglio-brand">PIAZZA DEI MESTIERI</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-course">Programmazione 2 &bull; Concetti Generali</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-year">A.F. 2026/2027</span>
+        </div>
+        <div class="cartiglio-right">
+          <span class="cartiglio-teacher"><span class="material-symbols-outlined icon-mini">school</span> D. Cerrina</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-num">SLIDE 08 / 36</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SLIDE 9: LE COSTANTI
+         ========================================================================== -->
+    <section class="slide" data-slide="9">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">PILASTRO 2: MEMORIA RAM</span>
+          <h2>Le Costanti: Valori Protetti in Sola Lettura</h2>
+          <p class="section-lead">Dati che vengono impostati all'avvio e non devono mai essere modificati.</p>
+        </div>
+
+        <div class="grid-2-1">
+          <div class="m3-card">
+            <h3 style="margin-bottom: 8px;">Listino Prezzi e Limiti di Sicurezza</h3>
+            <p class="card-body-text" style="font-size: 1.05rem;">
+              Per convenzione universale si scrivono in <strong>TUTTO MAIUSCOLO</strong> (es. <code class="mono">const</code> in C++ o convenzione maiuscola):
+            </p>
+            <div class="code-box-clean" style="margin-top: 8px;">
+              <div class="code-body">
+PREZZO_ESPRESSO = <span class="c-num">1.00</span>;     <span class="c-com">// Prezzo fisso del caffè</span>
+PREZZO_SNACK = <span class="c-num">1.50</span>;        <span class="c-com">// Prezzo fisso dello snack</span>
+MAX_CAPIENZA_CASSA = <span class="c-num">100.00</span>; <span class="c-com">// Limite monete della cassa</span></div>
+            </div>
+          </div>
+
+          <div class="m3-card" style="background-color: var(--paper-surface-muted);">
+            <div class="pill-tag cherry" style="margin-bottom: 8px;">Perché Sono Fondamentali?</div>
+            <p class="card-body-text" style="font-size: 0.98rem; line-height: 1.45;">
+              1. <strong>Sicurezza:</strong> impediscono che un'istruzione sbagliata cambi per sbaglio il prezzo di un prodotto a zero euro!<br><br>
+              2. <strong>Facilità di modifica:</strong> se il prezzo cambia, si aggiorna una sola riga in cima invece di cercarlo in centinaia di punti.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="speaker-notes">
+        In C++ usavano 'const float PREZZO = 1.00f;'. Sottolineare che il concetto di dato 'read-only' è presente in qualsiasi linguaggio.
+      </div>
+
+      <div class="slide-cartiglio">
+        <div class="cartiglio-left">
+          <span class="cartiglio-brand">PIAZZA DEI MESTIERI</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-course">Programmazione 2 &bull; Concetti Generali</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-year">A.F. 2026/2027</span>
+        </div>
+        <div class="cartiglio-right">
+          <span class="cartiglio-teacher"><span class="material-symbols-outlined icon-mini">school</span> D. Cerrina</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-num">SLIDE 09 / 36</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SLIDE 10: TIPI NUMERICI (INTERI E REALI)
+         ========================================================================== -->
+    <section class="slide" data-slide="10">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">TIPI DI DATO</span>
+          <h2>I Tipi Numerici: Quantità Intere e Valute Reali</h2>
+          <p class="section-lead">Il tipo di dato stabilisce quanti byte occupare in memoria e quali operazioni consentire.</p>
+        </div>
+
+        <div class="grid-2">
+          <div class="m3-card">
+            <div class="card-header-row">
+              <span class="pill-tag cherry">Numeri Interi (int)</span>
+              <h3>Pezzi e Conteggi</h3>
+            </div>
+            <p class="card-body-text" style="font-size: 1rem;">
+              Numeri senza virgola. Si usano per tutto ciò che è numerabile a pezzi discreti:
+            </p>
+            <div class="code-box-clean" style="margin-top: 8px;">
+              <div class="code-body">
+cialde_disponibili = <span class="c-num">25</span>;
+monete_nella_cassa = <span class="c-num">48</span>;
+numero_corsia = <span class="c-num">3</span>;</div>
+            </div>
+          </div>
+
+          <div class="m3-card">
+            <div class="card-header-row">
+              <span class="pill-tag amber">Numeri Decimali (float / double)</span>
+              <h3>Prezzi e Misure Continue</h3>
+            </div>
+            <p class="card-body-text" style="font-size: 1rem;">
+              Numeri con parte frazionaria. Si usa sempre il <strong>punto</strong> decimale:
+            </p>
+            <div class="code-box-clean" style="margin-top: 8px;">
+              <div class="code-body">
+prezzo_lattina = <span class="c-num">1.80</span>;
+credito_inserito = <span class="c-num">2.50</span>;
+temperatura_frigo = <span class="c-num">3.8</span>;</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="speaker-notes">
+        Gli studenti ricordano int e float/double dal C++. Ribadire che il punto decimale è lo standard universale della notazione anglosassone.
+      </div>
+
+      <div class="slide-cartiglio">
+        <div class="cartiglio-left">
+          <span class="cartiglio-brand">PIAZZA DEI MESTIERI</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-course">Programmazione 2 &bull; Concetti Generali</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-year">A.F. 2026/2027</span>
+        </div>
+        <div class="cartiglio-right">
+          <span class="cartiglio-teacher"><span class="material-symbols-outlined icon-mini">school</span> D. Cerrina</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-num">SLIDE 10 / 36</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SLIDE 11: I BOOLEANI (BOOL) E I SENSORI
+         ========================================================================== -->
+    <section class="slide" data-slide="11">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">TIPI DI DATO</span>
+          <h2>I Booleani (bool) e i Sensori Fisici</h2>
+          <p class="section-lead">Rappresentare gli stati di verità e intercettare l'hardware del distributore.</p>
+        </div>
+
+        <div class="grid-2">
+          <div class="m3-card">
+            <div class="card-header-row">
+              <span class="pill-tag green">Valore Booleano (bool)</span>
+              <h3>Solo Due Stati Possibili</h3>
+            </div>
+            <p class="card-body-text" style="font-size: 1.05rem; line-height: 1.5;">
+              Un valore booleano occupa un solo bit logico:<br><br>
+              &bull; <strong>VERO (true / 1)</strong>: l'evento si è verificato.<br>
+              &bull; <strong>FALSO (false / 0)</strong>: l'evento non è presente.
+            </p>
+          </div>
+
+          <div class="m3-card" style="background-color: var(--paper-surface-muted);">
+            <div class="pill-tag cherry" style="margin-bottom: 8px;">I Sensori del Vending Machine</div>
+            <div class="code-box-clean" style="margin-top: 6px;">
+              <div class="code-body">
+sportello_aperto = <span class="c-bool">false</span>;     <span class="c-com">// Finecorsa sportello</span>
+prodotto_sganciato = <span class="c-bool">true</span>;   <span class="c-com">// Fotocellula vano</span>
+cassa_piena = <span class="c-bool">false</span>;          <span class="c-com">// Sensore monete</span></div>
+            </div>
+            <p class="card-body-text" style="font-size: 0.95rem; margin-top: 8px; color: var(--text-muted);">
+              Tutti i sensori del mondo reale comunicano con la CPU tramite segnali booleani!
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="speaker-notes">
+        La fotocellula nel cassetto rileva se il raggio infrarosso viene interrotto dallo snack caduto (True) o no (False).
+      </div>
+
+      <div class="slide-cartiglio">
+        <div class="cartiglio-left">
+          <span class="cartiglio-brand">PIAZZA DEI MESTIERI</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-course">Programmazione 2 &bull; Concetti Generali</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-year">A.F. 2026/2027</span>
+        </div>
+        <div class="cartiglio-right">
+          <span class="cartiglio-teacher"><span class="material-symbols-outlined icon-mini">school</span> D. Cerrina</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-num">SLIDE 11 / 36</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SLIDE 12: IL TESTO E CODICI SLOT
+         ========================================================================== -->
+    <section class="slide" data-slide="12">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">TIPI DI DATO</span>
+          <h2>Il Testo: Codici Slot (string / char)</h2>
+          <p class="section-lead">Gestire messaggi per il display e codici digitati sulla tastiera alfanumerica.</p>
+        </div>
+
+        <div class="grid-2">
+          <div class="m3-card">
+            <h3 style="margin-bottom: 8px;">Codici e Messaggi Utente</h3>
+            <div class="code-box-clean" style="margin-top: 8px;">
+              <div class="code-body">
+codice_tasto = <span class="c-str">"B2"</span>;
+nome_prodotto = <span class="c-str">"Croccantelle"</span>;
+avviso_display = <span class="c-str">"INSERIRE RESTO"</span>;</div>
+            </div>
+            <p class="card-body-text" style="font-size: 0.95rem; margin-top: 8px; color: var(--text-muted);">
+              Racchiuso sempre tra virgolette doppie o singole.
+            </p>
+          </div>
+
+          <div class="m3-card" style="border-color: var(--amber-dark); background-color: var(--amber-container);">
+            <div class="pill-tag amber" style="background-color: white; margin-bottom: 8px;">Attenzione: Numero vs Testo!</div>
+            <p class="card-body-text" style="color: var(--amber-text); font-size: 1rem; line-height: 1.45;">
+              <strong>10 + 5</strong> &rarr; Somma matematica intera: <strong>15</strong>.<br><br>
+              <strong>"10" + "5"</strong> &rarr; Concatenazione di due stringhe di testo: <strong>"105"</strong>!<br><br>
+              Il tipo di dato dice alla macchina cosa fare con l'operatore <code class="mono">+</code>.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="speaker-notes">
+        Spiegare che la tastiera del distributore legge codici come stringhe (es. 'B2').
+      </div>
+
+      <div class="slide-cartiglio">
+        <div class="cartiglio-left">
+          <span class="cartiglio-brand">PIAZZA DEI MESTIERI</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-course">Programmazione 2 &bull; Concetti Generali</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-year">A.F. 2026/2027</span>
+        </div>
+        <div class="cartiglio-right">
+          <span class="cartiglio-teacher"><span class="material-symbols-outlined icon-mini">school</span> D. Cerrina</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-num">SLIDE 12 / 36</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SLIDE 13: OPERATORI ARITMETICI
+         ========================================================================== -->
+    <section class="slide" data-slide="13">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">CALCOLO INFORMATICO</span>
+          <h2>Operatori Aritmetici: Calcolare Resto e Incassi</h2>
+          <p class="section-lead">Le quattro operazioni base applicate alla contabilità della cassa.</p>
+        </div>
+
+        <table class="table-clean">
+          <thead>
+            <tr>
+              <th>Simbolo</th>
+              <th>Operazione</th>
+              <th>Esempio Vending Machine</th>
+              <th>Cosa Calcola</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="op-badge">+</span> e <span class="op-badge">-</span></td>
+              <td>Addizione e Sottrazione</td>
+              <td><code class="mono">credito - PREZZO_SNACK</code></td>
+              <td>Calcolo immediato del <strong>resto</strong></td>
+            </tr>
+            <tr>
+              <td><span class="op-badge">*</span></td>
+              <td>Moltiplicazione</td>
+              <td><code class="mono">lattine_vendute * PREZZO</code></td>
+              <td>Incasso totale di una specifica corsia</td>
+            </tr>
+            <tr>
+              <td><span class="op-badge">/</span></td>
+              <td>Divisione</td>
+              <td><code class="mono">incasso_totale / 5</code></td>
+              <td>Media giornaliera dell'incasso della settimana</td>
+            </tr>
+            <tr>
+              <td><span class="op-badge">/</span> (interi)</td>
+              <td>Divisione Intera</td>
+              <td><code class="mono">monete_totali / 10</code></td>
+              <td>Quanti tubi pieni da 10 monete possiamo caricare</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="speaker-notes">
+        Ricordare che in C++ la divisione tra due int dà come risultato un int troncato (7 / 2 = 3).
+      </div>
+
+      <div class="slide-cartiglio">
+        <div class="cartiglio-left">
+          <span class="cartiglio-brand">PIAZZA DEI MESTIERI</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-course">Programmazione 2 &bull; Concetti Generali</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-year">A.F. 2026/2027</span>
+        </div>
+        <div class="cartiglio-right">
+          <span class="cartiglio-teacher"><span class="material-symbols-outlined icon-mini">school</span> D. Cerrina</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-num">SLIDE 13 / 36</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SLIDE 14: L'OPERATORE MODULO %
+         ========================================================================== -->
+    <section class="slide" data-slide="14">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">OPERATORI SPECIALI</span>
+          <h2>L'Operatore Modulo (%): Il Resto della Divisione</h2>
+          <p class="section-lead">Calcola l'avanzo di una divisione intera tra due numeri.</p>
+        </div>
+
+        <div class="grid-2">
+          <div class="m3-card">
+            <h3 style="margin-bottom: 8px;">Erogare Tagli di Moneta</h3>
+            <p class="card-body-text">
+              Dobbiamo rendere <strong>70 centesimi</strong> usando monete da 50:<br>
+              <code class="mono">70 / 50 = 1</code> (1 moneta da 50 cent erogata).<br>
+              Cosa avanza ancora da dare? Lo dice il modulo:
+            </p>
+            <div class="code-box-clean" style="margin-top: 10px;">
+              <div class="code-body">
+<span class="c-com">// Calcola l'avanzo della divisione:</span>
+resto_rimasto = <span class="c-num">70</span> % <span class="c-num">50</span>;  <span class="c-com">// Fa: 20 cent</span>
+
+<span class="c-com">// La cassa ora sa che deve dare 20 cent!</span></div>
+            </div>
+          </div>
+
+          <div class="m3-card" style="background-color: var(--amber-container);">
+            <div class="pill-tag amber" style="background-color: white; margin-bottom: 8px;">Regola Universale</div>
+            <h3 style="margin-bottom: 8px; color: var(--amber-text);">Verifica di Parità</h3>
+            <p class="card-body-text" style="color: var(--amber-text);">
+              Il modulo con 2 è il test matematico infallibile per sapere se un numero è pari o dispari:
+            </p>
+            <div class="code-box-clean" style="margin-top: 10px;">
+              <div class="code-body">
+<span class="c-kw">SE</span> (numero % <span class="c-num">2</span> == <span class="c-num">0</span>) {
+    mostra(<span class="c-str">"PARI"</span>);     <span class="c-com">// Resto zero</span>
+} <span class="c-kw">ALTRIMENTI</span> {
+    mostra(<span class="c-str">"DISPARI"</span>);  <span class="c-com">// Resto uno</span>
+}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="speaker-notes">
+        Il simbolo '%' in C++, Java e in informatica generale significa sempre MODULO, non percentuale!
+      </div>
+
+      <div class="slide-cartiglio">
+        <div class="cartiglio-left">
+          <span class="cartiglio-brand">PIAZZA DEI MESTIERI</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-course">Programmazione 2 &bull; Concetti Generali</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-year">A.F. 2026/2027</span>
+        </div>
+        <div class="cartiglio-right">
+          <span class="cartiglio-teacher"><span class="material-symbols-outlined icon-mini">school</span> D. Cerrina</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-num">SLIDE 14 / 36</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SLIDE 15: LA LOGICA BINARIA DELLE DECISIONI
+         ========================================================================== -->
+    <section class="slide" data-slide="15">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">PILASTRO 3: CONTROLLI</span>
+          <h2>La Logica Binaria delle Decisioni</h2>
+          <p class="section-lead">Nel processore ogni condizione ha rigorosamente due risposte possibili.</p>
+        </div>
+
+        <div class="grid-2">
+          <div class="m3-card" style="border-color: var(--green-true); background-color: var(--green-container); text-align: center; justify-content: center; padding: 24px 20px;">
+            <span class="material-symbols-outlined" style="font-size: 44px; color: var(--green-true);">check_circle</span>
+            <h3 style="font-size: 1.85rem; color: var(--green-text); margin-top: 4px;">VERO (True / 1)</h3>
+            <p style="color: var(--green-text); font-weight: 700; font-size: 1.3rem; margin-top: 4px;">Condizione Rispettata</p>
+            <p style="font-size: 1.18rem; color: var(--green-text); margin-top: 6px;">Il denaro inserito basta &rarr; Il motore a spirale si avvia!</p>
+          </div>
+
+          <div class="m3-card" style="border-color: var(--red-false); background-color: var(--red-container); text-align: center; justify-content: center; padding: 24px 20px;">
+            <span class="material-symbols-outlined" style="font-size: 44px; color: var(--red-false);">cancel</span>
+            <h3 style="font-size: 1.85rem; color: var(--red-text); margin-top: 4px;">FALSO (False / 0)</h3>
+            <p style="color: var(--red-text); font-weight: 700; font-size: 1.3rem; margin-top: 4px;">Condizione Non Rispettata</p>
+            <p style="font-size: 1.18rem; color: var(--red-text); margin-top: 6px;">Mancano monete &rarr; Display: "CREDITO INSUFFICIENTE"</p>
+          </div>
+        </div>
+
+        <div class="callout-box" style="margin-top: 12px;">
+          <span class="material-symbols-outlined callout-icon">bolt</span>
+          <div class="callout-content">
+            <strong>Niente vie di mezzo:</strong> Un computer non conosce il <em>"forse"</em> o il <em>"quasi"</em>. La condizione viene valutata all'istante: o si esegue il blocco oppure lo si salta del tutto.
+          </div>
+        </div>
+      </div>
+
+      <div class="speaker-notes">
+        In C++ vero e falso corrispondono anche fisicamente ai valori numerici 1 e 0 a livello di registri della CPU.
+      </div>
+
+      <div class="slide-cartiglio">
+        <div class="cartiglio-left">
+          <span class="cartiglio-brand">PIAZZA DEI MESTIERI</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-course">Programmazione 2 &bull; Concetti Generali</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-year">A.F. 2026/2027</span>
+        </div>
+        <div class="cartiglio-right">
+          <span class="cartiglio-teacher"><span class="material-symbols-outlined icon-mini">school</span> D. Cerrina</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-num">SLIDE 15 / 36</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SLIDE 16: OPERATORI DI CONFRONTO
+         ========================================================================== -->
+    <section class="slide" data-slide="16">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">PORRE DOMANDE</span>
+          <h2>Operatori di Confronto Relazionali</h2>
+          <p class="section-lead">I simboli universali per confrontare due valori e produrre un risultato booleano.</p>
+        </div>
+
+        <table class="table-clean">
+          <thead>
+            <tr>
+              <th>Operatore</th>
+              <th>Significato Logico</th>
+              <th>Esempio Vending Machine</th>
+              <th>Risultato Prodotto</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="background-color: var(--cherry-tint);">
+              <td><span class="op-badge">==</span></td>
+              <td><strong>È uguale a?</strong></td>
+              <td><code class="mono">credito == 1.50</code></td>
+              <td>Importo esatto senza resto</td>
+            </tr>
+            <tr>
+              <td><span class="op-badge">!=</span></td>
+              <td><strong>È diverso da?</strong></td>
+              <td><code class="mono">codice_digitato != ""</code></td>
+              <td>L'utente ha premuto un tasto</td>
+            </tr>
+            <tr>
+              <td><span class="op-badge">&gt;=</span></td>
+              <td><strong>Maggiore o uguale</strong></td>
+              <td><code class="mono">credito &gt;= PREZZO_SNACK</code></td>
+              <td>Il denaro inserito basta a pagare</td>
+            </tr>
+            <tr>
+              <td><span class="op-badge">&gt;</span></td>
+              <td><strong>Maggiore di</strong></td>
+              <td><code class="mono">scorte_disponibili &gt; 0</code></td>
+              <td>Lo snack è presente in magazzino</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="speaker-notes">
+        Far notare: != significa 'diverso'. In matematica si scrive un uguale sbarrato, sulle tastiere standard usiamo !=.
+      </div>
+
+      <div class="slide-cartiglio">
+        <div class="cartiglio-left">
+          <span class="cartiglio-brand">PIAZZA DEI MESTIERI</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-course">Programmazione 2 &bull; Concetti Generali</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-year">A.F. 2026/2027</span>
+        </div>
+        <div class="cartiglio-right">
+          <span class="cartiglio-teacher"><span class="material-symbols-outlined icon-mini">school</span> D. Cerrina</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-num">SLIDE 16 / 36</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SLIDE 17: IL TRANELLO MORTALE: = VS ==
+         ========================================================================== -->
+    <section class="slide" data-slide="17">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">ATTENZIONE SPECIALE</span>
+          <h2>Il Tranello Mortale: = contro ==</h2>
+          <p class="section-lead">Assegnare un valore alla memoria contro Porre una domanda di confronto.</p>
+        </div>
+
+        <div class="grid-2">
+          <div class="m3-card" style="border-color: var(--amber-dark);">
+            <div class="card-header-row">
+              <span class="op-badge" style="font-size: 1.3rem;">=</span>
+              <h3>Un Solo Uguale: ASSEGNAZIONE</h3>
+            </div>
+            <p class="card-body-text" style="font-size: 1.02rem; line-height: 1.45;">
+              È un'azione attiva: scrive il dato nella scatola di memoria.
+            </p>
+            <div class="code-box-clean" style="margin-top: 8px;">
+              <div class="code-body">
+credito = <span class="c-num">1.50</span>;  <span class="c-com">// Metto 1.50€ nel credito</span></div>
+            </div>
+          </div>
+
+          <div class="m3-card" style="border-color: var(--cherry-primary); background-color: var(--cherry-tint);">
+            <div class="card-header-row">
+              <span class="op-badge" style="font-size: 1.3rem; color: var(--cherry-primary);">==</span>
+              <h3>Due Uguali: CONFRONTO</h3>
+            </div>
+            <p class="card-body-text" style="font-size: 1.02rem; line-height: 1.45;">
+              È una domanda: non modifica nulla, restituisce solo True o False.
+            </p>
+            <div class="code-box-clean" style="margin-top: 8px;">
+              <div class="code-body">
+<span class="c-kw">if</span> (credito == <span class="c-num">1.50</span>)  <span class="c-com">// Il credito è 1.50€?</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="callout-box" style="margin-top: 10px;">
+          <span class="material-symbols-outlined callout-icon">dangerous</span>
+          <div class="callout-content">
+            <strong>Il bug più famoso dell'informatica:</strong> Scrivere un solo uguale dentro un controllo condizionale sovrascrive la variabile invece di confrontarla! In C++ assegna il valore e valuta se è diverso da zero, creando bug silenziosi difficilissimi da scovare.
+          </div>
+        </div>
+      </div>
+
+      <div class="speaker-notes">
+        Gli studenti che hanno fatto C++ lo sanno bene: 'if (x = 5)' in C++ compila ma assegna 5 ad x, risultando sempre vero!
+      </div>
+
+      <div class="slide-cartiglio">
+        <div class="cartiglio-left">
+          <span class="cartiglio-brand">PIAZZA DEI MESTIERI</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-course">Programmazione 2 &bull; Concetti Generali</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-year">A.F. 2026/2027</span>
+        </div>
+        <div class="cartiglio-right">
+          <span class="cartiglio-teacher"><span class="material-symbols-outlined icon-mini">school</span> D. Cerrina</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-num">SLIDE 17 / 36</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SLIDE 18: OPERATORE LOGICO AND
+         ========================================================================== -->
+    <section class="slide" data-slide="18">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">OPERATORI BOOLEANI</span>
+          <h2>Operatore AND (&&): Entrambe le Condizioni Vere</h2>
+          <p class="section-lead">Restituisce VERO unicamente se tutte le condizioni collegate sono verificate.</p>
+        </div>
+
+        <div class="grid-2-1">
+          <table class="table-clean">
+            <thead>
+              <tr>
+                <th>Credito Ok?</th>
+                <th>Scorte &gt; 0?</th>
+                <th>Esito (<code class="mono">AND / &amp;&amp;</code>)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="background-color: var(--green-container);">
+                <td><strong class="green-text">VERO</strong></td>
+                <td><strong class="green-text">VERO</strong></td>
+                <td><strong class="green-text">VERO (Eroga Prodotto)</strong></td>
+              </tr>
+              <tr>
+                <td><strong class="green-text">VERO</strong></td>
+                <td><strong class="cherry-text">FALSO</strong></td>
+                <td><strong class="cherry-text">FALSO (Snack Esaurito!)</strong></td>
+              </tr>
+              <tr>
+                <td><strong class="cherry-text">FALSO</strong></td>
+                <td><strong class="green-text">VERO</strong></td>
+                <td><strong class="cherry-text">FALSO (Soldi Mancanti!)</strong></td>
+              </tr>
+              <tr>
+                <td><strong class="cherry-text">FALSO</strong></td>
+                <td><strong class="cherry-text">FALSO</strong></td>
+                <td><strong class="cherry-text">FALSO</strong></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="m3-card" style="background-color: var(--paper-surface-muted);">
+            <div class="pill-tag cherry" style="margin-bottom: 8px;">Logica di Erogazione</div>
+            <div class="code-box-clean">
+              <div class="code-body">
+<span class="c-kw">SE</span> (credito &gt;= PREZZO <span class="c-kw">E</span> scorte &gt; <span class="c-num">0</span>)
+    avvia_motore_spirale();
+<span class="c-kw">ALTRIMENTI</span>
+    mostra_messaggio_errore();</div>
+            </div>
+            <p class="card-body-text" style="font-size: 0.95rem; margin-top: 8px; color: var(--text-muted);">
+              In C++ si scriveva con <code class="mono">&amp;&amp;</code>, in pseudocodice con <code class="mono">AND</code> o <code class="mono">E</code>.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="speaker-notes">
+        Sottolineare che basta un solo ramo falso per far fallire tutto l'AND.
+      </div>
+
+      <div class="slide-cartiglio">
+        <div class="cartiglio-left">
+          <span class="cartiglio-brand">PIAZZA DEI MESTIERI</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-course">Programmazione 2 &bull; Concetti Generali</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-year">A.F. 2026/2027</span>
+        </div>
+        <div class="cartiglio-right">
+          <span class="cartiglio-teacher"><span class="material-symbols-outlined icon-mini">school</span> D. Cerrina</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-num">SLIDE 18 / 36</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SLIDE 19: OPERATORE LOGICO OR
+         ========================================================================== -->
+    <section class="slide" data-slide="19">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">OPERATORI BOOLEANI</span>
+          <h2>Operatore OR (||): Basta Almeno una Vera</h2>
+          <p class="section-lead">Restituisce VERO se almeno una delle condizioni verificate è vera.</p>
+        </div>
+
+        <div class="grid-2-1">
+          <div class="m3-card">
+            <h3 style="margin-bottom: 8px;">Accettare Monete Valide</h3>
+            <p class="card-body-text" style="font-size: 1rem; line-height: 1.45;">
+              La fessura accetta monete da 1 euro OPPURE da 2 euro:
+            </p>
+            <div class="code-box-clean" style="margin-top: 8px;">
+              <div class="code-body">
+<span class="c-kw">SE</span> (moneta == <span class="c-num">1.00</span> <span class="c-kw">O</span> moneta == <span class="c-num">2.00</span>)
+    credito = credito + moneta;
+<span class="c-kw">ALTRIMENTI</span>
+    espelli_moneta();  <span class="c-com">// Moneta rifiutata</span></div>
+            </div>
+            <p class="card-body-text" style="font-size: 0.92rem; margin-top: 8px; color: var(--text-muted);">
+              In C++ si scrive con le due pipe <code class="mono">||</code>.
+            </p>
+          </div>
+
+          <div class="m3-card" style="background-color: var(--amber-container);">
+            <div class="pill-tag amber" style="background-color: white; margin-bottom: 8px;">Tasto Annulla Transazione</div>
+            <p class="card-body-text" style="color: var(--amber-text); font-size: 0.98rem; line-height: 1.4;">
+              Il cliente può richiedere il reso premendo il tasto rosso OPPURE tirando la levetta:
+            </p>
+            <div class="code-box-clean" style="margin-top: 8px;">
+              <div class="code-body">
+<span class="c-kw">SE</span> (tasto == <span class="c-str">"ESC"</span> <span class="c-kw">O</span> levetta_tirata)
+    restituisci_monete();</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="speaker-notes">
+        Far notare: OR è falso SOLO quando entrambe le condizioni sono false contemporaneamente.
+      </div>
+
+      <div class="slide-cartiglio">
+        <div class="cartiglio-left">
+          <span class="cartiglio-brand">PIAZZA DEI MESTIERI</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-course">Programmazione 2 &bull; Concetti Generali</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-year">A.F. 2026/2027</span>
+        </div>
+        <div class="cartiglio-right">
+          <span class="cartiglio-teacher"><span class="material-symbols-outlined icon-mini">school</span> D. Cerrina</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-num">SLIDE 19 / 36</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SLIDE 20: OPERATORE LOGICO NOT
+         ========================================================================== -->
+    <section class="slide" data-slide="20">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">OPERATORI BOOLEANI</span>
+          <h2>Operatore NOT (!): L'Inversione della Verità</h2>
+          <p class="section-lead">Ribalta il valore logico: se era VERO diventa FALSO, e viceversa.</p>
+        </div>
+
+        <div class="grid-2">
+          <div class="m3-card">
+            <h3 style="margin-bottom: 8px;">Controllo Blocco Cassa</h3>
+            <div class="code-box-clean" style="margin-top: 8px;">
+              <div class="code-body">
+cassa_bloccata = <span class="c-bool">false</span>;
+
+<span class="c-kw">SE</span> (<span class="c-kw">NON</span> cassa_bloccata)
+    mostra(<span class="c-str">"Macchina Pronta: inserisci moneta"</span>);
+<span class="c-kw">ALTRIMENTI</span>
+    mostra(<span class="c-str">"FUORI SERVIZIO"</span>);</div>
+            </div>
+          </div>
+
+          <div class="m3-card" style="background-color: var(--paper-surface-muted);">
+            <div class="pill-tag green" style="margin-bottom: 8px;">Notazione nei Linguaggi</div>
+            <p class="card-body-text" style="font-size: 1.02rem; line-height: 1.5;">
+              In C++ usavate il punto esclamativo:<br>
+              <code class="mono">if (!cassa_bloccata)</code><br><br>
+              In pseudocodice e nei linguaggi ad alto livello si usa la parola <code class="mono">NOT</code> o <code class="mono">NON</code>. Il concetto logico è identico.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="speaker-notes">
+        Chiedere: quanto vale !(!true)? Vale true, la doppia negazione riporta al valore di partenza.
+      </div>
+
+      <div class="slide-cartiglio">
+        <div class="cartiglio-left">
+          <span class="cartiglio-brand">PIAZZA DEI MESTIERI</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-course">Programmazione 2 &bull; Concetti Generali</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-year">A.F. 2026/2027</span>
+        </div>
+        <div class="cartiglio-right">
+          <span class="cartiglio-teacher"><span class="material-symbols-outlined icon-mini">school</span> D. Cerrina</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-num">SLIDE 20 / 36</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SLIDE 21: ESPRESSIONI BOOLEANE COMPOSTE E PARENTESI
+         ========================================================================== -->
+    <section class="slide" data-slide="21">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">CASI COMPLESSI</span>
+          <h2>Espressioni Booleane Composte e Parentesi</h2>
+          <p class="section-lead">Come combinare controlli multipli stabilendo l'ordine corretto con le parentesi tonde.</p>
+        </div>
+
+        <div class="grid-2">
+          <div class="m3-card">
+            <span class="pill-tag cherry" style="margin-bottom: 8px;">Pagamento con Monete o Tessera</span>
+            <h3>Acquisto Valido</h3>
+            <div class="code-box-clean" style="margin-top: 10px;">
+              <div class="code-body">
+<span class="c-com">// Parentesi tonde per unire i pagamenti:</span>
+<span class="c-kw">SE</span> ( (credito &gt;= PREZZO <span class="c-kw">O</span> chiavetta_valida)
+     <span class="c-kw">E</span> scorte_disponibili &gt; <span class="c-num">0</span> ) {
+    eroga_prodotto();
+}</div>
+            </div>
+            <p class="card-body-text" style="margin-top: 10px;">
+              L'utente può pagare con contanti OPPURE chiavetta ricaricabile, ma in entrambi i casi serve che ci siano scorte!
+            </p>
+          </div>
+
+          <div class="m3-card">
+            <span class="pill-tag amber" style="margin-bottom: 8px;">Priorità degli Operatori</span>
+            <h3>L'Importanza delle Parentesi</h3>
+            <p class="card-body-text" style="font-size: 1rem; line-height: 1.45;">
+              In logica, l'operatore <code class="mono">AND</code> ha la precedenza su <code class="mono">OR</code> (proprio come la moltiplicazione ha la precedenza sull'addizione in matematica!).<br><br>
+              Usare le <strong>parentesi tonde</strong> garantisce che il computer interpreti il raggruppamento esatto desiderato.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="speaker-notes">
+        Scrivere alla LIM: A || B && C. Senza parentesi viene interpretato come A || (B && C). Con le parentesi (A || B) && C il significato cambia completamente!
+      </div>
+
+      <div class="slide-cartiglio">
+        <div class="cartiglio-left">
+          <span class="cartiglio-brand">PIAZZA DEI MESTIERI</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-course">Programmazione 2 &bull; Concetti Generali</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-year">A.F. 2026/2027</span>
+        </div>
+        <div class="cartiglio-right">
+          <span class="cartiglio-teacher"><span class="material-symbols-outlined icon-mini">school</span> D. Cerrina</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-num">SLIDE 21 / 36</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SLIDE 22: LA STRUTTURA IF - ELSE
+         ========================================================================== -->
+    <section class="slide" data-slide="22">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">CONTROLLO DI FLUSSO</span>
+          <h2>La Struttura di Selezione Bivalente: IF - ELSE</h2>
+          <p class="section-lead">Il bivio a due vie: se la condizione è vera fai A, altrimenti fai B.</p>
+        </div>
+
+        <div class="grid-2-1">
+          <div class="code-box-clean">
+            <div class="code-body">
+<span class="c-kw">SE</span> (credito &gt;= PREZZO_SNACK) {
+    mostra(<span class="c-str">"Snack erogato! Ritira il prodotto."</span>);
+    credito = credito - PREZZO_SNACK;
+    eroga_resto(credito);
+}
+<span class="c-kw">ALTRIMENTI</span> {
+    mancano = PREZZO_SNACK - credito;
+    mostra(<span class="c-str">"Credito insufficiente!"</span>);
+}</div>
+          </div>
+
+          <div class="m3-card" style="background-color: var(--paper-surface-muted);">
+            <div class="pill-tag cherry" style="margin-bottom: 8px;">Concetto Fondamentale</div>
+            <ul style="list-style: none; display: flex; flex-direction: column; gap: 8px; font-size: 1rem;">
+              <li style="display: flex; gap: 6px;">
+                <span class="material-symbols-outlined green-text">check</span>
+                <span><strong>Esclusione reciproca:</strong> viene eseguito SOLO uno dei due rami, mai entrambi!</span>
+              </li>
+              <li style="display: flex; gap: 6px;">
+                <span class="material-symbols-outlined green-text">check</span>
+                <span><strong>Else universale:</strong> l'altrimenti raccoglie tutti i casi in cui la condizione iniziale non è soddisfatta.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="speaker-notes">
+        Nel diagramma di flusso questo è il rombo di decisione: da un lato esce la freccia VERO, dall'altro la freccia FALSO.
+      </div>
+
+      <div class="slide-cartiglio">
+        <div class="cartiglio-left">
+          <span class="cartiglio-brand">PIAZZA DEI MESTIERI</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-course">Programmazione 2 &bull; Concetti Generali</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-year">A.F. 2026/2027</span>
+        </div>
+        <div class="cartiglio-right">
+          <span class="cartiglio-teacher"><span class="material-symbols-outlined icon-mini">school</span> D. Cerrina</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-num">SLIDE 22 / 36</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SLIDE 23: SCELTE MULTIPLE (IF - ELIF - ELSE)
+         ========================================================================== -->
+    <section class="slide" data-slide="23">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">CONTROLLO DI FLUSSO</span>
+          <h2>Scelte Multiple a Cascata: Decodificare i Tasti</h2>
+          <p class="section-lead">Quando le alternative possibili sono molteplici: valutazione ordinata a esclusione.</p>
+        </div>
+
+        <div class="grid-2-1">
+          <div class="code-box-clean">
+            <div class="code-body">
+<span class="c-kw">SE</span> (codice == <span class="c-str">"A1"</span>) {
+    prodotto = <span class="c-str">"Caffè Espresso"</span>;
+}
+<span class="c-kw">ALTRIMENTI SE</span> (codice == <span class="c-str">"A2"</span>) {
+    prodotto = <span class="c-str">"Cappuccino"</span>;
+}
+<span class="c-kw">ALTRIMENTI SE</span> (codice == <span class="c-str">"B1"</span>) {
+    prodotto = <span class="c-str">"Acqua Naturale"</span>;
+}
+<span class="c-kw">ALTRIMENTI</span> {
+    prodotto = <span class="c-str">"Codice errato!"</span>;
+}</div>
+          </div>
+
+          <div class="m3-card" style="background-color: var(--amber-container);">
+            <div class="pill-tag amber" style="background-color: white; margin-bottom: 8px;">Come Funziona la Cascata?</div>
+            <p class="card-body-text" style="color: var(--amber-text); font-size: 1rem; line-height: 1.45;">
+              1. Il computer controlla la prima condizione.<br>
+              2. Se è falsa, scende alla seconda.<br>
+              3. <strong>Appena ne trova una VERA, esegue il suo blocco ed ESCE subito dalla cascata!</strong><br>
+              4. L'altrimenti finale intercetta i codici digitati per sbaglio.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="speaker-notes">
+        In C++ potevano usare anche lo switch-case. Far notare che la logica di 'scelta multipla a esclusione' è la medesima.
+      </div>
+
+      <div class="slide-cartiglio">
+        <div class="cartiglio-left">
+          <span class="cartiglio-brand">PIAZZA DEI MESTIERI</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-course">Programmazione 2 &bull; Concetti Generali</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-year">A.F. 2026/2027</span>
+        </div>
+        <div class="cartiglio-right">
+          <span class="cartiglio-teacher"><span class="material-symbols-outlined icon-mini">school</span> D. Cerrina</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-num">SLIDE 23 / 36</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SLIDE 24: PERCHÉ I CICLI? PRINCIPIO DRY
+         ========================================================================== -->
+    <section class="slide" data-slide="24">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">PILASTRO 4: CICLI</span>
+          <h2>Perché Ripetere? I Cicli e il Principio DRY</h2>
+          <p class="section-lead">Don't Repeat Yourself: non riscrivere a mano istruzioni ripetitive.</p>
+        </div>
+
+        <div class="grid-2">
+          <div class="m3-card" style="border-color: var(--red-false);">
+            <div class="card-header-row">
+              <span class="pill-tag red">SBAGLIATO</span>
+              <h3>Copia &amp; Incolla a Mano</h3>
+            </div>
+            <div class="code-box-clean" style="margin-top: 8px;">
+              <div class="code-body">
+testa_motore_slot(<span class="c-num">1</span>);
+testa_motore_slot(<span class="c-num">2</span>);
+testa_motore_slot(<span class="c-num">3</span>);
+<span class="c-com">// ... riscrivere 50 righe a mano!</span></div>
+            </div>
+          </div>
+
+          <div class="m3-card" style="border-color: var(--green-true);">
+            <div class="card-header-row">
+              <span class="pill-tag green">CORRETTO (DRY)</span>
+              <h3>Usare una Struttura Iterativa</h3>
+            </div>
+            <div class="code-box-clean" style="margin-top: 8px;">
+              <div class="code-body">
+<span class="c-kw">PER OGNI</span> slot DA <span class="c-num">1</span> A <span class="c-num">50</span>:
+    testa_motore_slot(slot);
+
+<span class="c-com">// 2 sole righe per verificare tutti i motori!</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="speaker-notes">
+        Il principio DRY è uno dei fondamenti dell'ingegneria del software. La macchina ripete senza stancarsi e senza sbagliare.
+      </div>
+
+      <div class="slide-cartiglio">
+        <div class="cartiglio-left">
+          <span class="cartiglio-brand">PIAZZA DEI MESTIERI</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-course">Programmazione 2 &bull; Concetti Generali</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-year">A.F. 2026/2027</span>
+        </div>
+        <div class="cartiglio-right">
+          <span class="cartiglio-teacher"><span class="material-symbols-outlined icon-mini">school</span> D. Cerrina</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-num">SLIDE 24 / 36</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SLIDE 25: IL CICLO WHILE
+         ========================================================================== -->
+    <section class="slide" data-slide="25">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">ITERAZIONE INDEFINITA</span>
+          <h2>Il Ciclo Pre-Condizionale (WHILE / FINCHÉ)</h2>
+          <p class="section-lead">Esegue il blocco fintanto che la condizione di permanenza si mantiene vera.</p>
+        </div>
+
+        <div class="grid-2-1">
+          <div class="m3-card">
+            <h3 style="margin-bottom: 8px;">Loop di Inserimento Monete</h3>
+            <div class="code-box-clean" style="margin-top: 8px;">
+              <div class="code-body">
+credito = <span class="c-num">0.00</span>;
+PREZZO = <span class="c-num">1.50</span>;
+
+<span class="c-kw">MENTRE</span> (credito &lt; PREZZO) {
+    mostra(<span class="c-str">"Inserisci moneta..."</span>);
+    credito = credito + attendi_moneta();
+}
+
+mostra(<span class="c-str">"Credito raggiunto! Seleziona prodotto."</span>);</div>
+            </div>
+          </div>
+
+          <div class="m3-card" style="background-color: var(--paper-surface-muted);">
+            <div class="pill-tag cherry" style="margin-bottom: 8px;">Come Funziona il Controllo</div>
+            <p class="card-body-text" style="font-size: 1rem; line-height: 1.45;">
+              La condizione viene testata <strong>PRIMA</strong> di ogni singolo giro.<br><br>
+              Se l'utente inserisce subito una banconota da 5€, la condizione <code class="mono">credito &lt; PREZZO</code> diventa subito Falsa e il ciclo si conclude al primo passaggio.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="speaker-notes">
+        Sottolineare che se la condizione è falsa fin dall'inizio, il ciclo while non viene eseguito nemmeno una volta.
+      </div>
+
+      <div class="slide-cartiglio">
+        <div class="cartiglio-left">
+          <span class="cartiglio-brand">PIAZZA DEI MESTIERI</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-course">Programmazione 2 &bull; Concetti Generali</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-year">A.F. 2026/2027</span>
+        </div>
+        <div class="cartiglio-right">
+          <span class="cartiglio-teacher"><span class="material-symbols-outlined icon-mini">school</span> D. Cerrina</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-num">SLIDE 25 / 36</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SLIDE 26: ALLARME LOOP INFINITO
+         ========================================================================== -->
+    <section class="slide" data-slide="26">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">PERICOLO CRASH</span>
+          <h2>Allarme Loop Infinito: La Macchina si Blocca!</h2>
+          <p class="section-lead">Cosa accade se la variabile di controllo non viene mai aggiornata.</p>
+        </div>
+
+        <div class="grid-2">
+          <div class="m3-card" style="border: 2px solid var(--cherry-primary); background-color: var(--cherry-tint);">
+            <div class="card-header-row">
+              <span class="material-symbols-outlined cherry-text" style="font-size: 32px;">sync_problem</span>
+              <h3 style="color: var(--cherry-dark);">Il Loop Senza Fine</h3>
+            </div>
+            <div class="code-box-clean" style="margin-top: 8px;">
+              <div class="code-body">
+credito = <span class="c-num">0.00</span>;
+<span class="c-kw">MENTRE</span> (credito &lt; <span class="c-num">1.50</span>) {
+    mostra(<span class="c-str">"Inserisci moneta..."</span>);
+    <span class="c-com">// ERRORE: non aggiorniamo mai credito!</span>
+}</div>
+            </div>
+            <p class="card-body-text" style="margin-top: 10px; font-size: 0.98rem;">
+              <code class="mono">credito</code> rimarrà 0.00 in eterno. La condizione sarà vera per sempre e la macchina impegnerà il 100% della CPU senza mai uscire.
+            </p>
+          </div>
+
+          <div class="m3-card" style="justify-content: center; background-color: var(--paper-surface-muted);">
+            <div class="pill-tag green" style="margin-bottom: 10px;">La Regola di Chiusura</div>
+            <p class="card-body-text" style="font-size: 1.05rem; line-height: 1.5;">
+              All'interno del corpo di un ciclo <code class="mono">WHILE</code> deve <strong>sempre</strong> esistere un'istruzione che modifica la variabile di test per avvicinarsi alla condizione di uscita!
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="speaker-notes">
+        Nel terminale di sviluppo il tasto di arresto forzato è sempre Ctrl+C.
+      </div>
+
+      <div class="slide-cartiglio">
+        <div class="cartiglio-left">
+          <span class="cartiglio-brand">PIAZZA DEI MESTIERI</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-course">Programmazione 2 &bull; Concetti Generali</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-year">A.F. 2026/2027</span>
+        </div>
+        <div class="cartiglio-right">
+          <span class="cartiglio-teacher"><span class="material-symbols-outlined icon-mini">school</span> D. Cerrina</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-num">SLIDE 26 / 36</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SLIDE 27: IL CICLO FOR (A CONTEGGIO)
+         ========================================================================== -->
+    <section class="slide" data-slide="27">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">ITERAZIONE DEFINITA</span>
+          <h2>Il Ciclo a Conteggio (FOR / PER OGNI)</h2>
+          <p class="section-lead">Quando conosciamo esattamente il numero di passi o vogliamo scorrere elementi.</p>
+        </div>
+
+        <div class="grid-2-1">
+          <div class="m3-card">
+            <h3 style="margin-bottom: 8px;">Rotazione della Bobina a Spirale</h3>
+            <div class="code-box-clean" style="margin-top: 8px;">
+              <div class="code-body">
+<span class="c-com">// Compie esattamente 3 rotazioni del motore:</span>
+<span class="c-kw">PER</span> giro DA <span class="c-num">1</span> A <span class="c-num">3</span>:
+    fai_rotazione_motore(giro);
+
+mostra(<span class="c-str">"Snack caduto nel cassetto di ritiro!"</span>);</div>
+            </div>
+          </div>
+
+          <div class="m3-card" style="background-color: var(--amber-container);">
+            <div class="pill-tag amber" style="background-color: white; margin-bottom: 8px;">I 3 Elementi del FOR</div>
+            <p class="card-body-text" style="color: var(--amber-text); font-size: 1rem; line-height: 1.45;">
+              In qualsiasi linguaggio un ciclo FOR gestisce tre cose:<br><br>
+              1. <strong>Inizializzazione:</strong> da dove parte il contatore.<br>
+              2. <strong>Condizione di fine:</strong> fino a che numero contare.<br>
+              3. <strong>Passo:</strong> di quanto aumenta a ogni giro (di solito +1).
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="speaker-notes">
+        In C++ scrivevano: for (int i = 1; i <= 3; i++). Mostrare che i 3 elementi sono identici concettualmente.
+      </div>
+
+      <div class="slide-cartiglio">
+        <div class="cartiglio-left">
+          <span class="cartiglio-brand">PIAZZA DEI MESTIERI</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-course">Programmazione 2 &bull; Concetti Generali</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-year">A.F. 2026/2027</span>
+        </div>
+        <div class="cartiglio-right">
+          <span class="cartiglio-teacher"><span class="material-symbols-outlined icon-mini">school</span> D. Cerrina</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-num">SLIDE 27 / 36</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SLIDE 28: CONFRONTO: WHILE VS FOR
+         ========================================================================== -->
+    <section class="slide" data-slide="28">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">SCELTA DELLO STRUMENTO</span>
+          <h2>Confronto Concettuale: Quando Usare WHILE o FOR?</h2>
+          <p class="section-lead">Come selezionare la struttura iterativa corretta in base al problema.</p>
+        </div>
+
+        <div class="grid-2">
+          <div class="m3-card">
+            <div class="card-header-row">
+              <span class="pill-tag blue" style="font-size: 0.95rem;">Usa WHILE quando:</span>
+            </div>
+            <ul style="list-style: none; display: flex; flex-direction: column; gap: 8px; font-size: 1rem; margin-top: 6px;">
+              <li>&bull; <strong>Non sai prima</strong> quante volte ripeterai.</li>
+              <li>&bull; Dipende dall'utente (es. <em>"chiedi monete finché il credito non basta"</em>).</li>
+              <li>&bull; Dipende da un sensore fisico (es. <em>"gira finché la fotocellula non rileva la caduta"</em>).</li>
+            </ul>
+          </div>
+
+          <div class="m3-card">
+            <div class="card-header-row">
+              <span class="pill-tag cherry" style="font-size: 0.95rem;">Usa FOR quando:</span>
+            </div>
+            <ul style="list-style: none; display: flex; flex-direction: column; gap: 8px; font-size: 1rem; margin-top: 6px;">
+              <li>&bull; <strong>Sai in anticipo</strong> quanti passi compiere (es. <em>"fai 3 rotazioni"</em>).</li>
+              <li>&bull; Vuoi scorrere tutti gli elementi di una lista o vettore.</li>
+              <li>&bull; Vuoi contare numericamente da un inizio a una fine.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="speaker-notes">
+        Fare un quiz: per verificare tutti i 6 ripiani del distributore? (FOR). Per aspettare che l'utente inserisca il PIN segreto? (WHILE).
+      </div>
+
+      <div class="slide-cartiglio">
+        <div class="cartiglio-left">
+          <span class="cartiglio-brand">PIAZZA DEI MESTIERI</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-course">Programmazione 2 &bull; Concetti Generali</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-year">A.F. 2026/2027</span>
+        </div>
+        <div class="cartiglio-right">
+          <span class="cartiglio-teacher"><span class="material-symbols-outlined icon-mini">school</span> D. Cerrina</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-num">SLIDE 28 / 36</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SLIDE 29: VETTORI E ARRAY: GLI INDICI DA ZERO
+         ========================================================================== -->
+    <section class="slide" data-slide="29">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">PILASTRO 5: STRUTTURE DATI</span>
+          <h2>Vettori (Array): La Regola Sacra dell'Indice da ZERO</h2>
+          <p class="section-lead">Una sequenza contigua di celle in memoria dello stesso tipo, ordinate per posizione.</p>
+        </div>
+
+        <div class="grid-2-1">
+          <div class="m3-card">
+            <h3 style="margin-bottom: 8px;">Perché si Parte da Zero?</h3>
+            <p class="card-body-text" style="font-size: 1.02rem; line-height: 1.45;">
+              In informatica l'indice è un <strong>offset</strong> (distanza dall'inizio della prima cella di memoria):
+            </p>
+            <div class="code-box-clean" style="margin-top: 8px;">
+              <div class="code-body">
+vetrina = [<span class="c-str">"Patatine"</span>, <span class="c-str">"Cioccolato"</span>, <span class="c-str">"Biscotti"</span>];
+
+vetrina[<span class="c-num">0</span>]  <span class="c-com">// "Patatine" (Distanza 0: PRIMO elemento!)</span>
+vetrina[<span class="c-num">1</span>]  <span class="c-com">// "Cioccolato" (SECONDO elemento)</span>
+vetrina[<span class="c-num">2</span>]  <span class="c-com">// "Biscotti" (TERZO elemento)</span></div>
+            </div>
+          </div>
+
+          <div class="m3-card" style="border: 2px solid var(--cherry-primary); background-color: var(--cherry-tint);">
+            <div class="card-header-row">
+              <span class="material-symbols-outlined cherry-text">warning</span>
+              <h3 style="color: var(--cherry-dark); font-size: 1.15rem;">Accesso Fuori Scala!</h3>
+            </div>
+            <p class="card-body-text" style="font-size: 0.98rem; line-height: 1.45; margin-top: 4px;">
+              Se il vettore ha <strong>N = 3</strong> elementi, gli indici validi sono <strong>0, 1 e 2</strong>.<br><br>
+              Cercare l'indice <code class="mono">[3]</code> provoca un errore di memoria (Out of Bounds / Segmentation Fault)! L'ultimo indice è sempre <code class="mono">N - 1</code>.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="speaker-notes">
+        In C++ l'indice è aritmetica dei puntatori: *(vetrina + 0) è la prima cella. Ecco perché TUTTI i linguaggi moderni partono da 0!
+      </div>
+
+      <div class="slide-cartiglio">
+        <div class="cartiglio-left">
+          <span class="cartiglio-brand">PIAZZA DEI MESTIERI</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-course">Programmazione 2 &bull; Concetti Generali</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-year">A.F. 2026/2027</span>
+        </div>
+        <div class="cartiglio-right">
+          <span class="cartiglio-teacher"><span class="material-symbols-outlined icon-mini">school</span> D. Cerrina</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-num">SLIDE 29 / 36</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SLIDE 30: SCORRERE UN VETTORE
+         ========================================================================== -->
+    <section class="slide" data-slide="30">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">SCORRIMENTO DATI</span>
+          <h2>Scorrere un Vettore: L'Unione di FOR e Array</h2>
+          <p class="section-lead">Il pattern universale per visitare uno a uno tutti gli elementi di una collezione.</p>
+        </div>
+
+        <div class="grid-2">
+          <div class="m3-card">
+            <span class="pill-tag cherry" style="margin-bottom: 8px;">Scorrimento per Indice (da 0 a N-1)</span>
+            <div class="code-box-clean" style="margin-top: 8px;">
+              <div class="code-body">
+bevande = [<span class="c-str">"Espresso"</span>, <span class="c-str">"Ginseng"</span>, <span class="c-str">"Tè"</span>];
+N = <span class="c-num">3</span>;
+
+<span class="c-kw">PER</span> i DA <span class="c-num">0</span> A (N - <span class="c-num">1</span>):
+    mostra(<span class="c-str">"Posizione "</span> + i + <span class="c-str">": "</span> + bevande[i]);</div>
+            </div>
+            <p class="card-body-text" style="font-size: 0.95rem; margin-top: 8px; color: var(--text-muted);">
+              La variabile <code class="mono">i</code> fa da puntatore mobile da 0 fino all'ultimo elemento.
+            </p>
+          </div>
+
+          <div class="m3-card" style="background-color: var(--paper-surface-muted);">
+            <span class="pill-tag green" style="margin-bottom: 8px;">Cosa Fa Fisicamente il Computer?</span>
+            <p class="card-body-text" style="font-size: 1rem; line-height: 1.45;">
+              Giro 0: legge la cella 0 &rarr; "Espresso"<br>
+              Giro 1: legge la cella 1 &rarr; "Ginseng"<br>
+              Giro 2: legge la cella 2 &rarr; "Tè"<br>
+              Fine: esce dal ciclo senza toccare memorie esterne!
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="speaker-notes">
+        Questo algoritmo di scansione lineare è la base di qualsiasi ricerca, ordinamento o visualizzazione di dati.
+      </div>
+
+      <div class="slide-cartiglio">
+        <div class="cartiglio-left">
+          <span class="cartiglio-brand">PIAZZA DEI MESTIERI</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-course">Programmazione 2 &bull; Concetti Generali</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-year">A.F. 2026/2027</span>
+        </div>
+        <div class="cartiglio-right">
+          <span class="cartiglio-teacher"><span class="material-symbols-outlined icon-mini">school</span> D. Cerrina</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-num">SLIDE 30 / 36</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SLIDE 31: LE STRINGHE: TESTO ORDINATO
+         ========================================================================== -->
+    <section class="slide" data-slide="31">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">STRUTTURE DATI</span>
+          <h2>Le Stringhe: Vettori di Caratteri</h2>
+          <p class="section-lead">Una parola o un codice alfanumerico è una sequenza ordinata di singoli simboli.</p>
+        </div>
+
+        <div class="grid-2">
+          <div class="m3-card">
+            <h3 style="margin-bottom: 8px;">Scomporre il Codice Tastiera</h3>
+            <p class="card-body-text" style="font-size: 1rem;">
+              Possiamo accedere ai singoli caratteri tramite il loro indice:
+            </p>
+            <div class="code-box-clean" style="margin-top: 8px;">
+              <div class="code-body">
+codice = <span class="c-str">"B2"</span>;
+
+lettera_corsia = codice[<span class="c-num">0</span>];  <span class="c-com">// 'B' (primo carattere)</span>
+numero_spirale = codice[<span class="c-num">1</span>];  <span class="c-com">// '2' (secondo carattere)</span></div>
+            </div>
+          </div>
+
+          <div class="m3-card">
+            <h3 style="margin-bottom: 8px;">Proprietà delle Stringhe</h3>
+            <ul style="list-style: none; display: flex; flex-direction: column; gap: 8px; font-size: 1rem;">
+              <li>&bull; <strong>Lunghezza:</strong> il numero totale di caratteri del testo.</li>
+              <li>&bull; <strong>Concatenazione (<code class="mono">+</code>):</strong> unione di due testi in un unico messaggio.</li>
+              <li>&bull; In C++ era <code class="mono">char[]</code> o <code class="mono">std::string</code>: in tutti i linguaggi l'accesso posizionale avviene con le parentesi quadre <code class="mono">[ ]</code>.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="speaker-notes">
+        Ricordare che in memoria ogni carattere corrisponde a un codice numerico della tabella ASCII (es. 'A' è 65).
+      </div>
+
+      <div class="slide-cartiglio">
+        <div class="cartiglio-left">
+          <span class="cartiglio-brand">PIAZZA DEI MESTIERI</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-course">Programmazione 2 &bull; Concetti Generali</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-year">A.F. 2026/2027</span>
+        </div>
+        <div class="cartiglio-right">
+          <span class="cartiglio-teacher"><span class="material-symbols-outlined icon-mini">school</span> D. Cerrina</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-num">SLIDE 31 / 36</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SLIDE 32: SFIDA LIM 1: IL CONTROLLO
+         ========================================================================== -->
+    <section class="slide" data-slide="32">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">SFIDA ALLA LIM (1/3)</span>
+          <h2>Trova il Bug Logico nel Controllo!</h2>
+          <p class="section-lead">Chi sa individuare l'errore concettuale in questo frammento?</p>
+        </div>
+
+        <div class="bug-card">
+          <div class="bug-header">
+            <span class="pill-tag red">Codice Proposto</span>
+          </div>
+          <div class="bug-code">
+moneta = <span class="c-num">1.00</span>;
+
+<span class="c-kw">SE</span> (moneta = <span class="c-num">1.00</span>) {
+    credito = credito + moneta;
+}
+          </div>
+          <button class="btn-reveal">
+            <span class="material-symbols-outlined" style="font-size:18px;">visibility</span>
+            <span>Mostra Soluzione</span>
+          </button>
+          <div class="bug-solution-box">
+            <strong>Bug Logico: Assegnazione invece di Confronto!</strong><br>
+            È stato usato il singolo <code class="mono">=</code> (che scrive nella memoria) al posto del doppio <code class="mono">==</code> di confronto!<br>
+            La riga corretta è: <code class="mono">SE (moneta == 1.00)</code>
+          </div>
+        </div>
+      </div>
+
+      <div class="speaker-notes">
+        Chiamare uno studente alla lavagna a cerchiare il singolo uguale.
+      </div>
+
+      <div class="slide-cartiglio">
+        <div class="cartiglio-left">
+          <span class="cartiglio-brand">PIAZZA DEI MESTIERI</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-course">Programmazione 2 &bull; Concetti Generali</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-year">A.F. 2026/2027</span>
+        </div>
+        <div class="cartiglio-right">
+          <span class="cartiglio-teacher"><span class="material-symbols-outlined icon-mini">school</span> D. Cerrina</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-num">SLIDE 32 / 36</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SLIDE 33: SFIDA LIM 2: IL CICLO
+         ========================================================================== -->
+    <section class="slide" data-slide="33">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">SFIDA ALLA LIM (2/3)</span>
+          <h2>Trova il Bug Logico nel Ciclo!</h2>
+          <p class="section-lead">Perché questo algoritmo non uscirà mai dal ciclo?</p>
+        </div>
+
+        <div class="bug-card">
+          <div class="bug-header">
+            <span class="pill-tag amber">Codice Proposto</span>
+          </div>
+          <div class="bug-code">
+credito = <span class="c-num">0.00</span>;
+PREZZO = <span class="c-num">1.50</span>;
+
+<span class="c-kw">MENTRE</span> (credito &lt; PREZZO) {
+    mostra(<span class="c-str">"Inserisci moneta da 50 cent..."</span>);
+}
+          </div>
+          <button class="btn-reveal">
+            <span class="material-symbols-outlined" style="font-size:18px;">visibility</span>
+            <span>Mostra Soluzione</span>
+          </button>
+          <div class="bug-solution-box">
+            <strong>Bug Logico: Mancata Modifica della Variabile di Controllo!</strong><br>
+            All'interno del blocco manca l'istruzione di avanzamento: <code class="mono">credito = credito + 0.50;</code>.<br>
+            Senza questa riga, la condizione <code class="mono">0.00 &lt; 1.50</code> sarà vera all'infinito!
+          </div>
+        </div>
+      </div>
+
+      <div class="speaker-notes">
+        La causa di tutti i loop infiniti: dimenticarsi di cambiare il valore della variabile testata nella condizione.
+      </div>
+
+      <div class="slide-cartiglio">
+        <div class="cartiglio-left">
+          <span class="cartiglio-brand">PIAZZA DEI MESTIERI</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-course">Programmazione 2 &bull; Concetti Generali</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-year">A.F. 2026/2027</span>
+        </div>
+        <div class="cartiglio-right">
+          <span class="cartiglio-teacher"><span class="material-symbols-outlined icon-mini">school</span> D. Cerrina</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-num">SLIDE 33 / 36</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SLIDE 34: SFIDA LIM 3: IL VETTORE
+         ========================================================================== -->
+    <section class="slide" data-slide="34">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">SFIDA ALLA LIM (3/3)</span>
+          <h2>Trova il Bug Logico nell'Accesso al Vettore!</h2>
+          <p class="section-lead">Perché questa istruzione causa un errore fatale di memoria?</p>
+        </div>
+
+        <div class="bug-card">
+          <div class="bug-header">
+            <span class="pill-tag cherry">Codice Proposto</span>
+          </div>
+          <div class="bug-code">
+prodotti = [<span class="c-str">"Patatine"</span>, <span class="c-str">"Cioccolato"</span>];  <span class="c-com">// Vettore di 2 elementi</span>
+scelta = <span class="c-num">2</span>;
+
+mostra(<span class="c-str">"Erogazione: "</span> + prodotti[scelta]);
+          </div>
+          <button class="btn-reveal">
+            <span class="material-symbols-outlined" style="font-size:18px;">visibility</span>
+            <span>Mostra Soluzione</span>
+          </button>
+          <div class="bug-solution-box">
+            <strong>Bug Logico: Violazione dei Limiti del Vettore (Out of Bounds)!</strong><br>
+            Il vettore ha dimensione 2: gli indici ammessi sono <strong>0</strong> (primo) e <strong>1</strong> (secondo).<br>
+            L'indice 2 punta a una cella di memoria non assegnata e manda in crash il programma!
+          </div>
+        </div>
+      </div>
+
+      <div class="speaker-notes">
+        Ricordare che in C++ questo può causare undefined behavior o crash di memoria (Segmentation Fault).
+      </div>
+
+      <div class="slide-cartiglio">
+        <div class="cartiglio-left">
+          <span class="cartiglio-brand">PIAZZA DEI MESTIERI</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-course">Programmazione 2 &bull; Concetti Generali</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-year">A.F. 2026/2027</span>
+        </div>
+        <div class="cartiglio-right">
+          <span class="cartiglio-teacher"><span class="material-symbols-outlined icon-mini">school</span> D. Cerrina</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-num">SLIDE 34 / 36</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SLIDE 35: MODELLARE IL VENDING MACHINE (1. DATI)
+         ========================================================================== -->
+    <section class="slide" data-slide="35">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">ESERCIZIO GUIDATO</span>
+          <h2>Modellare il Vending Machine: 1. Struttura dei Dati</h2>
+          <p class="section-lead">Definiamo l'occupazione in memoria di prezzi, cassa e prodotti.</p>
+        </div>
+
+        <div class="grid-2-1">
+          <div class="m3-card">
+            <h3 style="margin-bottom: 8px;">Dati Fondamentali del Sistema</h3>
+            <div class="code-box-clean" style="margin-top: 8px;">
+              <div class="code-body">
+<span class="c-com">// Prezzo fisso in sola lettura:</span>
+COSTANTE PREZZO_SNACK = <span class="c-num">1.50</span>;
+
+<span class="c-com">// Stato variabile della macchina:</span>
+credito_inserito = <span class="c-num">2.00</span>;        <span class="c-com">// Decimale</span>
+scorte_rimaste = <span class="c-num">5</span>;             <span class="c-com">// Intero</span>
+cassa_in_servizio = <span class="c-bool">true</span>;       <span class="c-com">// Booleano</span></div>
+            </div>
+          </div>
+
+          <div class="m3-card" style="background-color: var(--amber-container);">
+            <div class="pill-tag amber" style="background-color: white; margin-bottom: 8px;">Rappresentare la Realtà</div>
+            <p class="card-body-text" style="color: var(--amber-text); font-size: 1rem; line-height: 1.45;">
+              Prima di scrivere le istruzioni operative, un programmatore deve sempre scegliere i tipi corretti per memorizzare la realtà:<br><br>
+              &bull; Soldi &rarr; Numeri decimali<br>
+              &bull; Pezzi di snack &rarr; Numeri interi<br>
+              &bull; Sensori &rarr; Booleani
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="speaker-notes">
+        Questo è il passaggio dalla realtà fisica al modello informatico dei dati.
+      </div>
+
+      <div class="slide-cartiglio">
+        <div class="cartiglio-left">
+          <span class="cartiglio-brand">PIAZZA DEI MESTIERI</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-course">Programmazione 2 &bull; Concetti Generali</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-year">A.F. 2026/2027</span>
+        </div>
+        <div class="cartiglio-right">
+          <span class="cartiglio-teacher"><span class="material-symbols-outlined icon-mini">school</span> D. Cerrina</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-num">SLIDE 35 / 36</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SLIDE 36: MODELLARE IL VENDING MACHINE (2. ALGORITMO)
+         ========================================================================== -->
+    <section class="slide" data-slide="36">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">ESERCIZIO GUIDATO</span>
+          <h2>Modellare il Vending Machine: 2. L'Algoritmo di Vendita</h2>
+          <p class="section-lead">Controllo di sicurezza con IF, erogazione e calcolo rigoroso del resto.</p>
+        </div>
+
+        <div class="m3-card">
+          <div class="code-box-clean">
+            <div class="code-body">
+<span class="c-com">// Condizione: il credito basta E ci sono prodotti disponibili?</span>
+<span class="c-kw">SE</span> (credito_inserito &gt;= PREZZO_SNACK <span class="c-kw">E</span> scorte_rimaste &gt; <span class="c-num">0</span>) {
+    mostra(<span class="c-str">"Erogazione prodotto in corso..."</span>);
+    scorte_rimaste = scorte_rimaste - <span class="c-num">1</span>;
+    
+    resto = credito_inserito - PREZZO_SNACK;
+    mostra(<span class="c-str">"Resto erogato: "</span> + resto + <span class="c-str">" euro"</span>);
+    credito_inserito = <span class="c-num">0.00</span>;
+}
+<span class="c-kw">ALTRIMENTI</span> {
+    mostra(<span class="c-str">"Acquisto impossibile: credito insufficiente o prodotto esaurito!"</span>);
+}</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="speaker-notes">
+        In sole 10 righe ci sono tutti i pilastri: variabili, costanti, operatori aritmetici, confronto >=, operatore logico E, selezione IF-ELSE.
+      </div>
+
+      <div class="slide-cartiglio">
+        <div class="cartiglio-left">
+          <span class="cartiglio-brand">PIAZZA DEI MESTIERI</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-course">Programmazione 2 &bull; Concetti Generali</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-year">A.F. 2026/2027</span>
+        </div>
+        <div class="cartiglio-right">
+          <span class="cartiglio-teacher"><span class="material-symbols-outlined icon-mini">school</span> D. Cerrina</span>
+          <span class="cartiglio-divider">&bull;</span>
+          <span class="cartiglio-num">SLIDE 36 / 36</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Barra Inferiore di Navigazione -->
+  <footer class="m3-bottom-bar">
+    <div class="bottom-bar-left">
+      <button id="btnPrev" class="m3-btn m3-btn-outlined" title="Slide Precedente (&larr;)">
+        <span class="material-symbols-outlined">arrow_back</span>
+        <span>Indietro</span>
+      </button>
+      <button id="btnNext" class="m3-btn m3-btn-filled" title="Slide Successiva (&rarr; / Spazio)">
+        <span>Avanti</span>
+        <span class="material-symbols-outlined">arrow_forward</span>
+      </button>
+    </div>
+
+    <div class="bottom-bar-center">
+      <div class="m3-counter-display">
+        Slide <span id="currentSlideNum">1</span> / <span id="totalSlidesNum">36</span>
+      </div>
+    </div>
+
+    <div class="bottom-bar-right">
+      <span class="shortcut-tip">Usa <kbd>&larr;</kbd> <kbd>&rarr;</kbd> o <kbd>Spazio</kbd> &bull; <kbd>O</kbd> Indice &bull; <kbd>P</kbd> Esporta PDF &bull; <kbd>F</kbd> Schermo Intero</span>
+    </div>
+  </footer>
+
+  <!-- Modale Panoramica (Indice delle Slide) -->
+  <div id="overviewModal" class="m3-modal-backdrop hidden">
+    <div class="m3-dialog">
+      <div class="dialog-header">
+        <div class="dialog-title-group">
+          <span class="material-symbols-outlined">grid_view</span>
+          <h3>Indice delle Diapositive</h3>
+        </div>
+        <div class="dialog-actions">
+          <button id="btnModalExportPdf" class="m3-btn m3-btn-outlined" style="height:34px; padding:0 12px; font-size:0.85rem;" title="Esporta tutte le slide in PDF">
+            <span class="material-symbols-outlined" style="font-size: 18px;">picture_as_pdf</span>
+            <span>Esporta PDF</span>
+          </button>
+          <button id="btnCloseOverview" class="m3-icon-button" title="Chiudi (Esc)">
+            <span class="material-symbols-outlined">close</span>
+          </button>
+        </div>
+      </div>
+      <div id="overviewGrid" class="overview-grid">
+        <!-- Generato dinamicamente da app.js -->
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

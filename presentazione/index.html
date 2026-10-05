@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Corso di Programmazione 2 | Seconda Annualità - Piazza dei Mestieri</title>
+  
+  <!-- Typography: Outfit (Body) & Bricolage Grotesque (Headings & Accents) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Outfit:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Google Material Symbols Outlined -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="m3-paper">
+
+  <!-- Progress Bar Superiore -->
+  <div class="m3-progress-container">
+    <div id="progressBar" class="m3-progress-bar"></div>
+  </div>
+
+  <!-- Barra Superiore -->
+  <header class="m3-top-app-bar">
+    <div class="app-bar-leading">
+      <span class="material-symbols-outlined icon-main">terminal</span>
+      <div class="app-bar-title-group">
+        <span class="app-bar-title">Corso di Programmazione 2</span>
+        <span class="app-bar-subtitle">Operatore Informatico &bull; Seconda Annualità &bull; Piazza dei Mestieri</span>
+      </div>
+    </div>
+
+    <div class="app-bar-actions">
+      <button id="btnOverview" class="m3-icon-button" title="Indice delle slide (O)">
+        <span class="material-symbols-outlined">grid_view</span>
+      </button>
+      <button id="btnNotes" class="m3-icon-button" title="Note Docente (N)">
+        <span class="material-symbols-outlined">notes</span>
+      </button>
+      <button id="btnExportPdf" class="m3-icon-button" title="Esporta slide in PDF (P)">
+        <span class="material-symbols-outlined">picture_as_pdf</span>
+      </button>
+      <button id="btnFullscreen" class="m3-icon-button" title="Schermo intero (F)">
+        <span class="material-symbols-outlined">fullscreen</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Slide Deck Main Container -->
+  <main class="deck-container">
+
+    <!-- SLIDE 1: COPERTINA -->
+    <section class="slide active" data-slide="1">
+      <div class="slide-content cover-slide-layout">
+        <div class="cover-tag">A.F. 2026 / 2027 &bull; PIAZZA DEI MESTIERI</div>
+        <h1 class="main-title">
+          Corso di <br><span class="cherry-text">Programmazione 2</span>
+        </h1>
+        <p class="main-lead">
+          80 ore di laboratorio: dall'algoritmo di base alla progettazione a oggetti, gestione di dati strutturati e persistenza su file.
+        </p>
+
+        <div class="cover-specs-row">
+          <div class="spec-cell">
+            <span class="spec-label">CORSO</span>
+            <span class="spec-value">Operatore Informatico</span>
+          </div>
+          <div class="spec-cell">
+            <span class="spec-label">ANNO</span>
+            <span class="spec-value">Seconda Annualità</span>
+          </div>
+          <div class="spec-cell">
+            <span class="spec-label">CODICE</span>
+            <span class="spec-value">B22-12-2026-0</span>
+          </div>
+          <div class="spec-cell">
+            <span class="spec-label">DURATA</span>
+            <span class="spec-value">80 Ore</span>
+          </div>
+          <div class="spec-cell">
+            <span class="spec-label">DOCENTE</span>
+            <span class="spec-value">Daniele Cerrina</span>
+          </div>
+          <div class="spec-cell">
+            <span class="spec-label">EMAIL DOCENTE</span>
+            <span class="spec-value spec-email">daniele.cerrina@immaginazioneelavoro.it</span>
+          </div>
+        </div>
+      </div>
+      <div class="speaker-notes">
+        Dare il benvenuto al secondo anno. Ricordare il percorso già fatto in prima e introdurre il salto di qualità: impareremo a costruire programmi completi e modulari.
+      </div>
+    </section>
+
+    <!-- SLIDE 2: IL DOCENTE (DANIELE CERRINA) -->
+    <section class="slide" data-slide="2">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">CHI VI GUIDERÀ</span>
+          <h2>Daniele Cerrina</h2>
+          <p class="section-lead">Docente del corso, sviluppatore software e consulente aziendale.</p>
+          <div class="docente-email-badge">
+            <span class="material-symbols-outlined" style="font-size: 18px;">mail</span>
+            <a href="mailto:daniele.cerrina@immaginazioneelavoro.it">daniele.cerrina@immaginazioneelavoro.it</a>
+          </div>
+        </div>
+
+        <div class="split-columns">
+          <div class="info-panel">
+            <div class="panel-tag">FORMAZIONE E METODO</div>
+            <h3>Base logica e ingegneristica</h3>
+            <ul class="clean-bullet-list">
+              <li>
+                <strong>Informatica all'ITIS Pininfarina:</strong> lo stesso percorso tecnico e laboratoriale che state vivendo voi, con attenzione continua alla pratica e al computer.
+              </li>
+              <li>
+                <strong>Matematica per l'Ingegneria al Politecnico di Torino (PoliTO):</strong> rigore analitico per comprendere algoritmi, strutture dati e modelli computazionali.
+              </li>
+            </ul>
+          </div>
+
+          <div class="info-panel accent-panel">
+            <div class="panel-tag accent-tag">LAVORO SUL CAMPO</div>
+            <h3>Consulenza per le imprese</h3>
+            <ul class="clean-bullet-list">
+              <li>
+                <strong>Web &amp; Intelligenza Artificiale:</strong> collaboro con aziende per progettare architetture software, automazione di flussi e integrazione di agenti IA nei processi di business.
+              </li>
+              <li>
+                <strong>Cosa significa per il secondo anno:</strong> lavoreremo su metodi di sviluppo moderni, codice pulito e formati dati (JSON, file, log) che le aziende usano davvero ogni giorno.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="speaker-notes">
+        Sottolineare la continuità didattica: quest'anno applicheremo ciò che le aziende cercano, con un focus speciale sul valore dell'organizzazione e dei dati.
+      </div>
+    </section>
+
+    <!-- SLIDE 3: OBIETTIVO DEL 2° ANNO -->
+    <section class="slide" data-slide="3">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">OBIETTIVO FORMATIVO</span>
+          <h2>Dallo script sciolto al software modulare</h2>
+          <p class="section-lead">In prima abbiamo imparato a scrivere istruzioni: in seconda impariamo a costruire applicazioni.</p>
+        </div>
+
+        <div class="statement-banner">
+          <p class="statement-text">
+            Un programma reale non è un unico file disordinato di centinaia di righe.<br>
+            È un <strong>sistema di componenti coordinati</strong>: oggetti che dialogano tra loro, leggono file su disco e gestiscono gli imprevisti senza bloccarsi.
+          </p>
+        </div>
+
+        <div class="flow-horizontal-cards">
+          <div class="flow-step-card">
+            <span class="step-num">1</span>
+            <h4>Progettare a Oggetti</h4>
+            <p>Rappresentare elementi reali (carte, domande, robot) con Classi composte da attributi e azioni.</p>
+          </div>
+          <div class="flow-step-card">
+            <span class="step-num">2</span>
+            <h4>Organizzare i Dati</h4>
+            <p>Usare liste, dizionari e algoritmi di ricerca per ordinare e gestire informazioni in memoria.</p>
+          </div>
+          <div class="flow-step-card">
+            <span class="step-num">3</span>
+            <h4>Rendere Persistente</h4>
+            <p>Salvare e caricare stati su file (TXT e JSON) e gestire gli errori con <code>try / except</code>.</p>
+          </div>
+        </div>
+      </div>
+      <div class="speaker-notes">
+        Tranquillizzare chi si sente debole: l'OOP non è più difficile, è solo un modo più ordinato di chiamare le cose che abbiamo già visto.
+      </div>
+    </section>
+
+    <!-- SLIDE 4: GLI STRUMENTI DEL 2° ANNO -->
+    <section class="slide" data-slide="4">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">STRUMENTI PROFESSIONALI</span>
+          <h2>La nostra cassetta degli attrezzi</h2>
+          <p class="section-lead">Tecnologie standard utilizzate nel settore dello sviluppo software.</p>
+        </div>
+
+        <div class="three-tools-grid">
+          <div class="tool-box">
+            <div class="tool-head">
+              <span class="material-symbols-outlined">data_object</span>
+              <h3>Python OOP</h3>
+            </div>
+            <p class="tool-desc">Il linguaggio Python con il paradigma a oggetti: definizione di <code>class</code>, metodi, liste avanzate e manipolazione sicura dei tipi di dato.</p>
+          </div>
+
+          <div class="tool-box">
+            <div class="tool-head">
+              <span class="material-symbols-outlined">developer_mode</span>
+              <h3>Visual Studio Code</h3>
+            </div>
+            <p class="tool-desc">L'ambiente di sviluppo per gestire progetti multi-file, evidenziazione degli errori prima dell'avvio e controllo delle variabili in tempo reale.</p>
+          </div>
+
+          <div class="tool-box">
+            <div class="tool-head">
+              <span class="material-symbols-outlined">description</span>
+              <h3>File &amp; Terminale</h3>
+            </div>
+            <p class="tool-desc">Scrittura e lettura di file su disco (TXT e JSON), output formattato da terminale e gestione delle eccezioni con blocchi di controllo <code>try/except</code>.</p>
+          </div>
+        </div>
+      </div>
+      <div class="speaker-notes">
+        Mostrare che gli strumenti sono gli stessi ma usati a un livello più consapevole e organizzato.
+      </div>
+    </section>
+
+    <!-- SLIDE 5: IL METODO PROJECT-BASED -->
+    <section class="slide" data-slide="5">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">METODO DIDATTICO</span>
+          <h2>Un videogioco a turni come progetto guida</h2>
+          <p class="section-lead">Niente esercizi isolati: ogni concetto appreso servirà ad arricchire il nostro progetto annuale.</p>
+        </div>
+
+        <div class="split-columns">
+          <div class="info-panel">
+            <div class="panel-tag">PERCHÉ QUESTA SCELTA?</div>
+            <h3>Contiene tutta l'informatica del 2° anno</h3>
+            <ul class="clean-bullet-list">
+              <li><strong>Elementi del gioco come Oggetti:</strong> carte, eroi, domande o robot diventano istanze di classi con attributi e metodi chiari.</li>
+              <li><strong>Mazzi, inventari e cataloghi:</strong> richiedono la manipolazione di liste ordinate e collezioni dinamiche.</li>
+              <li><strong>Meccaniche a turni / menu:</strong> zero stress di tempo reale, zero problemi di framerate; ci si concentra sulla logica pulita.</li>
+              <li><strong>Salvataggio progressi:</strong> lettura e scrittura su disco per salvare il mazzo, i record o lo stato del sistema.</li>
+            </ul>
+          </div>
+
+          <div class="info-panel accent-panel">
+            <div class="panel-tag accent-tag">LA SCELTA DI OGGI</div>
+            <h3>Decidiamo insieme il tema</h3>
+            <p class="mb-12">Nella prossima slide voteremo in diretta tra 3 opzioni differenti:</p>
+            <ul class="clean-bullet-list">
+              <li><strong>Deck Builder Roguelike:</strong> gioco di carte e strategia a turni con gestione mazzo ed energia.</li>
+              <li><strong>Trivia Master:</strong> quiz game show a premi con catalogo domande da file e classifica record.</li>
+              <li><strong>Vending Machine Manager:</strong> simulatore di laboratorio con distributore di test per IA e audit report.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="speaker-notes">
+        Evidenziare che la meccanica a turni è stata scelta appositamente per dare a ciascuno il tempo di ragionare senza ansia da tempo di reazione.
+      </div>
+    </section>
+
+    <!-- SLIDE 6: VOTAZIONE INTERATTIVA DEL GIOCO -->
+    <section class="slide" data-slide="6">
+      <div class="slide-content vote-layout">
+        <div class="slide-header">
+          <div class="header-badge-row">
+            <span class="slide-kicker">DECISIONE D'AULA</span>
+            <span class="m3-chip m3-chip-primary">Votazione in diretta</span>
+          </div>
+          <h2>Quale progetto svilupperemo durante l'anno?</h2>
+          <p class="section-lead">Alzate la mano per esprimere la vostra preferenza: registriamo i voti ora.</p>
+        </div>
+
+        <div class="three-projects-grid">
+          
+          <!-- PROGETTO 1: DECK BUILDER -->
+          <div class="project-box" id="gameCard1" data-game="deck">
+            <div class="project-tag">OPZIONE A</div>
+            <h3>Deck Builder Roguelike</h3>
+            <span class="project-type">Carte &bull; Strategia a Turni</span>
+            <p class="project-summary">Affronta sfide a turni giocando carte dalla tua mano: bilancia punti energia, attacchi e scudi. Vincendo, sblocchi carte rare per potenziare il tuo mazzo.</p>
+            
+            <div class="project-features">
+              <span>Classi Carta e Mazzo</span>
+              <span>Energia e Pila Scarti</span>
+              <span>Salvataggio Deck su File</span>
+            </div>
+
+            <div class="vote-widget">
+              <div class="vote-buttons">
+                <button class="vote-btn" onclick="updateVote('deck', -1)">-</button>
+                <span class="vote-num" id="votes-deck">0</span>
+                <button class="vote-btn" onclick="updateVote('deck', 1)">+</button>
+              </div>
+              <span class="vote-percentage" id="pct-deck">0%</span>
+            </div>
+            <div class="meter-bar"><div class="meter-fill" id="bar-deck" style="width: 0%;"></div></div>
+          </div>
+
+          <!-- PROGETTO 2: TRIVIA MASTER -->
+          <div class="project-box" id="gameCard2" data-game="trivia">
+            <div class="project-tag">OPZIONE B</div>
+            <h3>Trivia Master</h3>
+            <span class="project-type">Quiz Game Show &bull; Classifica</span>
+            <p class="project-summary">Quiz game a premi stile "Chi vuol essere milionario". Carica le domande da un catalogo esterno, gestisce le vite del giocatore e memorizza il tabellone dei record.</p>
+            
+            <div class="project-features">
+              <span>Classe Domanda &amp; Giocatore</span>
+              <span>Catalogo File JSON/TXT</span>
+              <span>Classifica e Try/Except</span>
+            </div>
+
+            <div class="vote-widget">
+              <div class="vote-buttons">
+                <button class="vote-btn" onclick="updateVote('trivia', -1)">-</button>
+                <span class="vote-num" id="votes-trivia">0</span>
+                <button class="vote-btn" onclick="updateVote('trivia', 1)">+</button>
+              </div>
+              <span class="vote-percentage" id="pct-trivia">0%</span>
+            </div>
+            <div class="meter-bar"><div class="meter-fill" id="bar-trivia" style="width: 0%;"></div></div>
+          </div>
+
+          <!-- PROGETTO 3: VENDING MACHINE MANAGER -->
+          <div class="project-box" id="gameCard3" data-game="vending">
+            <div class="project-tag">OPZIONE C</div>
+            <h3>Vending Machine Manager</h3>
+            <span class="project-type">Lab Simulator &bull; Test per IA</span>
+            <p class="project-summary">Gestisci il distributore automatico di test di un centro di ricerca AI. Eroga esperimenti logici per addestrare modelli IA, monitora la stabilità e genera report diagnostici.</p>
+            
+            <div class="project-features">
+              <span>Distributore &amp; Fiale Test</span>
+              <span>Valutazione Modelli IA</span>
+              <span>Audit Log su File &amp; Token</span>
+            </div>
+
+            <div class="vote-widget">
+              <div class="vote-buttons">
+                <button class="vote-btn" onclick="updateVote('vending', -1)">-</button>
+                <span class="vote-num" id="votes-vending">0</span>
+                <button class="vote-btn" onclick="updateVote('vending', 1)">+</button>
+              </div>
+              <span class="vote-percentage" id="pct-vending">0%</span>
+            </div>
+            <div class="meter-bar"><div class="meter-fill" id="bar-vending" style="width: 0%;"></div></div>
+          </div>
+
+        </div>
+
+        <!-- Barra di Azione Votazione -->
+        <div class="voting-footer-strip">
+          <div class="total-counter">
+            Voti registrati: <strong id="totalVotesCount">0</strong>
+          </div>
+          <div class="footer-buttons">
+            <button class="m3-btn m3-btn-filled" onclick="proclaimWinner()">
+              <span>Conferma Scelta dell'Aula</span>
+            </button>
+            <button class="m3-btn m3-btn-outlined" onclick="resetVotes()">
+              <span>Azzera Voti</span>
+            </button>
+          </div>
+        </div>
+
+        <div id="winnerBanner" class="result-box hidden">
+          <span class="material-symbols-outlined">check_circle</span>
+          <div>
+            <h4 id="winnerText">PROGETTO APPROVATO DALL'AULA</h4>
+            <p>Questo sarà il caso di studio per tutte le esercitazioni pratiche del secondo anno.</p>
+          </div>
+        </div>
+
+      </div>
+      <div class="speaker-notes">
+        Raccogliere i voti per alzata di mano, registrarli con + e confermare la scelta dell'aula. I voti rimangono salvati nella memoria del browser.
+      </div>
+    </section>
+
+    <!-- SLIDE 7: COME SI SVOLGE LA LEZIONE -->
+    <section class="slide" data-slide="7">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">ROUTINE DI LABORATORIO</span>
+          <h2>Come si svolgerà ogni sessione</h2>
+          <p class="section-lead">Una struttura collaudata per ottimizzare il tempo e non rimanere mai bloccati.</p>
+        </div>
+
+        <div class="daily-routine-cards">
+          <div class="routine-card">
+            <div class="routine-time">Minuto 0 - 20</div>
+            <h4>1. Spiegazione Mirata</h4>
+            <p>Introduzione di un singolo concetto OOP o struttura dati alla lavagna, con codice proiettato ed esempi minimi funzionanti.</p>
+          </div>
+
+          <div class="routine-card routine-active">
+            <div class="routine-time cherry-time">Minuto 20 - 75</div>
+            <h4>2. Codice alla Postazione</h4>
+            <p>Sviluppo guidato della classe o funzionalità assegnata. Il docente gira continuamente tra i banchi per supporto e sblocchi.</p>
+          </div>
+
+          <div class="routine-card">
+            <div class="routine-time">Ultimi 15 Min</div>
+            <h4>3. Correzione &amp; Salvataggio</h4>
+            <p>Analisi collettiva dei bug più frequenti, verifica del funzionamento e salvataggio dei file nella cartella di lavoro.</p>
+          </div>
+        </div>
+
+        <div class="rule-reminder-strip">
+          <span class="material-symbols-outlined">help</span>
+          <span>Regola fondamentale: se siete fermi su un errore da più di due minuti, alzate la mano. Nessuno resta a fissare lo schermo a vuoto.</span>
+        </div>
+      </div>
+      <div class="speaker-notes">
+        Ribadire che il docente è lì apposta per aiutare: chiedere aiuto tempestivamente fa risparmiare tempo a tutti.
+      </div>
+    </section>
+
+    <!-- SLIDE 8: LE VALUTAZIONI -->
+    <section class="slide" data-slide="8">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">VALUTAZIONE DEL PROFITTO</span>
+          <h2>Come funzioneranno le verifiche</h2>
+          <p class="section-lead">Criteri chiari e trasparenti per certificare le competenze acquisite nel secondo anno.</p>
+        </div>
+
+        <div class="split-columns">
+          <div class="info-panel">
+            <div class="panel-tag">PROVE PERIODICHE</div>
+            <h3>1. Verifiche Scritte</h3>
+            <p class="mb-12">Questionari strutturati per verificare la comprensione dei concetti e della sintassi:</p>
+            <ul class="clean-bullet-list">
+              <li>
+                <strong>Domande chiuse (scelta multipla):</strong> per accertare la padronanza di sintassi, classi, attributi e metodi di Python.
+              </li>
+              <li>
+                <strong>Domande aperte &amp; lettura codice:</strong> spiegare cosa fa un frammento di codice, individuare errori logici o scrivere brevi metodi su carta.
+              </li>
+            </ul>
+          </div>
+
+          <div class="info-panel accent-panel">
+            <div class="panel-tag accent-tag">INTEGRAZIONE PRATICA</div>
+            <h3>2. Breve Colloquio al PC</h3>
+            <p class="mb-12">Ogni verifica scritta è integrata da un breve controllo individuale al computer:</p>
+            <ul class="clean-bullet-list">
+              <li>
+                <strong>Spiegazione a voce:</strong> mostrare al docente il proprio programma funzionante e spiegare come interagiscono le classi.
+              </li>
+              <li>
+                <strong>Modifica estemporanea:</strong> saper modificare una riga, un valore o una condizione sul momento per dimostrare che il codice è compreso e non copiato.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="speaker-notes">
+        Rassicurare la classe: l'orale dura pochi minuti e premia chi ha lavorato con impegno in laboratorio, non la memoria cieca.
+      </div>
+    </section>
+
+    <!-- SLIDE 9: REGOLE E CONDOTTA IN LAB -->
+    <section class="slide" data-slide="9">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">PATTO FORMATIVO</span>
+          <h2>Regole del laboratorio</h2>
+          <p class="section-lead">Norme semplici ma tassative per lavorare con serenità ed efficienza.</p>
+        </div>
+
+        <div class="three-tools-grid">
+          <div class="tool-box">
+            <div class="tool-head">
+              <span class="material-symbols-outlined">computer</span>
+              <h3>Rispetto delle Macchine</h3>
+            </div>
+            <p class="tool-desc">La postazione è il vostro strumento di lavoro professionale. Non si toccano cavi, non si alterano configurazioni e la postazione si lascia pulita.</p>
+          </div>
+
+          <div class="tool-box">
+            <div class="tool-head">
+              <span class="material-symbols-outlined">psychology_alt</span>
+              <h3>Niente Copia Cieco</h3>
+            </div>
+            <p class="tool-desc">È lecito consultare esempi, ma qualunque riga presente nel vostro file deve poter essere spiegata a parole vostre durante la prova pratica.</p>
+          </div>
+
+          <div class="tool-box">
+            <div class="tool-head">
+              <span class="material-symbols-outlined">group</span>
+              <h3>Collaborazione tra Pari</h3>
+            </div>
+            <p class="tool-desc">Aiutare il compagno di banco spiegandogli la logica fa crescere entrambi; passargli il file già fatto gli impedisce di superare la verifica.</p>
+          </div>
+        </div>
+      </div>
+      <div class="speaker-notes">
+        Sottolineare la differenza tra "spiegare un passaggio" e "passare il codice": la seconda danneggia chi riceve il file.
+      </div>
+    </section>
+
+    <!-- SLIDE 10: 3 CONSIGLI PRATICI -->
+    <section class="slide" data-slide="10">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">METODO EFFICACE</span>
+          <h2>3 consigli da ricordare per il 2° anno</h2>
+          <p class="section-lead">Le tre abitudini fondamentali per evitare ore di frustrazione davanti al codice.</p>
+        </div>
+
+        <div class="three-tips-row">
+          <div class="tip-panel">
+            <span class="tip-digit">1</span>
+            <h3>Disegna la classe su carta</h3>
+            <p>Prima di scrivere <code>class</code> nell'editor, prendi un foglio e scrivi due cose: cosa deve <strong>avere</strong> (attributi) e cosa deve <strong>fare</strong> (metodi). Tutto diventa più chiaro.</p>
+          </div>
+
+          <div class="tip-panel">
+            <span class="tip-digit">2</span>
+            <h3>Testa subito con una print</h3>
+            <p>Non scrivere 50 righe di programma prima di provarlo. Crea l'oggetto, chiama il metodo appena scritto, stampa il risultato sul terminale e verifica che funzioni subito.</p>
+          </div>
+
+          <div class="tip-panel">
+            <span class="tip-digit">3</span>
+            <h3>Leggi il numero di riga dell'errore</h3>
+            <p>Quando Python segnala un errore in rosso, indica esattamente il <strong>nome del file e la riga precisa</strong>. Leggilo sempre prima di cancellare righe a caso.</p>
+          </div>
+        </div>
+      </div>
+      <div class="speaker-notes">
+        Ripetere spesso il punto 1: schematizzare su carta prima di digitare evita il 90% degli errori di progettazione a oggetti.
+      </div>
+    </section>
+
+    <!-- SLIDE 11: IL TRAGUARDO FINALE -->
+    <section class="slide" data-slide="11">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">FINE ANNO</span>
+          <h2>Il traguardo: il vostro software completo</h2>
+          <p class="section-lead">Nelle ultime 14 ore il progetto diventerà una vostra creazione originale.</p>
+        </div>
+
+        <div class="three-tools-grid">
+          <div class="tool-box">
+            <div class="phase-number">FASE 1</div>
+            <h3>Personalizzazione</h3>
+            <p>Partirete dalla base solida sviluppata insieme in aula e aggiungerete 1 o 2 funzionalità originali a vostra scelta (nuove carte, domande speciali, report personalizzati).</p>
+          </div>
+
+          <div class="tool-box">
+            <div class="phase-number">FASE 2</div>
+            <h3>Collaudo Incrociato</h3>
+            <p>Un compagno di banco proverà la vostra applicazione sulla sua postazione: un modo pratico per verificare la robustezza del codice e la chiarezza delle istruzioni a schermo.</p>
+          </div>
+
+          <div class="tool-box">
+            <div class="phase-number">FASE 3</div>
+            <h3>Presentazione Finale</h3>
+            <p>Breve dimostrazione di 5 minuti per mostrare il software in esecuzione, illustrare la classe principale e rispondere alle domande del docente.</p>
+          </div>
+        </div>
+
+        <div class="rule-reminder-strip mt-20">
+          <span class="material-symbols-outlined">verified</span>
+          <span>A fine anno avrete nel vostro portfolio un'applicazione software modulare, funzionante e interamente compresa da voi.</span>
+        </div>
+      </div>
+      <div class="speaker-notes">
+        Dare agli allievi un orizzonte chiaro e motivante: non semplici voti scolastici, ma un vero lavoro finito da mostrare.
+      </div>
+    </section>
+
+    <!-- SLIDE 12: CONCLUSIONE E INIZIO -->
+    <section class="slide" data-slide="12">
+      <div class="slide-content cover-slide-layout text-center">
+        <div class="cover-tag">INIZIAMO ORA</div>
+        <h1 class="main-title">
+          Accendiamo i computer <br>e <span class="cherry-text">apriamo l'editor</span>
+        </h1>
+        <p class="main-lead">
+          Oggi: accesso con le credenziali di laboratorio, apertura di Visual Studio Code e creazione del workspace di Programmazione 2.
+        </p>
+
+        <div class="console-box-clean">
+          <div class="console-bar">
+            <span>bash &bull; laboratorio-seconda-piazza-dei-mestieri</span>
+          </div>
+          <div class="console-body">
+            <span class="prompt">$</span> mkdir programmazione_2 &amp;&amp; cd programmazione_2<br>
+            <span class="prompt">$</span> code .<br>
+            <span class="term-green">&gt; Workspace pronto. Buon inizio anno a tutti!</span>
+          </div>
+        </div>
+
+        <div class="footer-hints">
+          <span>Spazio aperto per domande prima di cominciare le attività alla postazione</span>
+        </div>
+      </div>
+      <div class="speaker-notes">
+        Verificare che tutti gli allievi riescano ad accedere e ad avviare VS Code nella cartella corretta.
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Barra Inferiore di Navigazione -->
+  <footer class="m3-bottom-bar">
+    <div class="bottom-bar-left">
+      <button id="btnPrev" class="m3-btn m3-btn-outlined" title="Slide Precedente (&larr;)">
+        <span class="material-symbols-outlined">arrow_back</span>
+        <span>Indietro</span>
+      </button>
+      <button id="btnNext" class="m3-btn m3-btn-filled" title="Slide Successiva (&rarr; / Spazio)">
+        <span>Avanti</span>
+        <span class="material-symbols-outlined">arrow_forward</span>
+      </button>
+    </div>
+
+    <div class="bottom-bar-center">
+      <div class="m3-counter-display">
+        Slide <span id="currentSlideNum">1</span> / <span id="totalSlidesNum">12</span>
+      </div>
+    </div>
+
+    <div class="bottom-bar-right">
+      <span class="shortcut-tip">Usa <kbd>&larr;</kbd> <kbd>&rarr;</kbd> o <kbd>Spazio</kbd> &bull; <kbd>O</kbd> Indice &bull; <kbd>P</kbd> Esporta PDF</span>
+    </div>
+  </footer>
+
+  <!-- Modale Panoramica (Indice delle Slide) -->
+  <div id="overviewModal" class="m3-modal-backdrop hidden">
+    <div class="m3-dialog">
+      <div class="dialog-header">
+        <div class="dialog-title-group">
+          <span class="material-symbols-outlined">grid_view</span>
+          <h3>Indice delle Diapositive</h3>
+        </div>
+        <div class="dialog-actions">
+          <button id="btnModalExportPdf" class="m3-btn m3-btn-outlined m3-btn-sm" title="Esporta tutte le slide in PDF">
+            <span class="material-symbols-outlined" style="font-size: 19px;">picture_as_pdf</span>
+            <span>Esporta in PDF</span>
+          </button>
+          <button id="btnCloseOverview" class="m3-icon-button" title="Chiudi">
+            <span class="material-symbols-outlined">close</span>
+          </button>
+        </div>
+      </div>
+      <div id="overviewGrid" class="overview-grid">
+        <!-- Generato dinamicamente da app.js -->
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
