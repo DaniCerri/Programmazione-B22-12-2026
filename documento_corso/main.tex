@@ -106,19 +106,22 @@ Il libro è strutturato con un \textbf{indice interattivo e cliccabile}. Cliccan
 % Capitolo 2: I Grandi Concetti della Programmazione (Ripasso Strutturato)
 \input{capitoli/02_ripasso_strutturato}
 
+% Capitolo 3: Lezione del 12 Ottobre 2026 (analisi delle richieste del cliente)
+\input{capitoli/03_comprensione_richieste}
+
 % \part{La Programmazione Orientata agli Oggetti (OOP)}
-% \input{capitoli/03_classi_e_oggetti}
-% \input{capitoli/04_incapsulamento_e_metodi}
-% \input{capitoli/05_ereditarieta_e_polimorfismo}
+% \input{capitoli/04_classi_e_oggetti}
+% \input{capitoli/05_incapsulamento_e_metodi}
+% \input{capitoli/06_ereditarieta_e_polimorfismo}
 
 % \part{Strutture Dati e Persistenza}
-% \input{capitoli/06_collezioni_avanzate}
-% \input{capitoli/07_file_json_e_csv}
-% \input{capitoli/08_gestione_eccezioni}
+% \input{capitoli/07_collezioni_avanzate}
+% \input{capitoli/08_file_json_e_csv}
+% \input{capitoli/09_gestione_eccezioni}
 
 % \part{Progetto Software Annuale}
-% \input{capitoli/09_architettura_progetto}
-% \input{capitoli/10_rilascio_e_documentazione}
+% \input{capitoli/10_architettura_progetto}
+% \input{capitoli/11_rilascio_e_documentazione}
 
 % ==============================================================================
 % PARTE CONCLUSIVA (BACKMATTER)
@@ -127,5 +130,41 @@ Il libro è strutturato con un \textbf{indice interattivo e cliccabile}. Cliccan
 
 \chapter{Riferimento Rapido e Cheat-Sheet}
 \noindent Tavole sinottiche di riferimento rapido per le convenzioni di codice, comandi Git di frequente utilizzo e pattern di progettazione.
+
+\section*{Il Kit dell'Analista}
+\begin{center}
+\renewcommand{\arraystretch}{1.45}
+\begin{tabular}{|l|l|l|}
+\hline
+\rowcolor{PiazzaPrimary!15}
+\textbf{Cosa cerco} & \textbf{Come appare} & \textbf{Simbolo a mano} \\
+\hline
+Dato            & \dato{1,30\,\euro}            & cerchio \\
+Richiesta       & \richiesta{dà il resto}       & doppia sottolineatura \\
+Regola          & \regola{se il credito basta}  & onda \\
+Rumore          & \rumore{il tecnico del martedì} & barrato \\
+Dato nascosto   & \nascosto{1\,\euro{} = 100 cent} & $\bigstar$ a margine \\
+Dato mancante   & \mancante{quanti pezzi?}      & ? a margine + domanda per il cliente \\
+\hline
+\end{tabular}
+\end{center}
+
+\section*{Parole che Diventano Confronti}
+\begin{center}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|l|c||l|c|}
+\hline
+\rowcolor{PiazzaPrimary!15}
+\textbf{Parola} & \textbf{Confronto} & \textbf{Parola} & \textbf{Confronto} \\
+\hline
+almeno, basta       & $\geq$ & più di, supera      & $>$ \\
+al massimo, fino a  & $\leq$ & meno di, sotto      & $<$ \\
+esattamente, pari a & $=$    & diverso da, tranne  & $\neq$ \\
+\hline
+\end{tabular}
+\end{center}
+
+\section*{La Scheda dei Requisiti}
+\noindent Riformulo (\emph{``La macchina deve\dots''}) $\to$ Input (nome, valore, unità) $\to$ Elaborazione $\to$ Output $\to$ Prova a mano con caso limite $\to$ Domande per il cliente.
 
 \end{document}

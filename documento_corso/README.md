@@ -15,7 +15,9 @@ documento_corso/
 ├── Makefile          # Makefile per compilare da terminale (make / make clean)
 ├── README.md         # Questa documentazione
 └── capitoli/         # I capitoli del libro (ognuno dedicato a un tema del secondo anno)
-    └── 01_introduzione_secondo_anno.tex
+    ├── 01_introduzione_secondo_anno.tex   # Benvenuto e metodo del secondo anno
+    ├── 02_ripasso_strutturato.tex         # 22/09: i grandi concetti della programmazione
+    └── 03_comprensione_richieste.tex      # 12/10: analisi delle richieste del cliente, kit evidenziatore
 ```
 
 ---
@@ -47,7 +49,7 @@ make clean
 
 1. **Crea un nuovo file `.tex`** all'interno della cartella `capitoli/`, ad esempio:
    ```text
-   capitoli/02_classi_e_oggetti.tex
+   capitoli/04_classi_e_oggetti.tex
    ```
 2. **Inizia il file con l'intestazione del capitolo:**
    ```latex
@@ -59,7 +61,7 @@ make clean
    ```
 3. **Collega il nuovo capitolo in `main.tex`:**
    ```latex
-   \input{capitoli/02_classi_e_oggetti}
+   \input{capitoli/04_classi_e_oggetti}
    ```
 4. **Ricompila con `./compile.sh` o `make`**: l'indice generale mostrerà subito il nuovo capitolo con il link cliccabile!
 
@@ -75,6 +77,9 @@ Nel file `stile.sty` trovi i box stilizzati già pronti:
 * **Soluzione Guidata:** `\begin{soluzione}[Titolo] ... \end{soluzione}`
 * **Attenzione / Debugging:** `\begin{attenzione}[Titolo] ... \end{attenzione}`
 * **Best Practice:** `\begin{consiglio}[Titolo] ... \end{consiglio}`
+* **Kit dell'Evidenziatore:** `\rumore{...}`, `\dato{...}`, `\richiesta{...}`, `\regola{...}\confronto{$\geq$}`, `\nascosto{...}`, `\mancante{...}`, `\calcolo{...}`
+* **Scheda I-P-O:** `\begin{scheda} Riformulo & ... \\ \hline ... \end{scheda}`
+* **Flow Chart (TikZ):** stili `fc-term`, `fc-io`, `fc-op`, `fc-dec`, `fc-join`, `fc-arrow`, `fc-label`
 * **Codice Sorgente:**
   ```latex
   \begin{lstlisting}[language=Python]
