@@ -1,0 +1,1448 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Capire la Richiesta | Corso di Programmazione 2 - Piazza dei Mestieri</title>
+
+  <!-- Tipografia: Outfit (Testo) & Bricolage Grotesque (Titoli e Accenti) & Roboto Mono (Simboli) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Outfit:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Google Material Symbols Outlined -->
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="m3-paper" data-course="Corso di Programmazione 2">
+
+  <!-- Progress Bar Superiore -->
+  <div class="m3-progress-container">
+    <div id="progressBar" class="m3-progress-bar"></div>
+  </div>
+
+  <!-- Barra Superiore Istituzionale -->
+  <header class="m3-top-app-bar">
+    <div class="app-bar-leading">
+      <span class="material-symbols-outlined icon-main">storefront</span>
+      <div class="app-bar-title-group">
+        <span class="app-bar-title">Corso di Programmazione 2</span>
+        <span class="app-bar-subtitle">Operatore Informatico &bull; Capire la Richiesta del Cliente &bull; Vending
+          Machine Manager &bull; Piazza dei Mestieri</span>
+      </div>
+    </div>
+
+    <div class="app-bar-actions">
+      <button id="btnOverview" class="m3-icon-button" title="Indice delle slide (O)">
+        <span class="material-symbols-outlined">grid_view</span>
+      </button>
+      <button id="btnNotes" class="m3-icon-button" title="Note Docente (N)">
+        <span class="material-symbols-outlined">notes</span>
+      </button>
+      <button id="btnExportPdf" class="m3-icon-button" title="Esporta slide in PDF (P)">
+        <span class="material-symbols-outlined">picture_as_pdf</span>
+      </button>
+      <button id="btnFullscreen" class="m3-icon-button" title="Schermo intero (F)">
+        <span class="material-symbols-outlined">fullscreen</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Slide Deck Main Container -->
+  <main class="deck-container">
+
+    <!-- SLIDE 1: COPERTINA -->
+    <section class="slide active" data-slide="1" data-title="Copertina: Capire la Richiesta">
+      <div class="slide-content">
+        <div class="cover-grid">
+          <div>
+            <div class="cover-pill">
+              <span class="material-symbols-outlined" style="font-size: 18px;">domain</span>
+              <span>PROGRAMMAZIONE 2 &bull; SECONDA ANNUALITÀ</span>
+            </div>
+            <h1 class="main-title">
+              Capire la <span class="cherry-text">Richiesta</span>:<br>Leggere da Analista
+            </h1>
+            <p class="main-lead">
+              Il cliente non parla come un programmatore. Oggi impariamo a trasformare le sue richieste sul
+              distributore automatico in dati, regole e domande chiare, prima di progettare qualsiasi cosa.
+            </p>
+
+            <div class="cover-specs-row">
+              <div class="spec-cell">
+                <span class="spec-label">LEZIONE</span>
+                <span class="spec-value">12 Ottobre 2026</span>
+              </div>
+              <div class="spec-cell">
+                <span class="spec-label">DOCENTE</span>
+                <span class="spec-value">Daniele Cerrina</span>
+              </div>
+              <div class="spec-cell">
+                <span class="spec-label">PROGETTO ANNUALE</span>
+                <span class="spec-value cherry">Vending Machine Manager</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="pixel-art-card cover-art">
+            <div class="pixel-art-img-wrap" data-file="immagini/copertina.jpeg">
+              <img src="immagini/copertina.jpeg" alt="Analista con la lente davanti a un distributore automatico"
+                class="pixel-art-img">
+            </div>
+            <div class="pixel-art-caption">
+              <span>Vending Machine Manager</span>
+              <span class="pixel-tag">16-BIT RETRO SIM</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="speaker-notes">
+        [0'&ndash;3'] Oggi niente codice e niente pseudocodice: lavoriamo sul passo che viene PRIMA di tutto,
+        l'analisi della richiesta. Le richieste arrivano da Marta, la (fittizia) responsabile dei distributori della
+        scuola, sotto forma di messaggi scritti come li scriverebbe un vero cliente.
+      </div>
+    </section>
+
+    <!-- SLIDE 2: AGGANCIO - IL BUG DEI 120 -->
+    <section class="slide" data-slide="2" data-title="Il Bug dei 120 Euro">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">UNA STORIA VERA (QUASI)</span>
+          <h2>Il Bug dei 120 Euro</h2>
+          <p class="section-lead">Il programma era scritto benissimo. Peccato che nessuno avesse chiesto l'unità di misura.</p>
+        </div>
+
+        <div class="bug-compare">
+          <div class="bug-side">
+            <div class="bug-side-label">
+              <span class="material-symbols-outlined">description</span>
+              Il listino del cliente dice
+            </div>
+            <p class="bug-quote">&ldquo;Patatine &mdash; <mark>120</mark><br>Acqua &mdash; <mark>60</mark>&rdquo;</p>
+            <p class="bug-test">Per il cliente era ovvio: <strong>centesimi</strong>. Patatine a 1,20 &euro;, acqua a
+              0,60 &euro;.</p>
+          </div>
+
+          <div class="bug-arrow">
+            <span class="material-symbols-outlined">arrow_forward</span>
+          </div>
+
+          <div class="bug-side wrong">
+            <div class="bug-side-label">
+              <span class="material-symbols-outlined">bug_report</span>
+              Il programmatore ha capito
+            </div>
+            <p class="bug-quote">&ldquo;Patatine &mdash; <mark>120 &euro;</mark><br>Acqua &mdash; <mark>60 &euro;</mark>&rdquo;</p>
+            <p class="bug-test">Un cliente inserisce 2 &euro; e la macchina risponde: <strong>&ldquo;Credito
+                insufficiente, mancano 118 &euro;&rdquo;</strong>.</p>
+          </div>
+        </div>
+
+        <div class="lim-banner-big">
+          Il cliente dava per <strong>scontata</strong> l'unità di misura. Il programmatore <strong>non ha
+            chiesto</strong>. Risultato: distributore inutilizzabile il primo giorno.
+        </div>
+      </div>
+      <div class="speaker-notes">
+        [3'&ndash;8'] Chiedere: "Di chi è la colpa?". Di entrambi, ma il mestiere di chiedere è del programmatore. Il
+        cliente conosce il suo lavoro, non sa cosa serve a un programma.
+      </div>
+    </section>
+
+    <!-- SLIDE 3: ANALISI DEI REQUISITI -->
+    <section class="slide" data-slide="3" data-title="Analisi dei Requisiti: Dal Cliente ai Dati">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">METODOLOGIA DI PROGETTO</span>
+          <h2>Analisi dei Requisiti: il Primo Mestiere del Programmatore</h2>
+          <p class="section-lead">Prima di progettare il distributore, qualcuno deve tradurre ciò che il cliente vuole davvero.</p>
+        </div>
+
+        <div class="ipo-filter">
+          <div class="filter-box">
+            <span class="material-symbols-outlined filter-icon" style="color: var(--text-secondary);">person</span>
+            <h3>Il Cliente</h3>
+            <span class="filter-question" style="color: var(--text-secondary);">Parla come parla</span>
+            <p>Mescola richieste e chiacchiere, dà per scontate molte cose, dimentica i casi strani.</p>
+          </div>
+          <div class="filter-arrow"><span class="material-symbols-outlined">arrow_forward</span></div>
+          <div class="filter-box" style="border-color: var(--cherry-primary); background: var(--cherry-tint);">
+            <span class="material-symbols-outlined filter-icon" style="color: var(--cherry-primary);">search</span>
+            <h3>L'Analista (tu)</h3>
+            <span class="filter-question" style="color: var(--cherry-primary);">Legge, smonta, chiede</span>
+            <p>Separa i dati dal rumore, traduce le regole in confronti, scrive le domande da fare.</p>
+          </div>
+          <div class="filter-arrow"><span class="material-symbols-outlined">arrow_forward</span></div>
+          <div class="filter-box" style="border-color: var(--ok-color);">
+            <span class="material-symbols-outlined filter-icon" style="color: var(--ok-color);">task_alt</span>
+            <h3>Requisiti Chiari</h3>
+            <span class="filter-question" style="color: var(--ok-color);">Nessuna ambiguità</span>
+            <p>Dati con nome e valore, regole precise, risultati attesi, casi limite verificati.</p>
+          </div>
+        </div>
+
+        <div class="lim-banner-big">
+          Molti bug non nascono da codice scritto male, ma da <strong>richieste capite male</strong>. Si risolvono con
+          una domanda in più, non con cento righe in più.
+        </div>
+      </div>
+      <div class="speaker-notes">
+        [8'&ndash;12'] Collegare alla parte di "Metodologie di Progetto" della microprogettazione. Il Vending Machine
+        Manager di quest'anno avrà un "cliente" (il docente) e le richieste arriveranno sempre così: in italiano, non
+        in specifiche tecniche.
+      </div>
+    </section>
+
+    <!-- SLIDE 4: I-P-O COME FILTRO -->
+    <section class="slide" data-slide="4" data-title="Lo Schema I-P-O: Il Filtro per Leggere">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">LO STRUMENTO DELL'ANALISTA</span>
+          <h2>Lo Schema I-P-O: il Filtro per Leggere una Richiesta</h2>
+          <p class="section-lead">Ogni programma prende dati, li trasforma con delle regole e restituisce un risultato.</p>
+        </div>
+
+        <div class="ipo-filter">
+          <div class="filter-box f-in">
+            <span class="material-symbols-outlined filter-icon">input</span>
+            <h3>INPUT</h3>
+            <span class="filter-question">Cosa mi DAI?</span>
+            <p>I dati che la macchina riceve o conosce: monete, prezzi, quantità.</p>
+            <p><em>&ldquo;inserisce 2,00 &euro;, l'acqua costa 0,60 &euro;&rdquo;</em></p>
+          </div>
+          <div class="filter-arrow"><span class="material-symbols-outlined">arrow_forward</span></div>
+          <div class="filter-box f-proc">
+            <span class="material-symbols-outlined filter-icon">settings</span>
+            <h3>ELABORAZIONE</h3>
+            <span class="filter-question">Quali REGOLE?</span>
+            <p>I calcoli e le condizioni che collegano i dati al risultato.</p>
+            <p><em>&ldquo;se il credito è sufficiente&hellip; restituisci il resto&rdquo;</em></p>
+          </div>
+          <div class="filter-arrow"><span class="material-symbols-outlined">arrow_forward</span></div>
+          <div class="filter-box f-out">
+            <span class="material-symbols-outlined filter-icon">output</span>
+            <h3>OUTPUT</h3>
+            <span class="filter-question">Cosa mi CHIEDI?</span>
+            <p>Cosa deve fare o mostrare la macchina alla fine.</p>
+            <p><em>&ldquo;eroga il prodotto e dà il resto&rdquo;</em></p>
+          </div>
+        </div>
+
+        <div class="trash-strip">
+          <span class="material-symbols-outlined">delete</span>
+          <span>Tutto il resto è <strong>RUMORE</strong>: saluti, piani dell'edificio, orari, sfoghi del cliente.
+            Sono importanti per il rapporto umano, non per il programma.</span>
+        </div>
+      </div>
+      <div class="speaker-notes">
+        [12'&ndash;15'] Ripasso veloce: l'I-P-O è già noto dal primo anno. Novità: lo usiamo come filtro di lettura sulle
+        richieste del cliente.
+      </div>
+    </section>
+
+    <!-- SLIDE 5: IL METODO IN 5 PASSI -->
+    <section class="slide" data-slide="5" data-title="Il Metodo dell'Analista in 5 Passi">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">IL METODO</span>
+          <h2>Il Metodo dell'Analista in 5 Passi</h2>
+          <p class="section-lead">Sempre nello stesso ordine, per ogni richiesta. Anche quando sembra banale.</p>
+        </div>
+
+        <div class="method-row">
+          <div class="method-card">
+            <span class="method-num">1</span>
+            <span class="material-symbols-outlined">menu_book</span>
+            <h3>Leggi due volte</h3>
+            <p>1ª volta: cosa vuole il cliente.<br>2ª volta: caccia ai dati.</p>
+          </div>
+          <div class="method-card">
+            <span class="method-num">2</span>
+            <span class="material-symbols-outlined">ink_highlighter</span>
+            <h3>Evidenzia</h3>
+            <p>Con i colori o con i simboli: dati, richiesta, regole, rumore.</p>
+          </div>
+          <div class="method-card">
+            <span class="method-num">3</span>
+            <span class="material-symbols-outlined">record_voice_over</span>
+            <h3>Riformula</h3>
+            <p>Una sola frase:<br><em>&ldquo;La macchina deve&hellip;&rdquo;</em></p>
+          </div>
+          <div class="method-card">
+            <span class="method-num">4</span>
+            <span class="material-symbols-outlined">table_view</span>
+            <h3>Scheda I-P-O</h3>
+            <p>Input, Elaborazione e Output, con nomi e valori.</p>
+          </div>
+          <div class="method-card">
+            <span class="method-num">5</span>
+            <span class="material-symbols-outlined">forum</span>
+            <h3>Prova &amp; Domande</h3>
+            <p>Prova con i numeri e il <strong>caso limite</strong>. Scrivi le domande per il cliente.</p>
+          </div>
+        </div>
+
+        <div class="lim-banner-big">
+          Regola d'oro dell'analista: <strong>se un dato manca, non si inventa. Si chiede.</strong>
+        </div>
+      </div>
+      <div class="speaker-notes">
+        [15'&ndash;18'] Rispetto alla prima, il passo 5 ha una parte in più: la lista di domande per il cliente. È
+        un'abitudine professionale vera: in azienda si chiama "chiarimento dei requisiti".
+      </div>
+    </section>
+
+    <!-- SLIDE 6: IL KIT DELL'EVIDENZIATORE -->
+    <section class="slide" data-slide="6" data-title="Il Kit dell'Evidenziatore: Colori e Simboli">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">IL KIT DELL'ANALISTA</span>
+          <h2>Il Kit dell'Evidenziatore: Colori e Simboli</h2>
+          <p class="section-lead">Niente evidenziatori? Basta una penna e questi simboli.</p>
+        </div>
+
+        <div class="kit-table">
+          <div class="kit-head">Cosa cerco</div>
+          <div class="kit-head"><span class="material-symbols-outlined" style="font-size: 18px;">palette</span>Con i colori</div>
+          <div class="kit-head"><span class="material-symbols-outlined" style="font-size: 18px;">edit</span>Solo penna</div>
+          <div class="kit-head">Come ricordarlo</div>
+
+          <div class="kit-cat" style="color: var(--in-color);"><span class="material-symbols-outlined">input</span>Dato (Input)</div>
+          <div><span><span class="hl hl-in on">2,00 &euro;</span></span></div>
+          <div><span><span class="sym sym-in">2,00 &euro;</span>&nbsp;cerchio</span></div>
+          <div class="kit-hint"><span>Il cerchio <strong>cattura</strong> il dato.</span></div>
+
+          <div class="kit-cat" style="color: var(--out-color);"><span class="material-symbols-outlined">output</span>Richiesta (Output)</div>
+          <div><span><span class="hl hl-out on">restituire il resto</span></span></div>
+          <div><span><span class="sym sym-out">restituire il resto</span></span></div>
+          <div class="kit-hint"><span>Doppia riga = <strong>il risultato</strong>, come in matematica.</span></div>
+
+          <div class="kit-cat" style="color: var(--rule-color);"><span class="material-symbols-outlined">alt_route</span>Regola</div>
+          <div><span><span class="hl hl-rule on">se il credito basta</span></span></div>
+          <div><span><span class="sym sym-rule">se il credito basta</span>&nbsp;onda</span></div>
+          <div class="kit-hint"><span>L'onda è il <strong>bivio</strong>: la strada cambia.</span></div>
+
+          <div class="kit-cat" style="color: var(--noise-line);"><span class="material-symbols-outlined">delete</span>Rumore</div>
+          <div><span><span class="hl hl-noise on">vicino alla palestra</span></span></div>
+          <div><span><span class="sym sym-noise">vicino alla palestra</span></span></div>
+          <div class="kit-hint"><span>Una riga sopra: <strong>lo butto</strong>.</span></div>
+
+          <div class="kit-cat" style="color: var(--in-color);"><span class="material-symbols-outlined">star</span>Dato nascosto</div>
+          <div><span><span class="hl-tag tag-hidden on">★ 1 &euro; = 100 centesimi</span></span></div>
+          <div><span><span class="sym-mark">★</span>&nbsp;+ scrivi il dato a margine</span></div>
+          <div class="kit-hint"><span>La stella è un <strong>tesoro nascosto</strong>: il testo non lo scrive, ma tu lo sai.</span></div>
+
+          <div class="kit-cat kit-last" style="color: var(--miss-color);"><span class="material-symbols-outlined">help</span>Dato mancante</div>
+          <div class="kit-last"><span><span class="hl-tag tag-miss on">? quanti pezzi = &ldquo;quasi finita&rdquo;</span></span></div>
+          <div class="kit-last"><span><span class="sym-mark">?</span>&nbsp;+ scrivi la domanda per il cliente</span></div>
+          <div class="kit-hint kit-last"><span>Non lo inventi: <strong>lo chiedi</strong> al cliente.</span></div>
+        </div>
+      </div>
+      <div class="speaker-notes">
+        [18'&ndash;21'] Far copiare la legenda sul quaderno. Chi ha i colori usa colori E simboli insieme, così le
+        annotazioni restano leggibili anche in fotocopia.
+      </div>
+    </section>
+
+    <!-- SLIDE 7: DIZIONARIO PAROLE -> CONFRONTI -->
+    <section class="slide" data-slide="7" data-title="Il Dizionario: Parole che Diventano Confronti">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">LE PAROLE DELLE REGOLE</span>
+          <h2>Il Dizionario: Parole che Diventano Confronti</h2>
+          <p class="section-lead">Il cliente non scrive ≥ o &lt;: scrive &ldquo;almeno&rdquo;, &ldquo;fino a&rdquo;, &ldquo;basta&rdquo;. Traduciamo.</p>
+        </div>
+
+        <div class="dict-grid">
+          <div class="dict-card">
+            <div class="dict-top"><span class="dict-word">almeno</span><span class="dict-symbol">≥</span></div>
+            <p class="dict-example">&ldquo;almeno 3 &euro; di credito&rdquo;: con 3,00 &euro; <strong>sì</strong>.</p>
+          </div>
+          <div class="dict-card">
+            <div class="dict-top"><span class="dict-word">al massimo</span><span class="dict-symbol">≤</span></div>
+            <p class="dict-example">&ldquo;al massimo 12 prodotti per spirale&rdquo;: 12 sì, 13 no.</p>
+          </div>
+          <div class="dict-card">
+            <div class="dict-top"><span class="dict-word">più di / supera</span><span class="dict-symbol">&gt;</span></div>
+            <p class="dict-example">&ldquo;più di 5 &euro;&rdquo;: con 5,00 &euro; <strong>no</strong>.</p>
+          </div>
+          <div class="dict-card">
+            <div class="dict-top"><span class="dict-word">meno di / sotto</span><span class="dict-symbol">&lt;</span></div>
+            <p class="dict-example">&ldquo;sotto i 2 pezzi&rdquo;: il 2 è escluso.</p>
+          </div>
+          <div class="dict-card">
+            <div class="dict-top"><span class="dict-word">fino a</span><span class="dict-symbol">≤</span></div>
+            <p class="dict-example">&ldquo;resto fino a 5 &euro;&rdquo;: il 5 è compreso.</p>
+          </div>
+          <div class="dict-card">
+            <div class="dict-top"><span class="dict-word">basta / è sufficiente</span><span class="dict-symbol">≥</span></div>
+            <p class="dict-example">&ldquo;credito sufficiente&rdquo;: credito ≥ prezzo.</p>
+          </div>
+          <div class="dict-card">
+            <div class="dict-top"><span class="dict-word">esattamente / pari a</span><span class="dict-symbol">=</span></div>
+            <p class="dict-example">&ldquo;importo esatto&rdquo;: credito = prezzo, resto 0.</p>
+          </div>
+          <div class="dict-card">
+            <div class="dict-top"><span class="dict-word">diverso da / tranne</span><span class="dict-symbol">≠</span></div>
+            <p class="dict-example">&ldquo;tutti tranne chi paga con la chiavetta&rdquo;.</p>
+          </div>
+        </div>
+
+        <div class="lim-banner-big">
+          Il <strong>caso limite</strong>: prova sempre con il valore <strong>esatto</strong> della soglia (3 &euro;, 5 &euro;,
+          8 gradi&hellip;). È lì che il cliente e il programma possono non essere d'accordo.
+        </div>
+      </div>
+      <div class="speaker-notes">
+        [21'&ndash;25'] Per ogni parola chiedere: "La soglia è compresa o esclusa?". Nessun operatore di linguaggio: sono i
+        simboli di matematica.
+      </div>
+    </section>
+
+    <!-- SLIDE 8: LE 5 TRAPPOLE -->
+    <section class="slide" data-slide="8" data-title="Le 5 Trappole delle Richieste">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">ATTENZIONE</span>
+          <h2>Le 5 Trappole delle Richieste del Cliente</h2>
+          <p class="section-lead">Il cliente non vuole ingannarti&hellip; ma le sue richieste sono piene di tranelli.</p>
+        </div>
+
+        <div class="traps-grid five">
+          <div class="trap-card">
+            <div class="trap-icon"><span class="material-symbols-outlined">volume_up</span></div>
+            <div>
+              <h3>1. Il Rumore</h3>
+              <p>Saluti, storie e numeri che non servono.</p>
+              <p class="trap-example">&ldquo;comprato nel 2019, 300 bicchieri a settimana&rdquo;</p>
+            </div>
+          </div>
+          <div class="trap-card">
+            <div class="trap-icon"><span class="material-symbols-outlined">star</span></div>
+            <div>
+              <h3>2. Il Dato Nascosto</h3>
+              <p>Non è scritto, ma serve: lo tiri fuori tu.</p>
+              <p class="trap-example">&ldquo;tre monete da 50 cent&rdquo; &rarr; ★ credito 1,50 &euro;</p>
+            </div>
+          </div>
+          <div class="trap-card">
+            <div class="trap-icon"><span class="material-symbols-outlined">compare_arrows</span></div>
+            <div>
+              <h3>3. Le Parole-Trappola</h3>
+              <p>&ldquo;Almeno&rdquo; e &ldquo;più di&rdquo; sul caso limite si separano.</p>
+              <p class="trap-example">5 ≥ 5 VERO &nbsp;|&nbsp; 5 &gt; 5 FALSO</p>
+            </div>
+          </div>
+          <div class="trap-card">
+            <div class="trap-icon"><span class="material-symbols-outlined">help</span></div>
+            <div>
+              <h3>4. Il Dato Mancante</h3>
+              <p>Il cliente ha dimenticato qualcosa di indispensabile.</p>
+              <p class="trap-example">&ldquo;quando sta per finire&rdquo; &rarr; ? quanti pezzi</p>
+            </div>
+          </div>
+          <div class="trap-card">
+            <div class="trap-icon"><span class="material-symbols-outlined">straighten</span></div>
+            <div>
+              <h3>5. L'Unità di Misura</h3>
+              <p>Euro o centesimi? Pezzi o confezioni? Gradi o percentuale?</p>
+              <p class="trap-example">&ldquo;Patatine &mdash; 120&rdquo; &rarr; ? 120 di cosa</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="speaker-notes">
+        [25'&ndash;28'] Ogni trappola sarà protagonista di una sfida (1 = rumore, 2 = dato nascosto e unità, 3 =
+        parole-trappola, 4 = dato mancante, 5 = tutte insieme).
+      </div>
+    </section>
+
+    <!-- SLIDE 9: ESEMPIO SVOLTO - TESTO -->
+    <section class="slide" data-slide="9" data-title="Esempio Svolto: Il Resto Giusto (Testo)">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">ESEMPIO GUIDATO &bull; LA RICHIESTA</span>
+          <h2>Esempio Svolto: Il Resto Giusto</h2>
+        </div>
+
+        <div class="problem-layout">
+          <div class="problem-card">
+            <div class="problem-card-label"><span class="material-symbols-outlined">mail</span>Messaggio del cliente</div>
+            <div class="problem-text">
+              <p class="email-head">Da: Marta, responsabile distributori &bull; Oggetto: distributore del piano terra</p>
+              <p>Ciao ragazzi! Sono Marta, gestisco i distributori del piano terra, quelli vicino alla palestra che
+                all'intervallo delle 10:50 vengono presi d'assalto. Vorrei che la macchina, quando un cliente sceglie
+                un prodotto, controllasse se il credito inserito è sufficiente. Se lo è, deve erogare il prodotto e
+                restituire il resto; se non lo è, deve mostrare quanto manca. Per esempio: un cliente inserisce 2,00
+                &euro; e sceglie una bottiglietta d'acqua da 0,60 &euro;. Grazie mille e buona giornata!</p>
+            </div>
+            <div class="legend-mini">
+              <span><span class="sym sym-in">dato</span></span>
+              <span><span class="sym sym-out">richiesta</span></span>
+              <span><span class="sym sym-rule">regola</span></span>
+              <span><span class="sym sym-noise">rumore</span></span>
+              <span><span class="sym-mark">★</span> nascosto</span>
+              <span><span class="sym-mark">?</span> mancante</span>
+            </div>
+          </div>
+
+          <div class="problem-side">
+            <div class="pixel-art-card">
+              <div class="pixel-art-img-wrap" data-file="immagini/resto.jpeg">
+                <img src="immagini/resto.jpeg" alt="Distributore con monete e bottiglietta d'acqua" class="pixel-art-img">
+              </div>
+              <div class="pixel-art-caption">
+                <span>Distributore Piano Terra</span>
+                <span class="pixel-tag">CASSA &amp; RESTO</span>
+              </div>
+            </div>
+            <div class="task-card">
+              <h3><span class="material-symbols-outlined">groups</span>Lo facciamo insieme</h3>
+              <ol>
+                <li>Leggiamo due volte, ad alta voce.</li>
+                <li>Voi dettate, io evidenzio.</li>
+                <li>Scheda I-P-O e domande per Marta.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="speaker-notes">
+        [28'&ndash;31'] Far leggere il messaggio come se fosse un vocale del cliente. Poi chiedere alla classe di dettare:
+        cosa barro, cosa cerchio, cosa sottolineo due volte.
+      </div>
+    </section>
+
+    <!-- SLIDE 10: ESEMPIO SVOLTO - ANNOTATO -->
+    <section class="slide" data-slide="10" data-steps="6" data-title="Esempio Svolto: Il Resto Giusto (Annotato)">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">ESEMPIO GUIDATO &bull; PASSO PASSO</span>
+          <h2>Il Resto Giusto: Smontiamo la Richiesta</h2>
+        </div>
+
+        <div class="step-bar" data-last-label="Prova &amp; Domande"></div>
+
+        <div class="annot-layout">
+          <div class="problem-card">
+            <div class="problem-text">
+              <p><span class="hl hl-noise" data-step="1">Ciao ragazzi! Sono Marta, gestisco i distributori del piano
+                  terra, quelli vicino alla palestra che all'intervallo delle 10:50 vengono presi d'assalto.</span>
+                Vorrei che la macchina, quando un cliente sceglie un prodotto, controllasse <span class="hl hl-rule"
+                  data-step="4">se il credito inserito è sufficiente</span><span class="hl-tag tag-rule"
+                  data-step="4">≥</span>. Se lo è, deve <span class="hl hl-out" data-step="3">erogare il prodotto e
+                  restituire il resto</span>; <span class="hl hl-rule" data-step="4">se non lo è</span><span
+                  class="hl-tag tag-rule" data-step="4">&lt;</span>, deve <span class="hl hl-out" data-step="3">mostrare
+                  quanto manca</span>. Per esempio: un cliente inserisce <span class="hl hl-in" data-step="2">2,00
+                  &euro;</span> e sceglie una bottiglietta d'acqua da <span class="hl hl-in" data-step="2">0,60
+                  &euro;</span>. <span class="hl hl-noise" data-step="1">Grazie mille e buona giornata!</span></p>
+            </div>
+          </div>
+
+          <div class="ipo-card">
+            <div class="ipo-card-title"><span class="material-symbols-outlined">table_view</span>Scheda I-P-O</div>
+            <div class="ipo-row row-say" data-step="5">
+              <span class="ipo-label">Riformulo</span>
+              <span class="ipo-val"><em>&ldquo;La macchina deve capire se il credito copre il prezzo e calcolare resto o importo mancante.&rdquo;</em></span>
+            </div>
+            <div class="ipo-row row-in" data-step="5">
+              <span class="ipo-label">Input</span>
+              <span class="ipo-val">credito = <strong>2,00 &euro;</strong> &bull; prezzo = <strong>0,60 &euro;</strong></span>
+            </div>
+            <div class="ipo-row row-proc" data-step="5">
+              <span class="ipo-label">Elaborazione</span>
+              <span class="ipo-val"><span class="math">credito ≥ prezzo</span> &rarr; resto = credito &minus; prezzo<br>
+                altrimenti &rarr; mancano = prezzo &minus; credito</span>
+            </div>
+            <div class="ipo-row row-out" data-step="5">
+              <span class="ipo-label">Output</span>
+              <span class="ipo-val">prodotto + resto <strong>oppure</strong> &ldquo;Mancano X &euro;&rdquo;</span>
+            </div>
+            <div class="ipo-row row-test" data-step="6">
+              <span class="ipo-label">Prova a mano</span>
+              <span class="ipo-val">2,00 ≥ 0,60 <strong>VERO</strong> &rarr; resto 2,00 &minus; 0,60 = <strong>1,40 &euro;</strong><br>
+                Caso limite: credito 0,60 &rarr; eroga, resto 0,00 &euro;</span>
+            </div>
+            <div class="ipo-row row-ask" data-step="6">
+              <span class="ipo-label">Domande</span>
+              <span class="ipo-val">? E se il prodotto è <strong>esaurito</strong>? La richiesta non lo dice.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="speaker-notes">
+        [31'&ndash;43'] Rivelare un passo alla volta con &rarr; o Spazio, chiedendo PRIMA alla classe. Nota: qui non c'è una
+        domanda esplicita col punto interrogativo: in una richiesta l'output è "cosa deve fare la macchina". Tasti: A
+        = mostra tutto, Z = azzera.
+      </div>
+    </section>
+
+    <!-- SLIDE 11: COME LAVORIAMO -->
+    <section class="slide" data-slide="11" data-title="Laboratorio: Come Lavoriamo">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">LABORATORIO SU CARTA</span>
+          <h2>Ora Tocca a Voi: 5 Richieste da Analizzare</h2>
+          <p class="section-lead">A coppie, con il foglio delle richieste, il quaderno e gli evidenziatori (o una penna).</p>
+        </div>
+
+        <div class="lim-two-boxes">
+          <div class="lim-box" style="border-left: 5px solid var(--ok-color);">
+            <h3 style="color: var(--ok-color);">Come si lavora</h3>
+            <ul class="lim-bullet-list">
+              <li><span class="material-symbols-outlined lim-bullet-icon" style="color: var(--ok-color);">ink_highlighter</span>
+                <span><strong>Sul foglio:</strong> evidenzia con colori o simboli.</span></li>
+              <li><span class="material-symbols-outlined lim-bullet-icon" style="color: var(--ok-color);">edit_note</span>
+                <span><strong>Sul quaderno:</strong> &ldquo;La macchina deve&hellip;&rdquo; e la scheda I-P-O.</span></li>
+              <li><span class="material-symbols-outlined lim-bullet-icon" style="color: var(--ok-color);">forum</span>
+                <span><strong>Prova &amp; Domande:</strong> numeri, caso limite e almeno una domanda per Marta.</span></li>
+              <li><span class="material-symbols-outlined lim-bullet-icon" style="color: var(--ok-color);">block</span>
+                <span><strong>Niente codice né pseudocodice:</strong> oggi si analizza e basta.</span></li>
+            </ul>
+          </div>
+
+          <div class="lim-box" style="border-left: 5px solid var(--cherry-primary); background: var(--cherry-tint);">
+            <h3 style="color: var(--cherry-primary);">Le 5 richieste (6 minuti l'una)</h3>
+            <ul class="lim-bullet-list">
+              <li><span class="material-symbols-outlined lim-bullet-icon">coffee</span><span><strong>1. Bicchierini Esauriti</strong> &rarr; caccia al rumore</span></li>
+              <li><span class="material-symbols-outlined lim-bullet-icon">toll</span><span><strong>2. La Gettoniera in Centesimi</strong> &rarr; dato nascosto</span></li>
+              <li><span class="material-symbols-outlined lim-bullet-icon">redeem</span><span><strong>3. La Promo d'Autunno</strong> &rarr; parole-trappola</span></li>
+              <li><span class="material-symbols-outlined lim-bullet-icon">notifications</span><span><strong>4. L'Avviso di Rifornimento</strong> &rarr; dati mancanti</span></li>
+              <li><span class="material-symbols-outlined lim-bullet-icon">crisis_alert</span><span><strong>5. La Macchina del 2° Piano</strong> &rarr; tutte insieme!</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="speaker-notes">
+        [43'&ndash;45'] Distribuire il foglio delle richieste (sezione "Foglio dello studente" di comprensione.md). Per
+        ogni richiesta: 5-6 minuti sulla slide del testo, 1-2 minuti di correzione sulla slide annotata. Se il tempo
+        stringe, la Richiesta 5 diventa compito per casa.
+      </div>
+    </section>
+
+    <!-- SLIDE 12: SFIDA 1 - TESTO -->
+    <section class="slide" data-slide="12" data-title="Richiesta 1: Bicchierini Esauriti (Testo)">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">LABORATORIO &bull; RICHIESTA 1 DI 5 &bull; IL TESTO</span>
+          <h2>Richiesta 1: Bicchierini Esauriti</h2>
+        </div>
+
+        <div class="problem-layout">
+          <div class="problem-card">
+            <div class="problem-card-label"><span class="material-symbols-outlined">mail</span>Messaggio del cliente</div>
+            <div class="problem-text">
+              <p>Ciao, sono ancora Marta. Il distributore delle bevande calde del primo piano è un modello vecchiotto,
+                grigio, comprato nel 2019, e il caffè lungo è il preferito della prof di italiano. Ogni bicchierino costa
+                alla scuola 5 centesimi e d'inverno ne usiamo circa 300 a settimana. Il problema è che, quando i
+                bicchierini finiscono, la macchina versa lo stesso il caffè&hellip; direttamente nello scarico! Vorrei
+                che, quando un cliente sceglie una bevanda, la macchina controllasse se c'è ancora almeno un
+                bicchierino: se c'è, prepara la bevanda e i bicchierini diminuiscono di uno; se non c'è, non prepara
+                niente e mostra &ldquo;Bicchieri esauriti&rdquo;. Adesso nel tubo ci sono 40 bicchierini.</p>
+            </div>
+            <div class="legend-mini">
+              <span><span class="sym sym-in">dato</span></span>
+              <span><span class="sym sym-out">richiesta</span></span>
+              <span><span class="sym sym-rule">regola</span></span>
+              <span><span class="sym sym-noise">rumore</span></span>
+              <span><span class="sym-mark">★</span> nascosto</span>
+              <span><span class="sym-mark">?</span> mancante</span>
+            </div>
+          </div>
+
+          <div class="problem-side">
+            <div class="pixel-art-card">
+              <div class="pixel-art-img-wrap" data-file="immagini/bevande_calde.jpeg">
+                <img src="immagini/bevande_calde.jpeg" alt="Distributore di bevande calde con tubo dei bicchierini" class="pixel-art-img">
+              </div>
+              <div class="pixel-art-caption">
+                <span>Bevande Calde &bull; 1° Piano</span>
+                <span class="pixel-tag">BICCHIERINI</span>
+              </div>
+            </div>
+            <div class="task-card">
+              <h3><span class="material-symbols-outlined">assignment</span>La tua consegna</h3>
+              <ol>
+                <li>Evidenzia (colori o simboli).</li>
+                <li>Riformula: &ldquo;La macchina deve&hellip;&rdquo;</li>
+                <li>Scheda I-P-O, prova e domande.</li>
+              </ol>
+              <p class="task-focus">Occhio a: tanti numeri&hellip; quanti servono davvero?</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="speaker-notes">
+        [45'&ndash;51'] Richiesta sul RUMORE: 2019, 5 centesimi e 300 a settimana sono numeri esca. L'unico dato utile è
+        il numero di bicchierini nel tubo.
+      </div>
+    </section>
+
+    <!-- SLIDE 13: SFIDA 1 - ANNOTATA -->
+    <section class="slide" data-slide="13" data-steps="6" data-title="Richiesta 1: Bicchierini Esauriti (Soluzione)">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">RICHIESTA 1 &bull; SOLUZIONE PASSO PASSO</span>
+          <h2>Bicchierini Esauriti: Smontiamo la Richiesta</h2>
+        </div>
+
+        <div class="step-bar" data-last-label="Prova &amp; Domande"></div>
+
+        <div class="annot-layout">
+          <div class="problem-card">
+            <div class="problem-text">
+              <p><span class="hl hl-noise" data-step="1">Ciao, sono ancora Marta. Il distributore delle bevande calde del
+                  primo piano è un modello vecchiotto, grigio, comprato nel 2019, e il caffè lungo è il preferito della
+                  prof di italiano. Ogni bicchierino costa alla scuola 5 centesimi e d'inverno ne usiamo circa 300 a
+                  settimana. Il problema è che, quando i bicchierini finiscono, la macchina versa lo stesso il
+                  caffè&hellip; direttamente nello scarico!</span> Vorrei che, quando un cliente sceglie una bevanda, la
+                macchina controllasse <span class="hl hl-rule" data-step="4">se c'è ancora almeno un
+                  bicchierino</span><span class="hl-tag tag-rule" data-step="4">≥ 1</span>: se c'è, <span
+                  class="hl hl-out" data-step="3">prepara la bevanda e i bicchierini diminuiscono di uno</span>; <span
+                  class="hl hl-rule" data-step="4">se non c'è</span><span class="hl-tag tag-rule" data-step="4">= 0</span>,
+                <span class="hl hl-out" data-step="3">non prepara niente e mostra &ldquo;Bicchieri esauriti&rdquo;</span>.
+                Adesso nel tubo ci sono <span class="hl hl-in" data-step="2">40 bicchierini</span>.</p>
+            </div>
+          </div>
+
+          <div class="ipo-card">
+            <div class="ipo-card-title"><span class="material-symbols-outlined">table_view</span>Scheda I-P-O</div>
+            <div class="ipo-row row-say" data-step="5">
+              <span class="ipo-label">Riformulo</span>
+              <span class="ipo-val"><em>&ldquo;Prima di preparare, la macchina deve controllare che ci sia almeno un bicchierino.&rdquo;</em></span>
+            </div>
+            <div class="ipo-row row-in" data-step="5">
+              <span class="ipo-label">Input</span>
+              <span class="ipo-val">bicchierini nel tubo = <strong>40</strong> &bull; bevanda scelta</span>
+            </div>
+            <div class="ipo-row row-proc" data-step="5">
+              <span class="ipo-label">Elaborazione</span>
+              <span class="ipo-val">&ldquo;almeno uno&rdquo; &rarr; <span class="math">bicchierini ≥ 1</span><br>se sì: i bicchierini scendono di 1</span>
+            </div>
+            <div class="ipo-row row-out" data-step="5">
+              <span class="ipo-label">Output</span>
+              <span class="ipo-val">bevanda + bicchierini aggiornati <strong>oppure</strong> &ldquo;Bicchieri esauriti&rdquo;</span>
+            </div>
+            <div class="ipo-row row-test" data-step="6">
+              <span class="ipo-label">Prova a mano</span>
+              <span class="ipo-val">40 ≥ 1 <strong>VERO</strong> &rarr; bevanda, ne restano 39.<br>
+                Caso limite: 1 bicchierino &rarr; prepara, ne restano 0.</span>
+            </div>
+            <div class="ipo-row row-ask" data-step="6">
+              <span class="ipo-label">Domande</span>
+              <span class="ipo-val">? Se i bicchieri sono esauriti, le <strong>monete inserite</strong> vengono restituite?</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="speaker-notes">
+        Quasi metà del messaggio è rumore, compreso lo sfogo sul caffè nello scarico (utile per capire PERCHÉ Marta lo
+        chiede, inutile per il programma). Ottima occasione per dire: il rumore aiuta a capire il contesto, ma non entra
+        nella scheda.
+      </div>
+    </section>
+
+    <!-- SLIDE 14: SFIDA 2 - TESTO -->
+    <section class="slide" data-slide="14" data-title="Richiesta 2: La Gettoniera in Centesimi (Testo)">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">LABORATORIO &bull; RICHIESTA 2 DI 5 &bull; IL TESTO</span>
+          <h2>Richiesta 2: La Gettoniera in Centesimi</h2>
+        </div>
+
+        <div class="problem-layout">
+          <div class="problem-card">
+            <div class="problem-card-label"><span class="material-symbols-outlined">mail</span>Messaggio del cliente</div>
+            <div class="problem-text">
+              <p>Ciao! Il tecnico della ditta, simpaticissimo, mi ha spiegato che la gettoniera nuova ragiona tutto in
+                centesimi, mentre sul listino i prezzi sono scritti in euro. Le patatine costano 1,20 &euro;. Un cliente
+                inserisce tre monete da 50 centesimi. La macchina deve restituire il resto usando soltanto monete da 10
+                centesimi. Il tecnico ha detto che ripasserà giovedì per controllare. Quante monete da 10 centesimi
+                deve restituire la macchina?</p>
+            </div>
+            <div class="legend-mini">
+              <span><span class="sym sym-in">dato</span></span>
+              <span><span class="sym sym-out">richiesta</span></span>
+              <span><span class="sym sym-rule">regola</span></span>
+              <span><span class="sym sym-noise">rumore</span></span>
+              <span><span class="sym-mark">★</span> nascosto</span>
+              <span><span class="sym-mark">?</span> mancante</span>
+            </div>
+          </div>
+
+          <div class="problem-side">
+            <div class="pixel-art-card">
+              <div class="pixel-art-img-wrap" data-file="immagini/gettoniera.jpeg">
+                <img src="immagini/gettoniera.jpeg" alt="Gettoniera con monete da 50 e 10 centesimi" class="pixel-art-img">
+              </div>
+              <div class="pixel-art-caption">
+                <span>Gettoniera &bull; Tubi del Resto</span>
+                <span class="pixel-tag">MONETE</span>
+              </div>
+            </div>
+            <div class="task-card">
+              <h3><span class="material-symbols-outlined">assignment</span>La tua consegna</h3>
+              <ol>
+                <li>Evidenzia (colori o simboli).</li>
+                <li>Riformula: &ldquo;La macchina deve&hellip;&rdquo;</li>
+                <li>Scheda I-P-O, prova e domande.</li>
+              </ol>
+              <p class="task-focus">Occhio a: euro e centesimi nella stessa frase!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="speaker-notes">
+        [51'&ndash;57'] Richiesta sul DATO NASCOSTO e sull'UNITÀ DI MISURA: 1 &euro; = 100 centesimi non è scritto. Anche il
+        credito (3 &times; 50 = 150 centesimi) va ricavato: il testo non lo dice mai direttamente.
+      </div>
+    </section>
+
+    <!-- SLIDE 15: SFIDA 2 - ANNOTATA -->
+    <section class="slide" data-slide="15" data-steps="6" data-title="Richiesta 2: La Gettoniera in Centesimi (Soluzione)">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">RICHIESTA 2 &bull; SOLUZIONE PASSO PASSO</span>
+          <h2>La Gettoniera in Centesimi: Smontiamo la Richiesta</h2>
+        </div>
+
+        <div class="step-bar" data-last-label="Prova &amp; Domande"></div>
+
+        <div class="annot-layout">
+          <div class="problem-card">
+            <div class="problem-text">
+              <p>Ciao! <span class="hl hl-noise" data-step="1">Il tecnico della ditta, simpaticissimo, mi ha spiegato
+                  che</span> la gettoniera nuova <span class="hl hl-rule" data-step="4">ragiona tutto in
+                  centesimi</span><span class="hl-tag tag-hidden" data-step="2">★ 1 &euro; = 100 cent</span>, mentre sul
+                listino i prezzi sono scritti in euro. Le patatine costano <span class="hl hl-in" data-step="2">1,20
+                  &euro;</span>. Un cliente inserisce <span class="hl hl-in" data-step="2">tre monete da 50
+                  centesimi</span><span class="hl-tag tag-calc" data-step="2">credito = 3 &times; 50</span>. La macchina
+                deve restituire il resto <span class="hl hl-rule" data-step="4">usando soltanto monete da</span> <span
+                  class="hl hl-in" data-step="2">10 centesimi</span>. <span class="hl hl-noise" data-step="1">Il tecnico
+                  ha detto che ripasserà giovedì per controllare.</span> <span class="hl hl-out" data-step="3">Quante
+                  monete da 10 centesimi deve restituire la macchina?</span></p>
+            </div>
+          </div>
+
+          <div class="ipo-card">
+            <div class="ipo-card-title"><span class="material-symbols-outlined">table_view</span>Scheda I-P-O</div>
+            <div class="ipo-row row-say" data-step="5">
+              <span class="ipo-label">Riformulo</span>
+              <span class="ipo-val"><em>&ldquo;La macchina deve calcolare il resto in centesimi e contare le monete da 10.&rdquo;</em></span>
+            </div>
+            <div class="ipo-row row-in" data-step="5">
+              <span class="ipo-label">Input</span>
+              <span class="ipo-val">prezzo = <strong>1,20 &euro;</strong> &bull; monete = <strong>3 da 50 cent</strong><br>
+                taglio del resto = <strong>10 cent</strong> &bull; ★ 1 &euro; = <strong>100 cent</strong></span>
+            </div>
+            <div class="ipo-row row-proc" data-step="5">
+              <span class="ipo-label">Elaborazione</span>
+              <span class="ipo-val">tutto in centesimi: prezzo = 120, credito = 3 &times; 50 = 150<br>
+                resto = credito &minus; prezzo &bull; monete = resto &divide; 10</span>
+            </div>
+            <div class="ipo-row row-out" data-step="5">
+              <span class="ipo-label">Output</span>
+              <span class="ipo-val">numero di monete da 10 centesimi</span>
+            </div>
+            <div class="ipo-row row-test" data-step="6">
+              <span class="ipo-label">Prova a mano</span>
+              <span class="ipo-val">150 &minus; 120 = 30 cent &rarr; 30 &divide; 10 = <strong>3 monete</strong>.<br>
+                Errore tipico: 1,50 &minus; 120 = numero negativo!</span>
+            </div>
+            <div class="ipo-row row-ask" data-step="6">
+              <span class="ipo-label">Domande</span>
+              <span class="ipo-val">? E se il resto non è un multiplo di 10 (prezzo 1,25 &euro;)?</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="speaker-notes">
+        Mescolare euro e centesimi nello stesso calcolo è IL bug classico dei distributori. Regola: si sceglie UNA unità
+        (i centesimi, interi) e si converte tutto subito. Collegamento con i tipi interi e decimali visti nel ripasso.
+      </div>
+    </section>
+
+    <!-- SLIDE 16: SFIDA 3 - TESTO -->
+    <section class="slide" data-slide="16" data-title="Richiesta 3: La Promo d'Autunno (Testo)">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">LABORATORIO &bull; RICHIESTA 3 DI 5 &bull; IL TESTO</span>
+          <h2>Richiesta 3: La Promo d'Autunno</h2>
+        </div>
+
+        <div class="problem-layout">
+          <div class="problem-card">
+            <div class="problem-card-label"><span class="material-symbols-outlined">mail</span>Messaggio del cliente</div>
+            <div class="problem-text">
+              <p>Buongiorno! Per festeggiare l'arrivo dell'autunno (e delle castagne!) lanciamo una promozione. Chi
+                inserisce almeno 3 &euro; di credito riceve uno snack in omaggio; chi inserisce più di 5 &euro; riceve
+                anche una bottiglietta d'acqua gratis. Attenzione: la promozione vale per tutti tranne chi paga con la
+                chiavetta ricaricabile. Che omaggi spettano a un cliente che inserisce esattamente 5 &euro; in
+                monete?</p>
+            </div>
+            <div class="legend-mini">
+              <span><span class="sym sym-in">dato</span></span>
+              <span><span class="sym sym-out">richiesta</span></span>
+              <span><span class="sym sym-rule">regola</span></span>
+              <span><span class="sym sym-noise">rumore</span></span>
+              <span><span class="sym-mark">★</span> nascosto</span>
+              <span><span class="sym-mark">?</span> mancante</span>
+            </div>
+          </div>
+
+          <div class="problem-side">
+            <div class="pixel-art-card">
+              <div class="pixel-art-img-wrap" data-file="immagini/promo.jpeg">
+                <img src="immagini/promo.jpeg" alt="Distributore con cartellone della promozione d'autunno" class="pixel-art-img">
+              </div>
+              <div class="pixel-art-caption">
+                <span>Promo d'Autunno</span>
+                <span class="pixel-tag">OMAGGI</span>
+              </div>
+            </div>
+            <div class="task-card">
+              <h3><span class="material-symbols-outlined">assignment</span>La tua consegna</h3>
+              <ol>
+                <li>Evidenzia (colori o simboli).</li>
+                <li>Riformula: &ldquo;La macchina deve&hellip;&rdquo;</li>
+                <li>Scheda I-P-O, prova e domande.</li>
+              </ol>
+              <p class="task-focus">Occhio a: &ldquo;almeno&rdquo;, &ldquo;più di&rdquo;, &ldquo;tranne&rdquo;. E proprio 5 &euro;?</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="speaker-notes">
+        [57'&ndash;63'] Richiesta sulle PAROLE-TRAPPOLA: con esattamente 5 &euro; scatta lo snack (5 ≥ 3) ma NON l'acqua
+        (5 &gt; 5 è falso). Molti daranno entrambi gli omaggi.
+      </div>
+    </section>
+
+    <!-- SLIDE 17: SFIDA 3 - ANNOTATA -->
+    <section class="slide" data-slide="17" data-steps="6" data-title="Richiesta 3: La Promo d'Autunno (Soluzione)">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">RICHIESTA 3 &bull; SOLUZIONE PASSO PASSO</span>
+          <h2>La Promo d'Autunno: Smontiamo la Richiesta</h2>
+        </div>
+
+        <div class="step-bar" data-last-label="Prova &amp; Domande"></div>
+
+        <div class="annot-layout">
+          <div class="problem-card">
+            <div class="problem-text">
+              <p><span class="hl hl-noise" data-step="1">Buongiorno! Per festeggiare l'arrivo dell'autunno (e delle
+                  castagne!)</span> lanciamo una promozione. Chi inserisce <span class="hl hl-rule"
+                  data-step="4">almeno</span><span class="hl-tag tag-rule" data-step="4">≥</span> <span
+                  class="hl hl-in" data-step="2">3 &euro;</span> di credito riceve <span class="hl hl-out"
+                  data-step="3">uno snack in omaggio</span>; chi inserisce <span class="hl hl-rule" data-step="4">più
+                  di</span><span class="hl-tag tag-rule" data-step="4">&gt;</span> <span class="hl hl-in"
+                  data-step="2">5 &euro;</span> riceve anche <span class="hl hl-out" data-step="3">una bottiglietta
+                  d'acqua gratis</span>. Attenzione: la promozione vale per tutti <span class="hl hl-rule"
+                  data-step="4">tranne chi paga con la chiavetta ricaricabile</span><span class="hl-tag tag-rule"
+                  data-step="4">≠</span>. <span class="hl hl-out" data-step="3">Che omaggi spettano</span> a un cliente
+                che inserisce <span class="hl hl-in" data-step="2">esattamente 5 &euro;</span> <span class="hl hl-in"
+                  data-step="2">in monete</span>?</p>
+            </div>
+          </div>
+
+          <div class="ipo-card">
+            <div class="ipo-card-title"><span class="material-symbols-outlined">table_view</span>Scheda I-P-O</div>
+            <div class="ipo-row row-say" data-step="5">
+              <span class="ipo-label">Riformulo</span>
+              <span class="ipo-val"><em>&ldquo;La macchina deve decidere gli omaggi in base al credito e a come si paga.&rdquo;</em></span>
+            </div>
+            <div class="ipo-row row-in" data-step="5">
+              <span class="ipo-label">Input</span>
+              <span class="ipo-val">credito = <strong>5,00 &euro;</strong> &bull; pagamento = <strong>monete</strong><br>
+                soglie: <strong>3 &euro;</strong> (snack) e <strong>5 &euro;</strong> (acqua)</span>
+            </div>
+            <div class="ipo-row row-proc" data-step="5">
+              <span class="ipo-label">Elaborazione</span>
+              <span class="ipo-val">prima: <span class="math">pagamento ≠ chiavetta</span><br>
+                snack se <span class="math">credito ≥ 3</span> &bull; acqua se <span class="math">credito &gt; 5</span></span>
+            </div>
+            <div class="ipo-row row-out" data-step="5">
+              <span class="ipo-label">Output</span>
+              <span class="ipo-val">nessun omaggio / solo snack / snack + acqua</span>
+            </div>
+            <div class="ipo-row row-test" data-step="6">
+              <span class="ipo-label">Prova a mano</span>
+              <span class="ipo-val">5 ≥ 3 <strong>VERO</strong> &rarr; snack &bull; 5 &gt; 5 <strong>FALSO</strong> &rarr; niente acqua.<br>
+                Risposta: <strong>solo lo snack</strong>. Con la chiavetta: nessun omaggio.</span>
+            </div>
+            <div class="ipo-row row-ask" data-step="6">
+              <span class="ipo-label">Domande</span>
+              <span class="ipo-val">? Vale una volta sola per cliente? Fino a quando dura la promo?</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="speaker-notes">
+        Chiedere: "Marta voleva davvero escludere i 5 &euro; dall'acqua?". Forse no! Anche questa diventa una domanda per il
+        cliente: il caso limite serve anche a scoprire richieste scritte male.
+      </div>
+    </section>
+
+    <!-- SLIDE 18: SFIDA 4 - TESTO -->
+    <section class="slide" data-slide="18" data-title="Richiesta 4: L'Avviso di Rifornimento (Testo)">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">LABORATORIO &bull; RICHIESTA 4 DI 5 &bull; IL TESTO</span>
+          <h2>Richiesta 4: L'Avviso di Rifornimento</h2>
+        </div>
+
+        <div class="problem-layout">
+          <div class="problem-card">
+            <div class="problem-card-label"><span class="material-symbols-outlined">mail</span>Messaggio del cliente</div>
+            <div class="problem-text">
+              <p>Ciao ragazzi, ultima richiesta della settimana, promesso! Ogni spirale della macchina snack contiene al
+                massimo 12 prodotti. Vorrei che la macchina mi mandasse un avviso quando una spirale sta per finire,
+                così il tecnico passa a riempirla prima che i ragazzi restino a bocca asciutta. Il tecnico di solito
+                passa il martedì mattina. Ah, l'avviso deve arrivare anche quando una spirale è proprio vuota.
+                Grazie!</p>
+            </div>
+            <div class="legend-mini">
+              <span><span class="sym sym-in">dato</span></span>
+              <span><span class="sym sym-out">richiesta</span></span>
+              <span><span class="sym sym-rule">regola</span></span>
+              <span><span class="sym sym-noise">rumore</span></span>
+              <span><span class="sym-mark">★</span> nascosto</span>
+              <span><span class="sym-mark">?</span> mancante</span>
+            </div>
+          </div>
+
+          <div class="problem-side">
+            <div class="pixel-art-card">
+              <div class="pixel-art-img-wrap" data-file="immagini/rifornimento.jpeg">
+                <img src="immagini/rifornimento.jpeg" alt="Tecnico che riempie le spirali del distributore" class="pixel-art-img">
+              </div>
+              <div class="pixel-art-caption">
+                <span>Spirali &bull; Magazzino Snack</span>
+                <span class="pixel-tag">RIFORNIMENTO</span>
+              </div>
+            </div>
+            <div class="task-card">
+              <h3><span class="material-symbols-outlined">assignment</span>La tua consegna</h3>
+              <ol>
+                <li>Evidenzia (colori o simboli).</li>
+                <li>Riformula: &ldquo;La macchina deve&hellip;&rdquo;</li>
+                <li>Scheda I-P-O, prova e domande.</li>
+              </ol>
+              <p class="task-focus">Occhio a: potresti programmarla davvero domani? Cosa ti manca?</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="speaker-notes">
+        [63'&ndash;69'] Richiesta sui DATI MANCANTI: "sta per finire" non è un numero; non si sa come arriva l'avviso né a
+        chi. Premiare chi scrive più domande precise, non chi si inventa una soglia.
+      </div>
+    </section>
+
+    <!-- SLIDE 19: SFIDA 4 - ANNOTATA -->
+    <section class="slide" data-slide="19" data-steps="6" data-title="Richiesta 4: L'Avviso di Rifornimento (Soluzione)">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">RICHIESTA 4 &bull; SOLUZIONE PASSO PASSO</span>
+          <h2>L'Avviso di Rifornimento: Smontiamo la Richiesta</h2>
+        </div>
+
+        <div class="step-bar" data-last-label="Prova &amp; Domande"></div>
+
+        <div class="annot-layout">
+          <div class="problem-card">
+            <div class="problem-text">
+              <p><span class="hl hl-noise" data-step="1">Ciao ragazzi, ultima richiesta della settimana, promesso!</span>
+                Ogni spirale della macchina snack contiene <span class="hl hl-rule" data-step="4">al
+                  massimo</span><span class="hl-tag tag-rule" data-step="4">≤</span> <span class="hl hl-in"
+                  data-step="2">12 prodotti</span>. Vorrei che la macchina mi mandasse <span class="hl hl-out"
+                  data-step="3">un avviso</span><span class="hl-tag tag-miss" data-step="2">? come e a chi</span>
+                <span class="hl hl-rule" data-step="4">quando una spirale sta per finire</span><span
+                  class="hl-tag tag-miss" data-step="2">? quanti pezzi</span>, <span class="hl hl-noise"
+                  data-step="1">così il tecnico passa a riempirla prima che i ragazzi restino a bocca asciutta. Il
+                  tecnico di solito passa il martedì mattina.</span> Ah, l'avviso deve arrivare <span class="hl hl-rule"
+                  data-step="4">anche quando una spirale è proprio vuota</span><span class="hl-tag tag-rule"
+                  data-step="4">= 0</span>. <span class="hl hl-noise" data-step="1">Grazie!</span></p>
+            </div>
+          </div>
+
+          <div class="ipo-card">
+            <div class="ipo-card-title"><span class="material-symbols-outlined">table_view</span>Scheda I-P-O</div>
+            <div class="ipo-row row-say" data-step="5">
+              <span class="ipo-label">Riformulo</span>
+              <span class="ipo-val"><em>&ldquo;La macchina deve avvisare quando i prodotti di una spirale scendono a una certa soglia.&rdquo;</em></span>
+            </div>
+            <div class="ipo-row row-in" data-step="5">
+              <span class="ipo-label">Input</span>
+              <span class="ipo-val">prodotti in ogni spirale &bull; capienza = <strong>12</strong><br>soglia = <strong>? MANCA</strong></span>
+            </div>
+            <div class="ipo-row row-proc" data-step="5">
+              <span class="ipo-label">Elaborazione</span>
+              <span class="ipo-val">per ogni spirale: <span class="math">prodotti ≤ soglia</span> &rarr; avviso<br>
+                (la spirale vuota, 0, è già compresa)</span>
+            </div>
+            <div class="ipo-row row-out" data-step="5">
+              <span class="ipo-label">Output</span>
+              <span class="ipo-val">avviso al gestore con la spirale da riempire</span>
+            </div>
+            <div class="ipo-row row-test" data-step="6">
+              <span class="ipo-label">Prova a mano</span>
+              <span class="ipo-val">Impossibile senza soglia! Se fosse 3: spirale con 3 &rarr; 3 ≤ 3 &rarr; avviso.</span>
+            </div>
+            <div class="ipo-row row-ask" data-step="6">
+              <span class="ipo-label">Domande</span>
+              <span class="ipo-val">? Quanti pezzi = &ldquo;sta per finire&rdquo;?<br>? Avviso via email, SMS o display?
+                Un avviso per spirale o uno riassuntivo?</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="speaker-notes">
+        La capienza (12) qui non serve per l'avviso, ma servirà al tecnico per sapere quanti prodotti caricare:
+        discutere se sia rumore o dato utile "per dopo". Non c'è una risposta unica: conta la motivazione.
+      </div>
+    </section>
+
+    <!-- SLIDE 20: SFIDA 5 - TESTO -->
+    <section class="slide" data-slide="20" data-title="Richiesta 5: La Macchina del 2° Piano (Testo)">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">LABORATORIO &bull; RICHIESTA 5 DI 5 &bull; IL TESTO</span>
+          <h2>Richiesta Finale: La Macchina del Secondo Piano</h2>
+        </div>
+
+        <div class="problem-layout">
+          <div class="problem-card">
+            <div class="problem-card-label"><span class="material-symbols-outlined">mail</span>Messaggio del cliente</div>
+            <div class="problem-text" style="font-size: 1.05rem; line-height: 1.75;">
+              <p>Ciao a tutti! Dopo la riunione di ieri con il preside (due ore, che fatica!) abbiamo deciso: dalla
+                prossima settimana la macchina snack del secondo piano accetterà solo monete da 50 centesimi, 1 &euro; e
+                2 &euro;. Il cliente inserisce le monete e digita il codice dello snack. Se lo snack è esaurito, la
+                macchina restituisce tutte le monete inserite. Se invece è disponibile e il credito basta, eroga lo
+                snack e dà il resto. Se il credito non basta, aspetta altre monete. Esempio: un cliente inserisce una
+                moneta da 1 &euro; e una da 50 centesimi e digita B2, i cracker, che costano 1,30 &euro;. Nella spirale
+                B2 ne restano 4.</p>
+            </div>
+            <div class="legend-mini">
+              <span><span class="sym sym-in">dato</span></span>
+              <span><span class="sym sym-out">richiesta</span></span>
+              <span><span class="sym sym-rule">regola</span></span>
+              <span><span class="sym sym-noise">rumore</span></span>
+              <span><span class="sym-mark">★</span> nascosto</span>
+              <span><span class="sym-mark">?</span> mancante</span>
+            </div>
+          </div>
+
+          <div class="problem-side">
+            <div class="pixel-art-card">
+              <div class="pixel-art-img-wrap" data-file="immagini/secondo_piano.jpeg">
+                <img src="immagini/secondo_piano.jpeg" alt="Distributore snack del secondo piano con codice B2" class="pixel-art-img">
+              </div>
+              <div class="pixel-art-caption">
+                <span>Snack &bull; 2° Piano &bull; B2</span>
+                <span class="pixel-tag">TUTTO INSIEME</span>
+              </div>
+            </div>
+            <div class="task-card">
+              <h3><span class="material-symbols-outlined">assignment</span>La tua consegna</h3>
+              <ol>
+                <li>Evidenzia (colori o simboli).</li>
+                <li>Riformula: &ldquo;La macchina deve&hellip;&rdquo;</li>
+                <li>Scheda I-P-O, prova e almeno 2 domande.</li>
+              </ol>
+              <p class="task-focus">Occhio a: tre strade diverse e tutte le trappole!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="speaker-notes">
+        [69'&ndash;77'] Richiesta riassuntiva con 3 scenari (rimborso, erogazione con resto, attesa). Se il tempo è finito,
+        assegnarla per casa: sarà il punto di partenza della prossima lezione sul Vending Machine Manager.
+      </div>
+    </section>
+
+    <!-- SLIDE 21: SFIDA 5 - ANNOTATA -->
+    <section class="slide" data-slide="21" data-steps="6" data-title="Richiesta 5: La Macchina del 2° Piano (Soluzione)">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">RICHIESTA 5 &bull; SOLUZIONE PASSO PASSO</span>
+          <h2>La Macchina del Secondo Piano: Smontiamo la Richiesta</h2>
+        </div>
+
+        <div class="step-bar" data-last-label="Prova &amp; Domande"></div>
+
+        <div class="annot-layout">
+          <div class="problem-card">
+            <div class="problem-text" style="font-size: 0.98rem; line-height: 1.75;">
+              <p><span class="hl hl-noise" data-step="1">Ciao a tutti! Dopo la riunione di ieri con il preside (due ore,
+                  che fatica!) abbiamo deciso: dalla prossima settimana</span> la macchina snack <span
+                  class="hl hl-noise" data-step="1">del secondo piano</span> <span class="hl hl-rule"
+                  data-step="4">accetterà solo monete da 50 centesimi, 1 &euro; e 2 &euro;</span>. Il cliente inserisce le
+                monete e digita il codice dello snack. <span class="hl hl-rule" data-step="4">Se lo snack è
+                  esaurito</span><span class="hl-tag tag-rule" data-step="4">= 0</span>, la macchina <span
+                  class="hl hl-out" data-step="3">restituisce tutte le monete inserite</span>. <span class="hl hl-rule"
+                  data-step="4">Se invece è disponibile e il credito basta</span><span class="hl-tag tag-rule"
+                  data-step="4">≥</span>, <span class="hl hl-out" data-step="3">eroga lo snack e dà il resto</span>.
+                <span class="hl hl-rule" data-step="4">Se il credito non basta</span><span class="hl-tag tag-rule"
+                  data-step="4">&lt;</span>, <span class="hl hl-out" data-step="3">aspetta altre monete</span><span
+                  class="hl-tag tag-miss" data-step="2">? quanto</span>. Esempio: un cliente inserisce <span
+                  class="hl hl-in" data-step="2">una moneta da 1 &euro; e una da 50 centesimi</span><span
+                  class="hl-tag tag-hidden" data-step="2">★ credito 1,50 &euro;</span> e digita <span class="hl hl-in"
+                  data-step="2">B2</span>, <span class="hl hl-noise" data-step="1">i cracker,</span> che costano <span
+                  class="hl hl-in" data-step="2">1,30 &euro;</span>. Nella spirale B2 ne restano <span class="hl hl-in"
+                  data-step="2">4</span>.</p>
+            </div>
+          </div>
+
+          <div class="ipo-card">
+            <div class="ipo-card-title"><span class="material-symbols-outlined">table_view</span>Scheda I-P-O</div>
+            <div class="ipo-row row-say" data-step="5">
+              <span class="ipo-label">Riformulo</span>
+              <span class="ipo-val"><em>&ldquo;La macchina deve scegliere tra 3 strade: rimborso, snack con resto, attesa.&rdquo;</em></span>
+            </div>
+            <div class="ipo-row row-in" data-step="5">
+              <span class="ipo-label">Input</span>
+              <span class="ipo-val">★ credito = 1 + 0,50 = <strong>1,50 &euro;</strong> &bull; codice = <strong>B2</strong><br>
+                prezzo B2 = <strong>1,30 &euro;</strong> &bull; quantità B2 = <strong>4</strong></span>
+            </div>
+            <div class="ipo-row row-proc" data-step="5">
+              <span class="ipo-label">Elaborazione</span>
+              <span class="ipo-val">1. <span class="math">quantità = 0</span> &rarr; rimborso<br>
+                2. <span class="math">credito ≥ prezzo</span> &rarr; snack + resto (credito &minus; prezzo)<br>
+                3. altrimenti &rarr; attesa</span>
+            </div>
+            <div class="ipo-row row-out" data-step="5">
+              <span class="ipo-label">Output</span>
+              <span class="ipo-val">rimborso / snack + resto / attesa di altre monete</span>
+            </div>
+            <div class="ipo-row row-test" data-step="6">
+              <span class="ipo-label">Prova a mano</span>
+              <span class="ipo-val">4 ≠ 0 &rarr; disponibile &bull; 1,50 ≥ 1,30 <strong>VERO</strong> &rarr; snack + resto <strong>0,20 &euro;</strong></span>
+            </div>
+            <div class="ipo-row row-ask" data-step="6">
+              <span class="ipo-label">Domande</span>
+              <span class="ipo-val">? Per quanto tempo aspetta? &bull; ? Una moneta da 20 cent viene rifiutata o tenuta?<br>
+                ? E se in cassa non ci sono monete per il resto?</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="speaker-notes">
+        L'ordine dei controlli conta: prima si guarda se lo snack c'è, poi il credito. Chiedere: "Cosa succede se
+        invertiamo l'ordine e lo snack è esaurito ma il credito basta?". Le domande per Marta sono la parte più
+        importante: raccoglierle alla lavagna.
+      </div>
+    </section>
+
+    <!-- SLIDE 22: ERRORI TIPICI & CHECKLIST -->
+    <section class="slide" data-slide="22" data-title="Errori Tipici e Checklist dell'Analista">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">RIEPILOGO</span>
+          <h2>Errori Tipici e Checklist dell'Analista</h2>
+          <p class="section-lead">Prima di dire &ldquo;ho capito cosa vuole il cliente&rdquo;, controlla con il compagno.</p>
+        </div>
+
+        <div class="lim-two-boxes">
+          <div class="lim-box" style="border-left: 5px solid var(--cherry-primary);">
+            <h3 style="color: var(--cherry-primary);">Gli errori più comuni</h3>
+            <ul class="check-list error-list">
+              <li><span class="material-symbols-outlined">close</span><span>Usare tutti i numeri del messaggio (anche il 2019).</span></li>
+              <li><span class="material-symbols-outlined">close</span><span>Mescolare euro e centesimi nello stesso calcolo.</span></li>
+              <li><span class="material-symbols-outlined">close</span><span>Leggere &ldquo;almeno&rdquo; come &ldquo;più di&rdquo; (e viceversa).</span></li>
+              <li><span class="material-symbols-outlined">close</span><span>Inventare la soglia invece di chiederla.</span></li>
+              <li><span class="material-symbols-outlined">close</span><span>Dimenticare i casi che il cliente non ha scritto.</span></li>
+            </ul>
+          </div>
+
+          <div class="lim-box" style="border-left: 5px solid var(--ok-color);">
+            <h3 style="color: var(--ok-color);">La checklist</h3>
+            <ul class="check-list">
+              <li><span class="material-symbols-outlined">check_box</span><span>Ho letto la richiesta <strong>due volte</strong>?</span></li>
+              <li><span class="material-symbols-outlined">check_box</span><span>Ho <strong>barrato</strong> il rumore?</span></li>
+              <li><span class="material-symbols-outlined">check_box</span><span>Ogni dato ha <strong>nome, valore e unità</strong>?</span></li>
+              <li><span class="material-symbols-outlined">check_box</span><span>Ho tradotto le regole in <strong>confronti</strong>?</span></li>
+              <li><span class="material-symbols-outlined">check_box</span><span>Ho provato il <strong>caso limite</strong>?</span></li>
+              <li><span class="material-symbols-outlined">check_box</span><span>Ho scritto le <strong>domande per il cliente</strong>?</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="speaker-notes">
+        [77'&ndash;82'] Questa checklist diventa il "controllo qualità" di ogni nuova funzione del Vending Machine Manager
+        per il resto dell'anno.
+      </div>
+    </section>
+
+    <!-- SLIDE 23: BIGLIETTO D'USCITA - TESTO -->
+    <section class="slide" data-slide="23" data-title="Biglietto d'Uscita: La Spia del Frigo (Testo)">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">BIGLIETTO D'USCITA &bull; 3 MINUTI &bull; DA SOLI</span>
+          <h2>Ultima Prova: La Spia del Frigo</h2>
+        </div>
+
+        <div class="problem-layout">
+          <div class="problem-card">
+            <div class="problem-card-label"><span class="material-symbols-outlined">mail</span>Messaggio del cliente</div>
+            <div class="problem-text" style="font-size: 1.3rem;">
+              <p>Il frigorifero della macchina delle bibite deve accendere la spia di manutenzione se la temperatura
+                interna supera gli 8 gradi. Il frigorifero è stato pulito martedì dal tecnico. In questo momento il
+                termometro segna 8 gradi. La spia si accende?</p>
+            </div>
+            <div class="legend-mini">
+              <span><span class="sym sym-in">dato</span></span>
+              <span><span class="sym sym-out">richiesta</span></span>
+              <span><span class="sym sym-rule">regola</span></span>
+              <span><span class="sym sym-noise">rumore</span></span>
+              <span><span class="sym-mark">★</span> nascosto</span>
+              <span><span class="sym-mark">?</span> mancante</span>
+            </div>
+          </div>
+
+          <div class="problem-side">
+            <div class="pixel-art-card">
+              <div class="pixel-art-img-wrap" data-file="immagini/frigo.jpeg">
+                <img src="immagini/frigo.jpeg" alt="Distributore di bibite refrigerato con termometro e spia" class="pixel-art-img">
+              </div>
+              <div class="pixel-art-caption">
+                <span>Frigo Bibite &bull; Spia</span>
+                <span class="pixel-tag">MANUTENZIONE</span>
+              </div>
+            </div>
+            <div class="task-card">
+              <h3><span class="material-symbols-outlined">confirmation_number</span>Su un foglietto</h3>
+              <ol>
+                <li>Riscrivi i dati con nome, valore e unità.</li>
+                <li>Scrivi la regola come confronto.</li>
+                <li>Rispondi con la prova a mano.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="speaker-notes">
+        [82'&ndash;87'] Lavoro individuale, 3 minuti, su un foglietto da consegnare uscendo. È un caso limite puro: chi
+        risponde "sì" ha letto "supera" come "arriva a".
+      </div>
+    </section>
+
+    <!-- SLIDE 24: BIGLIETTO D'USCITA - ANNOTATO -->
+    <section class="slide" data-slide="24" data-steps="6" data-title="Biglietto d'Uscita: La Spia del Frigo (Soluzione)">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">BIGLIETTO D'USCITA &bull; SOLUZIONE</span>
+          <h2>La Spia del Frigo: Smontiamo la Richiesta</h2>
+        </div>
+
+        <div class="step-bar" data-last-label="Prova &amp; Domande"></div>
+
+        <div class="annot-layout">
+          <div class="problem-card">
+            <div class="problem-text" style="font-size: 1.25rem;">
+              <p>Il frigorifero della macchina delle bibite deve <span class="hl hl-out" data-step="3">accendere la spia
+                  di manutenzione</span> <span class="hl hl-rule" data-step="4">se la temperatura interna
+                  supera</span><span class="hl-tag tag-rule" data-step="4">&gt;</span> gli <span class="hl hl-in"
+                  data-step="2">8 gradi</span>. <span class="hl hl-noise" data-step="1">Il frigorifero è stato pulito
+                  martedì dal tecnico.</span> In questo momento il termometro segna <span class="hl hl-in"
+                  data-step="2">8 gradi</span>. <span class="hl hl-out" data-step="3">La spia si accende?</span></p>
+            </div>
+          </div>
+
+          <div class="ipo-card">
+            <div class="ipo-card-title"><span class="material-symbols-outlined">table_view</span>Scheda I-P-O</div>
+            <div class="ipo-row row-say" data-step="5">
+              <span class="ipo-label">Riformulo</span>
+              <span class="ipo-val"><em>&ldquo;La macchina deve accendere la spia solo se fa più caldo di 8 gradi.&rdquo;</em></span>
+            </div>
+            <div class="ipo-row row-in" data-step="5">
+              <span class="ipo-label">Input</span>
+              <span class="ipo-val">temperatura = <strong>8 &deg;C</strong> &bull; soglia = <strong>8 &deg;C</strong></span>
+            </div>
+            <div class="ipo-row row-proc" data-step="5">
+              <span class="ipo-label">Elaborazione</span>
+              <span class="ipo-val">&ldquo;supera&rdquo; &rarr; <span class="math">temperatura &gt; 8</span></span>
+            </div>
+            <div class="ipo-row row-out" data-step="5">
+              <span class="ipo-label">Output</span>
+              <span class="ipo-val">spia accesa <strong>oppure</strong> spia spenta</span>
+            </div>
+            <div class="ipo-row row-test" data-step="6">
+              <span class="ipo-label">Prova a mano</span>
+              <span class="ipo-val">8 &gt; 8 <strong>FALSO</strong> &rarr; la spia resta <strong>spenta</strong>.</span>
+            </div>
+            <div class="ipo-row row-ask" data-step="6">
+              <span class="ipo-label">Domande</span>
+              <span class="ipo-val">? Con 8 gradi esatti Marta vuole davvero la spia spenta?</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="speaker-notes">
+        [87'&ndash;90'] Correggere dopo aver ritirato i foglietti. Chiusura: "Da oggi ogni nuova funzione del distributore
+        parte da una richiesta scritta di Marta, e voi la analizzerete così".
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Barra Inferiore di Navigazione -->
+  <footer class="m3-bottom-bar">
+    <div class="bottom-bar-left">
+      <button id="btnPrev" class="m3-btn m3-btn-outlined" title="Indietro (&larr;)">
+        <span class="material-symbols-outlined">arrow_back</span>
+        <span>Indietro</span>
+      </button>
+      <button id="btnNext" class="m3-btn m3-btn-filled" title="Avanti (&rarr; / Spazio)">
+        <span>Avanti</span>
+        <span class="material-symbols-outlined">arrow_forward</span>
+      </button>
+    </div>
+
+    <div class="bottom-bar-center">
+      <div class="m3-counter-display">
+        Slide <span id="currentSlideNum">1</span> / <span id="totalSlidesNum">24</span>
+      </div>
+    </div>
+
+    <div class="bottom-bar-right">
+      <span class="shortcut-tip"><kbd>&rarr;</kbd> passo/slide &bull; <kbd>A</kbd> tutto &bull; <kbd>Z</kbd> azzera
+        &bull; <kbd>O</kbd> indice &bull; <kbd>N</kbd> note &bull; <kbd>P</kbd> PDF</span>
+    </div>
+  </footer>
+
+  <!-- Modale Panoramica (Indice delle Slide) -->
+  <div id="overviewModal" class="m3-modal-backdrop hidden">
+    <div class="m3-dialog">
+      <div class="dialog-header">
+        <div class="dialog-title-group">
+          <span class="material-symbols-outlined">grid_view</span>
+          <h3>Indice delle Diapositive</h3>
+        </div>
+        <div class="dialog-actions">
+          <button id="btnModalExportPdf" class="m3-btn m3-btn-outlined m3-btn-sm" title="Esporta tutte le slide in PDF">
+            <span class="material-symbols-outlined">picture_as_pdf</span>
+            <span>Esporta in PDF</span>
+          </button>
+          <button id="btnCloseOverview" class="m3-icon-button" title="Chiudi">
+            <span class="material-symbols-outlined">close</span>
+          </button>
+        </div>
+      </div>
+      <div id="overviewGrid" class="overview-grid">
+        <!-- Generato dinamicamente da app.js -->
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
