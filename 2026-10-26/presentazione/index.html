@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ciao Python! Variabili e print() | Corso di Programmazione 2 - Piazza dei Mestieri</title>
+
+  <!-- Tipografia: Outfit (Testo) & Bricolage Grotesque (Titoli e Accenti) & Roboto Mono (Codice) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Outfit:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Google Material Symbols Outlined -->
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="m3-paper" data-course="Corso di Programmazione 2">
+
+  <!-- Progress Bar Superiore -->
+  <div class="m3-progress-container">
+    <div id="progressBar" class="m3-progress-bar"></div>
+  </div>
+
+  <!-- Barra Superiore Istituzionale -->
+  <header class="m3-top-app-bar">
+    <div class="app-bar-leading">
+      <span class="material-symbols-outlined icon-main">storefront</span>
+      <div class="app-bar-title-group">
+        <span class="app-bar-title">Corso di Programmazione 2</span>
+        <span class="app-bar-subtitle">Operatore Informatico &bull; Ciao Python! Variabili e print() &bull; Vending
+          Machine Manager &bull; Piazza dei Mestieri</span>
+      </div>
+    </div>
+
+    <div class="app-bar-actions">
+      <button id="btnOverview" class="m3-icon-button" title="Indice delle slide (O)">
+        <span class="material-symbols-outlined">grid_view</span>
+      </button>
+      <button id="btnNotes" class="m3-icon-button" title="Note Docente (N)">
+        <span class="material-symbols-outlined">notes</span>
+      </button>
+      <button id="btnExportPdf" class="m3-icon-button" title="Esporta slide in PDF (P)">
+        <span class="material-symbols-outlined">picture_as_pdf</span>
+      </button>
+      <button id="btnFullscreen" class="m3-icon-button" title="Schermo intero (F)">
+        <span class="material-symbols-outlined">fullscreen</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Slide Deck Main Container -->
+  <main class="deck-container">
+
+    <!-- SLIDE 1: COPERTINA: CIAO PYTHON! -->
+    <section class="slide active" data-slide="1" data-title="Copertina: Ciao Python!">
+      <div class="slide-content">
+        <div class="cover-grid">
+          <div>
+            <div class="cover-pill">
+              <span class="material-symbols-outlined" style="font-size: 18px;">terminal</span>
+              <span>PROGRAMMAZIONE 2 &bull; SECONDA ANNUALITÀ</span>
+            </div>
+            <h1 class="main-title">
+              Ciao <span class="cherry-text">Python</span>!<br>Variabili e print()
+            </h1>
+            <p class="main-lead">
+              L'anno scorso il distributore parlava C++. Da oggi gli insegniamo una lingua nuova, più corta e più
+              leggibile: vediamo cosa cambia, come si creano le variabili e come far parlare la macchina con
+              <code class="mono">print()</code>.
+            </p>
+
+            <div class="cover-specs-row">
+              <div class="spec-cell">
+                <span class="spec-label">LEZIONE</span>
+                <span class="spec-value">26 Ottobre 2026</span>
+              </div>
+              <div class="spec-cell">
+                <span class="spec-label">DOCENTE</span>
+                <span class="spec-value">Daniele Cerrina</span>
+              </div>
+              <div class="spec-cell">
+                <span class="spec-label">PROGETTO ANNUALE</span>
+                <span class="spec-value cherry">Vending Machine Manager</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="stack">
+            <div class="code-box"><div class="code-box-header"><div class="code-box-dots"><span></span><span></span><span></span></div><span class="code-box-title">vending.py</span><span class="code-box-lang py">PYTHON</span></div><div class="code-body big"><span class="c-com"># Il primo programma del distributore</span>
+nome = <span class="c-str">&quot;Vending Machine Manager&quot;</span>
+versione = <span class="c-num">1</span>
+<span class="c-fn">print</span>(<span class="c-str">&quot;Ciao, sono&quot;</span>, nome)
+<span class="c-fn">print</span>(<span class="c-str">&quot;Versione:&quot;</span>, versione)</div></div>
+            <div class="terminal"><div class="terminal-header"><span class="material-symbols-outlined">terminal</span>TERMINALE</div><div class="terminal-body"><span class="prompt">$</span> python vending.py
+Ciao, sono Vending Machine Manager
+Versione: 1</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="speaker-notes">
+        [0'&ndash;3'] Benvenuti nel secondo tempo dell'anno: fino a oggi abbiamo ragionato su carta (analisi, I-P-O, Flow Chart). Da oggi il Vending Machine Manager diventa codice vero, in Python. Chi ha fatto C++ l'anno scorso non butta via niente: le idee (variabili, tipi, condizioni, cicli) sono le stesse, cambia il modo di scriverle.
+      </div>
+    </section>
+    <!-- SLIDE 2: STESSO SALUTO, MENO RIGHE -->
+    <section class="slide" data-slide="2" data-title="Stesso Saluto, Meno Righe">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">DA C++ A PYTHON</span>
+          <h2>Stesso Saluto, Meno Righe</h2>
+          <p class="section-lead">Lo stesso identico programma: il distributore saluta il cliente. Contate le righe.</p>
+        </div>
+
+        <div class="vs-grid">
+          <div>
+            <span class="count-pill"><span class="material-symbols-outlined" style="font-size:18px;">code</span>C++ &bull; 7 righe</span>
+            <div class="code-box"><div class="code-box-header"><div class="code-box-dots"><span></span><span></span><span></span></div><span class="code-box-title">benvenuto.cpp</span><span class="code-box-lang">C++</span></div><div class="code-body"><span class="c-pre">#include &lt;iostream&gt;</span>
+<span class="c-kw">using</span> <span class="c-kw">namespace</span> std;
+
+<span class="c-kw">int</span> <span class="c-fn">main</span>() {
+    <span class="c-fn">cout</span> &lt;&lt; <span class="c-str">&quot;Benvenuto al distributore!&quot;</span> &lt;&lt; <span class="c-fn">endl</span>;
+    <span class="c-kw">return</span> <span class="c-num">0</span>;
+}</div></div>
+          </div>
+          <div class="vs-arrow">
+            <span class="material-symbols-outlined">arrow_forward</span>
+            <span>DIVENTA</span>
+          </div>
+          <div>
+            <span class="count-pill py"><span class="material-symbols-outlined" style="font-size:18px;">bolt</span>Python &bull; 1 riga</span>
+            <div class="code-box"><div class="code-box-header"><div class="code-box-dots"><span></span><span></span><span></span></div><span class="code-box-title">benvenuto.py</span><span class="code-box-lang py">PYTHON</span></div><div class="code-body big"><span class="c-fn">print</span>(<span class="c-str">&quot;Benvenuto al distributore!&quot;</span>)</div></div>
+            <div class="terminal"><div class="terminal-header"><span class="material-symbols-outlined">terminal</span>TERMINALE</div><div class="terminal-body"><span class="prompt">$</span> python benvenuto.py
+Benvenuto al distributore!</div></div>
+          </div>
+        </div>
+
+        <div class="lim-banner-big">
+          Niente <strong>#include</strong>, niente <strong>main()</strong>, niente <strong>;</strong> e niente
+          <strong>{ }</strong>. Python va dritto al punto: scrivi cosa vuoi che succeda.
+        </div>
+      </div>
+      <div class="speaker-notes">
+        [3'&ndash;6'] Mostrare a sinistra il programma C++ che conoscono e chiedere: quali righe servono davvero a salutare? Una sola (il cout). Tutto il resto è 'burocrazia' del linguaggio. In Python resta solo la riga utile. Non dire che il C++ è peggio: è più veloce e controlla di più, per questo si usa in giochi e macchine. Python è più comodo per imparare e per scrivere in fretta.
+      </div>
+    </section>
+    <!-- SLIDE 3: COMPILATO O INTERPRETATO? -->
+    <section class="slide" data-slide="3" data-title="Compilato o Interpretato?">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">COME VIENE ESEGUITO</span>
+          <h2>Compilato o Interpretato?</h2>
+          <p class="section-lead">Il computer capisce solo numeri. Qualcuno deve tradurre il nostro codice: ma come?</p>
+        </div>
+
+        <div class="lim-two-boxes">
+          <div class="lim-box">
+            <h3>C++ &rarr; si <span class="cherry-text">compila</span></h3>
+            <div class="pipe-row">
+              <span class="pipe-step"><span class="material-symbols-outlined">description</span>vending.cpp</span>
+              <span class="pipe-arrow"><span class="material-symbols-outlined">arrow_forward</span></span>
+              <span class="pipe-step hot"><span class="material-symbols-outlined">build</span>compilatore</span>
+              <span class="pipe-arrow"><span class="material-symbols-outlined">arrow_forward</span></span>
+              <span class="pipe-step"><span class="material-symbols-outlined">memory</span>vending.exe</span>
+            </div>
+            <p class="pipe-note">Come un <strong>libro tradotto</strong>: prima si traduce tutto, poi si legge.
+              Se c'è un errore anche all'ultima riga, il programma <strong>non parte</strong>.</p>
+          </div>
+          <div class="lim-box" style="border-color: var(--cherry-primary);">
+            <h3>Python &rarr; si <span class="cherry-text">interpreta</span></h3>
+            <div class="pipe-row">
+              <span class="pipe-step"><span class="material-symbols-outlined">description</span>vending.py</span>
+              <span class="pipe-arrow"><span class="material-symbols-outlined">arrow_forward</span></span>
+              <span class="pipe-step hot"><span class="material-symbols-outlined">record_voice_over</span>interprete</span>
+              <span class="pipe-arrow"><span class="material-symbols-outlined">arrow_forward</span></span>
+              <span class="pipe-step"><span class="material-symbols-outlined">play_arrow</span>esecuzione</span>
+            </div>
+            <p class="pipe-note">Come un <strong>interprete simultaneo</strong>: traduce ed esegue una riga alla volta.
+              Le righe giuste partono, e si ferma <strong>alla prima riga sbagliata</strong>.</p>
+          </div>
+        </div>
+
+        <div class="lim-banner-big">
+          Conseguenza pratica: in Python niente <strong>.exe</strong>. Lanciamo direttamente il file
+          <strong>.py</strong> con il comando <strong>python nome_file.py</strong>.
+        </div>
+      </div>
+      <div class="speaker-notes">
+        [6'&ndash;9'] Analogia del libro tradotto contro l'interprete alla riunione. Semplificazione onesta: Python in realtà fa anche lui una piccola traduzione interna, ma per noi conta che il file .py si esegue direttamente. Far notare che in Python un errore alla riga 10 non impedisce alle righe 1-9 di essere eseguite: utile per capire gli errori più avanti.
+      </div>
+    </section>
+    <!-- SLIDE 4: DOVE SCRIVIAMO: VS CODE -->
+    <section class="slide" data-slide="4" data-title="Dove Scriviamo: VS Code">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">IL LABORATORIO</span>
+          <h2>Dove Scriviamo: VS Code</h2>
+          <p class="section-lead">Lo stesso editor dell'anno scorso, con un'estensione in più.</p>
+        </div>
+
+        <div class="grid-4">
+          <div class="concept-card">
+            <h3><span class="material-symbols-outlined">extension</span>1. Estensione</h3>
+            <p>In VS Code installiamo l'estensione <strong>Python</strong> (quella di Microsoft).</p>
+          </div>
+          <div class="concept-card">
+            <h3><span class="material-symbols-outlined">create_new_folder</span>2. Cartella</h3>
+            <p>Creiamo la cartella <strong>python_vending</strong> e la apriamo con <em>File &rarr; Apri cartella</em>.</p>
+          </div>
+          <div class="concept-card">
+            <h3><span class="material-symbols-outlined">note_add</span>3. File .py</h3>
+            <p>Nuovo file: <strong>benvenuto.py</strong>. L'estensione <strong>.py</strong> è obbligatoria.</p>
+          </div>
+          <div class="concept-card">
+            <h3><span class="material-symbols-outlined">play_circle</span>4. Esegui</h3>
+            <p>Triangolino &#9654; in alto a destra, oppure dal terminale il comando qui sotto.</p>
+          </div>
+        </div>
+
+        <div class="grid-2" style="margin-top: 18px;">
+          <div class="terminal"><div class="terminal-header"><span class="material-symbols-outlined">terminal</span>TERMINALE</div><div class="terminal-body"><span class="prompt">$</span> python benvenuto.py
+Benvenuto al distributore!</div></div>
+          <div class="sol-tip">
+            <strong>Se non funziona:</strong> su alcuni PC il comando è <strong>python3</strong> invece di
+            <strong>python</strong>. Controllate la versione con <strong>python --version</strong>: deve iniziare con
+            <strong>3</strong>.
+          </div>
+        </div>
+      </div>
+      <div class="speaker-notes">
+        [9'&ndash;14'] Far fare i passi a tutti insieme, subito: tutti devono vedere il saluto nel terminale prima di andare avanti. Verificare prima della lezione che Python 3 sia installato sui PC del laboratorio. Se il triangolino non compare, manca l'estensione o il file non finisce con .py.
+      </div>
+    </section>
+    <!-- SLIDE 5: DIFFERENZA 1: ADDIO ; E MAIN() -->
+    <section class="slide" data-slide="5" data-title="Differenza 1: Addio ; e main()">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">COSA CAMBIA &bull; 1 DI 3</span>
+          <h2>Addio Punto e Virgola (e main)</h2>
+          <p class="section-lead">Una riga = un'istruzione. Il programma parte dalla prima riga del file.</p>
+        </div>
+
+        <div class="vs-grid">
+          <div class="code-box"><div class="code-box-header"><div class="code-box-dots"><span></span><span></span><span></span></div><span class="code-box-title">credito.cpp</span><span class="code-box-lang">C++</span></div><div class="code-body"><span class="c-kw">int</span> <span class="c-fn">main</span>() {
+    <span class="c-kw">int</span> credito = <span class="c-num">0</span>;
+    credito = credito + <span class="c-num">50</span>;
+    <span class="c-fn">cout</span> &lt;&lt; credito &lt;&lt; <span class="c-fn">endl</span>;
+    <span class="c-kw">return</span> <span class="c-num">0</span>;
+}</div></div>
+          <div class="vs-arrow"><span class="material-symbols-outlined">arrow_forward</span></div>
+          <div class="code-box"><div class="code-box-header"><div class="code-box-dots"><span></span><span></span><span></span></div><span class="code-box-title">credito.py</span><span class="code-box-lang py">PYTHON</span></div><div class="code-body big">credito = <span class="c-num">0</span>
+credito = credito + <span class="c-num">50</span>
+<span class="c-fn">print</span>(credito)</div></div>
+        </div>
+
+        <div class="grid-3" style="margin-top: 16px;">
+          <div class="concept-card">
+            <h3><span class="material-symbols-outlined">block</span>Niente <code class="mono">;</code></h3>
+            <p>L'istruzione finisce dove <strong>finisce la riga</strong>. Se lo mettete non si arrabbia, ma non serve: non mettetelo.</p>
+          </div>
+          <div class="concept-card">
+            <h3><span class="material-symbols-outlined">first_page</span>Niente <code class="mono">main()</code></h3>
+            <p>Python esegue il file <strong>dall'alto in basso</strong>, dalla prima riga all'ultima.</p>
+          </div>
+          <div class="concept-card">
+            <h3><span class="material-symbols-outlined">inventory_2</span>Niente <code class="mono">#include</code></h3>
+            <p>Le istruzioni base (come <strong>print</strong>) sono <strong>già pronte</strong>, non vanno importate.</p>
+          </div>
+        </div>
+      </div>
+      <div class="speaker-notes">
+        [14'&ndash;16'] Leggere insieme le due colonne riga per riga: la logica è identica (credito parte da 0, aumenta di 50, viene stampato). Cambia solo la forma. Il punto e virgola è l'errore di abitudine più comune per chi viene dal C++: non è un errore, ma è fuori stile.
+      </div>
+    </section>
+    <!-- SLIDE 6: DIFFERENZA 2: LE GRAFFE DIVENTANO RIENTRI -->
+    <section class="slide" data-slide="6" data-title="Differenza 2: Le Graffe Diventano Rientri">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">COSA CAMBIA &bull; 2 DI 3</span>
+          <h2>Le Graffe Diventano Rientri</h2>
+          <p class="section-lead">Un'anteprima: l'if lo vedremo bene più avanti. Oggi guardate solo la forma.</p>
+        </div>
+
+        <div class="vs-grid">
+          <div class="code-box"><div class="code-box-header"><div class="code-box-dots"><span></span><span></span><span></span></div><span class="code-box-title">eroga.cpp</span><span class="code-box-lang">C++</span></div><div class="code-body"><span class="c-kw">if</span> (credito &gt;= prezzo) {
+    <span class="c-fn">cout</span> &lt;&lt; <span class="c-str">&quot;Erogo il prodotto&quot;</span> &lt;&lt; <span class="c-fn">endl</span>;
+}</div></div>
+          <div class="vs-arrow"><span class="material-symbols-outlined">arrow_forward</span></div>
+          <div class="code-box"><div class="code-box-header"><div class="code-box-dots"><span></span><span></span><span></span></div><span class="code-box-title">eroga.py</span><span class="code-box-lang py">PYTHON</span></div><div class="code-body big"><span class="c-kw">if</span> credito &gt;= prezzo:
+    <span class="c-fn">print</span>(<span class="c-str">&quot;Erogo il prodotto&quot;</span>)</div></div>
+        </div>
+
+        <div class="grid-3" style="margin-top: 16px;">
+          <div class="concept-card">
+            <h3><span class="material-symbols-outlined">data_object</span>Niente <code class="mono">{ }</code></h3>
+            <p>Il blocco si apre con i <strong>due punti</strong> <code class="mono">:</code> alla fine della riga.</p>
+          </div>
+          <div class="concept-card">
+            <h3><span class="material-symbols-outlined">format_indent_increase</span>4 spazi</h3>
+            <p>Le righe <strong>dentro</strong> il blocco sono spostate a destra di 4 spazi (tasto <strong>Tab</strong> in VS Code).</p>
+          </div>
+          <div class="concept-card">
+            <h3><span class="material-symbols-outlined">warning</span>Obbligatorio!</h3>
+            <p>In C++ il rientro era bellezza. In Python <strong>è la regola</strong>: un rientro sbagliato è un errore.</p>
+          </div>
+        </div>
+      </div>
+      <div class="speaker-notes">
+        [16'&ndash;18'] Non spiegare l'if (lo conoscono dal C++ e lo riprenderemo): far vedere solo che graffe e parentesi tonde dell'if spariscono, arrivano i due punti e il rientro diventa obbligatorio. Per oggi tutti i nostri programmi stanno 'attaccati a sinistra', senza rientri.
+      </div>
+    </section>
+    <!-- SLIDE 7: DIFFERENZA 3: NIENTE TIPO DAVANTI -->
+    <section class="slide" data-slide="7" data-title="Differenza 3: Niente Tipo Davanti">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">COSA CAMBIA &bull; 3 DI 3</span>
+          <h2>Niente Tipo Davanti</h2>
+          <p class="section-lead">In C++ dichiaravate il tipo. In Python lo capisce da solo guardando il valore.</p>
+        </div>
+
+        <div class="vs-grid">
+          <div class="code-box"><div class="code-box-header"><div class="code-box-dots"><span></span><span></span><span></span></div><span class="code-box-title">prodotto.cpp</span><span class="code-box-lang">C++</span></div><div class="code-body"><span class="c-kw">int</span> piano = <span class="c-num">2</span>;
+<span class="c-kw">float</span> prezzo = <span class="c-num">1.50</span>;
+<span class="c-kw">string</span> prodotto = <span class="c-str">&quot;Acqua&quot;</span>;
+<span class="c-kw">bool</span> acceso = <span class="c-bool">true</span>;
+<span class="c-com">// commento in C++</span></div></div>
+          <div class="vs-arrow"><span class="material-symbols-outlined">arrow_forward</span></div>
+          <div class="code-box"><div class="code-box-header"><div class="code-box-dots"><span></span><span></span><span></span></div><span class="code-box-title">prodotto.py</span><span class="code-box-lang py">PYTHON</span></div><div class="code-body big">piano = <span class="c-num">2</span>
+prezzo = <span class="c-num">1.50</span>
+prodotto = <span class="c-str">&quot;Acqua&quot;</span>
+acceso = <span class="c-bool">True</span>
+<span class="c-com"># commento in Python</span></div></div>
+        </div>
+
+        <div class="grid-3" style="margin-top: 16px;">
+          <div class="concept-card">
+            <h3><span class="material-symbols-outlined">auto_fix_high</span>Tipo automatico</h3>
+            <p>Scrivete <strong>nome = valore</strong>. Il tipo (intero, decimale, testo&hellip;) lo decide Python dal valore.</p>
+          </div>
+          <div class="concept-card">
+            <h3><span class="material-symbols-outlined">toggle_on</span><code class="mono">True</code> / <code class="mono">False</code></h3>
+            <p>Con la <strong>maiuscola</strong>! <code class="mono">true</code> minuscolo in Python è un errore.</p>
+          </div>
+          <div class="concept-card">
+            <h3><span class="material-symbols-outlined">tag</span>Commenti con <code class="mono">#</code></h3>
+            <p>Il <code class="mono">//</code> del C++ diventa <code class="mono">#</code>. Python ignora tutto quello che c'è dopo.</p>
+          </div>
+        </div>
+      </div>
+      <div class="speaker-notes">
+        [18'&ndash;20'] Sottolineare: il tipo c'è ancora (i dati hanno sempre un tipo), semplicemente non lo scriviamo noi. True/False con la maiuscola è il secondo errore di abitudine più frequente dopo il punto e virgola.
+      </div>
+    </section>
+    <!-- SLIDE 8: TABELLA: DA C++ A PYTHON -->
+    <section class="slide" data-slide="8" data-title="Tabella: da C++ a Python">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">IL PROMEMORIA</span>
+          <h2>Da C++ a Python: il Dizionario</h2>
+          <p class="section-lead">Fotografatela: è la tabella da tenere accanto alla tastiera nelle prime settimane.</p>
+        </div>
+
+        <table class="cheat-table">
+          <thead><tr><th>Cosa voglio fare</th><th>C++ (anno scorso)</th><th class="py">Python (da oggi)</th></tr></thead>
+          <tbody>
+<tr><td>Stampare</td><td><code>cout &lt;&lt; x &lt;&lt; endl;</code></td><td class="py"><code>print(x)</code></td></tr>
+<tr><td>Creare una variabile</td><td><code>int piano = 2;</code></td><td class="py"><code>piano = 2</code></td></tr>
+<tr><td>Fine istruzione</td><td><code>;</code></td><td class="py"><code>a capo</code></td></tr>
+<tr><td>Blocco di codice</td><td><code>{ &hellip; }</code></td><td class="py"><code>:  + 4 spazi</code></td></tr>
+<tr><td>Vero / Falso</td><td><code>true / false</code></td><td class="py"><code>True / False</code></td></tr>
+<tr><td>Commento</td><td><code>// nota</code></td><td class="py"><code># nota</code></td></tr>
+<tr><td>E / O / NON</td><td><code>&amp;&amp;  ||  !</code></td><td class="py"><code>and  or  not</code></td></tr>
+<tr><td>Divisione 7 / 2</td><td><code>3 (tra interi)</code></td><td class="py"><code>3.5</code></td></tr>
+<tr><td>File ed esecuzione</td><td><code>compila .cpp &rarr; .exe</code></td><td class="py"><code>python file.py</code></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="speaker-notes">
+        [20'&ndash;22'] Ripassare la tabella velocemente, soffermandosi sulla divisione: in C++ 7/2 tra interi dava 3, in Python dà 3.5. Lo riprendiamo tra poco con gli operatori. and/or/not servono più avanti con le condizioni: per ora basta sapere che esistono.
+      </div>
+    </section>
+    <!-- SLIDE 9: PRINT(): LA MACCHINA PARLA -->
+    <section class="slide" data-slide="9" data-title="print(): la Macchina Parla">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">LA PRIMA ISTRUZIONE</span>
+          <h2>print(): la Macchina Parla</h2>
+          <p class="section-lead">print mostra sullo schermo quello che mettete tra le parentesi. E va a capo da solo.</p>
+        </div>
+
+        <div class="grid-2">
+          <div class="code-box"><div class="code-box-header"><div class="code-box-dots"><span></span><span></span><span></span></div><span class="code-box-title">schermo.py</span><span class="code-box-lang py">PYTHON</span></div><div class="code-body big"><span class="c-fn">print</span>(<span class="c-str">&quot;Benvenuto!&quot;</span>)
+<span class="c-fn">print</span>(<span class="c-str">&quot;Scegli un prodotto&quot;</span>)
+<span class="c-fn">print</span>()
+<span class="c-fn">print</span>(<span class="c-str">&quot;Grazie e arrivederci&quot;</span>)</div></div>
+          <div class="terminal"><div class="terminal-header"><span class="material-symbols-outlined">terminal</span>TERMINALE</div><div class="terminal-body"><span class="prompt">$</span> python schermo.py
+Benvenuto!
+Scegli un prodotto
+
+Grazie e arrivederci</div></div>
+        </div>
+
+        <div class="grid-3" style="margin-top: 16px;">
+          <div class="concept-card">
+            <h3><span class="material-symbols-outlined">format_quote</span>Virgolette</h3>
+            <p>Il testo fisso va tra <strong>virgolette</strong>: <code class="mono">"Ciao"</code> oppure <code class="mono">'Ciao'</code>, sono uguali.</p>
+          </div>
+          <div class="concept-card">
+            <h3><span class="material-symbols-outlined">keyboard_return</span>A capo da solo</h3>
+            <p>Ogni print scrive su una <strong>riga nuova</strong>: non serve l'<code class="mono">endl</code> del C++.</p>
+          </div>
+          <div class="concept-card">
+            <h3><span class="material-symbols-outlined">check_box_outline_blank</span>print() vuoto</h3>
+            <p>Senza niente tra le parentesi stampa una <strong>riga vuota</strong>: utile per staccare.</p>
+          </div>
+        </div>
+      </div>
+      <div class="speaker-notes">
+        [22'&ndash;25'] Far scrivere schermo.py a tutti e farlo eseguire. Chiedere: cosa succede se togliete una virgoletta? (errore: lo vedremo tra poco). print è tutto minuscolo.
+      </div>
+    </section>
+    <!-- SLIDE 10: PRINT() CON TESTO E VARIABILI -->
+    <section class="slide" data-slide="10" data-title="print() con Testo e Variabili">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">PRINT CON PIÙ COSE</span>
+          <h2>Testo e Variabili Insieme</h2>
+          <p class="section-lead">Tra le parentesi potete mettere più cose, separate da una virgola.</p>
+        </div>
+
+        <div class="grid-2">
+          <div class="code-box"><div class="code-box-header"><div class="code-box-dots"><span></span><span></span><span></span></div><span class="code-box-title">etichetta.py</span><span class="code-box-lang py">PYTHON</span></div><div class="code-body big">prodotto = <span class="c-str">&quot;Acqua&quot;</span>
+prezzo = <span class="c-num">0.60</span>
+
+<span class="c-fn">print</span>(<span class="c-str">&quot;Prodotto:&quot;</span>, prodotto)
+<span class="c-fn">print</span>(<span class="c-str">&quot;Prezzo:&quot;</span>, prezzo, <span class="c-str">&quot;euro&quot;</span>)
+<span class="c-fn">print</span>(<span class="c-str">&quot;prodotto&quot;</span>)</div></div>
+          <div class="terminal"><div class="terminal-header"><span class="material-symbols-outlined">terminal</span>TERMINALE</div><div class="terminal-body"><span class="prompt">$</span> python etichetta.py
+Prodotto: Acqua
+Prezzo: 0.6 euro
+prodotto</div></div>
+        </div>
+
+        <div class="grid-3" style="margin-top: 16px;">
+          <div class="concept-card">
+            <h3><span class="material-symbols-outlined">more_horiz</span>La virgola</h3>
+            <p>Separa i pezzi e <strong>aggiunge da sola uno spazio</strong> tra uno e l'altro.</p>
+          </div>
+          <div class="concept-card">
+            <h3><span class="material-symbols-outlined">compare_arrows</span>Con o senza virgolette</h3>
+            <p><code class="mono">"prodotto"</code> stampa la <strong>parola</strong>. <code class="mono">prodotto</code> stampa il <strong>valore</strong> della variabile.</p>
+          </div>
+          <div class="concept-card">
+            <h3><span class="material-symbols-outlined">exposure_zero</span>0.60 &rarr; 0.6</h3>
+            <p>Python toglie gli zeri inutili in fondo. Il valore è lo stesso: per ora va bene così.</p>
+          </div>
+        </div>
+      </div>
+      <div class="speaker-notes">
+        [25'&ndash;28'] L'ultima riga è la trappola: chiedere alla classe cosa stampa PRIMA di mostrare il terminale. Molti diranno 'Acqua'. Le virgolette trasformano qualsiasi cosa in testo fisso. Il decimale si scrive col punto (0.60), mai con la virgola: la virgola in Python separa le cose.
+      </div>
+    </section>
+    <!-- SLIDE 11: VARIABILI: SCATOLE CON NOME -->
+    <section class="slide" data-slide="11" data-title="Variabili: Scatole con Nome">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">LE VARIABILI</span>
+          <h2>Una Scatola con un'Etichetta</h2>
+          <p class="section-lead">Una variabile è un pezzo di memoria con un nome. Ci mettiamo dentro un valore e lo ritroviamo dopo.</p>
+        </div>
+
+        <div class="grid-2">
+          <div class="stack">
+            <div class="code-box"><div class="code-box-header"><div class="code-box-dots"><span></span><span></span><span></span></div><span class="code-box-title">memoria.py</span><span class="code-box-lang py">PYTHON</span></div><div class="code-body big">credito = <span class="c-num">200</span>
+prodotto = <span class="c-str">&quot;Patatine&quot;</span>
+piano = <span class="c-num">2</span></div></div>
+            <div class="mem-row">
+              <div class="mem-box"><span class="mem-value">200</span><span class="mem-label">credito</span></div>
+              <div class="mem-box"><span class="mem-value">"Patatine"</span><span class="mem-label">prodotto</span></div>
+              <div class="mem-box"><span class="mem-value">2</span><span class="mem-label">piano</span></div>
+            </div>
+          </div>
+          <div class="lim-box" style="background: var(--amber-container); border-color: var(--amber-secondary);">
+            <h3 style="color: var(--amber-text);">La regola d'oro dell'<code class="mono">=</code></h3>
+            <ul class="lim-bullet-list">
+              <li><span class="material-symbols-outlined lim-bullet-icon">looks_one</span>
+                <span>Python calcola quello che c'è a <strong>destra</strong>.</span></li>
+              <li><span class="material-symbols-outlined lim-bullet-icon">looks_two</span>
+                <span>Lo mette nella scatola che ha il nome a <strong>sinistra</strong>.</span></li>
+              <li><span class="material-symbols-outlined lim-bullet-icon">priority_high</span>
+                <span>L'<code class="mono">=</code> <strong>non è</strong> l'uguale della matematica: si legge
+                  &laquo;<strong>prende il valore</strong>&raquo;. <em>credito prende il valore 200</em>.</span></li>
+              <li><span class="material-symbols-outlined lim-bullet-icon">swap_vert</span>
+                <span>Se riassegno, il valore vecchio <strong>sparisce</strong>: nella scatola c'è posto per uno solo.</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="speaker-notes">
+        [28'&ndash;31'] Stesso concetto del ripasso del 22/09, ora in Python. Leggere ad alta voce 'credito prende il valore 200'. Ricordare il bug dei 120 euro: oggi lavoriamo in centesimi quando parliamo di soldi, così niente sorprese con i decimali.
+      </div>
+    </section>
+    <!-- SLIDE 12: I 4 TIPI DI BASE -->
+    <section class="slide" data-slide="12" data-title="I 4 Tipi di Base">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">I TIPI DI DATO</span>
+          <h2>I 4 Tipi che Usiamo Subito</h2>
+          <p class="section-lead">Python sceglie il tipo dal valore. Con type() possiamo chiedergli cosa ha deciso.</p>
+        </div>
+
+        <div class="grid-4">
+          <div class="type-card t-int">
+            <span class="type-name">int</span>
+            <h3>Numero intero</h3>
+            <p>Senza virgola. Quantità, piani, centesimi.</p>
+            <div class="type-example">lattine = 12</div>
+          </div>
+          <div class="type-card t-float">
+            <span class="type-name">float</span>
+            <h3>Numero decimale</h3>
+            <p>Con il <strong>punto</strong>, mai la virgola.</p>
+            <div class="type-example">gradi = 4.5</div>
+          </div>
+          <div class="type-card t-str">
+            <span class="type-name">str</span>
+            <h3>Testo (stringa)</h3>
+            <p>Sempre tra virgolette, anche se contiene numeri.</p>
+            <div class="type-example">codice = "A3"</div>
+          </div>
+          <div class="type-card t-bool">
+            <span class="type-name">bool</span>
+            <h3>Vero o falso</h3>
+            <p>Solo due valori, con la maiuscola.</p>
+            <div class="type-example">acceso = True</div>
+          </div>
+        </div>
+
+        <div class="grid-2" style="margin-top: 16px;">
+          <div class="code-box"><div class="code-box-header"><div class="code-box-dots"><span></span><span></span><span></span></div><span class="code-box-title">tipi.py</span><span class="code-box-lang py">PYTHON</span></div><div class="code-body"><span class="c-fn">print</span>(<span class="c-fn">type</span>(<span class="c-num">12</span>))
+<span class="c-fn">print</span>(<span class="c-fn">type</span>(<span class="c-num">4.5</span>))
+<span class="c-fn">print</span>(<span class="c-fn">type</span>(<span class="c-str">&quot;A3&quot;</span>))
+<span class="c-fn">print</span>(<span class="c-fn">type</span>(<span class="c-bool">True</span>))</div></div>
+          <div class="terminal"><div class="terminal-header"><span class="material-symbols-outlined">terminal</span>TERMINALE</div><div class="terminal-body"><span class="prompt">$</span> python tipi.py
+&lt;class &#x27;int&#x27;&gt;
+&lt;class &#x27;float&#x27;&gt;
+&lt;class &#x27;str&#x27;&gt;
+&lt;class &#x27;bool&#x27;&gt;</div></div>
+        </div>
+      </div>
+      <div class="speaker-notes">
+        [31'&ndash;34'] Domanda alla classe: "12" (tra virgolette) che tipo è? str! Le virgolette vincono sempre. Il C++ aveva anche double, char, ecc.: in Python per ora bastano questi quattro.
+      </div>
+    </section>
+    <!-- SLIDE 13: COME SI CHIAMANO LE VARIABILI -->
+    <section class="slide" data-slide="13" data-title="Come si Chiamano le Variabili">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">LE REGOLE DEI NOMI</span>
+          <h2>Come Chiamare le Variabili</h2>
+          <p class="section-lead">Un buon nome dice cosa c'è dentro la scatola. In Python si usa lo stile snake_case.</p>
+        </div>
+
+        <div class="grid-2">
+          <div class="lim-box" style="border-color: var(--ok-color);">
+            <h3 style="color: var(--ok-color);">Nomi corretti</h3>
+            <ul class="name-list ok">
+              <li><span class="material-symbols-outlined">check_circle</span><code>credito</code> minuscolo, chiaro</li>
+              <li><span class="material-symbols-outlined">check_circle</span><code>prezzo_acqua</code> parole unite con _</li>
+              <li><span class="material-symbols-outlined">check_circle</span><code>lattine_vendute</code> si capisce subito</li>
+              <li><span class="material-symbols-outlined">check_circle</span><code>piano2</code> numeri sì, ma non all'inizio</li>
+            </ul>
+          </div>
+          <div class="lim-box" style="border-color: var(--cherry-primary);">
+            <h3 style="color: var(--cherry-primary);">Nomi sbagliati</h3>
+            <ul class="name-list ko">
+              <li><span class="material-symbols-outlined">cancel</span><code>2piano</code> inizia con un numero</li>
+              <li><span class="material-symbols-outlined">cancel</span><code>prezzo acqua</code> contiene uno spazio</li>
+              <li><span class="material-symbols-outlined">cancel</span><code>prezzo-acqua</code> il - è il meno!</li>
+              <li><span class="material-symbols-outlined">cancel</span><code>if</code> parola riservata di Python</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="lim-banner-big">
+          <strong>Maiuscole e minuscole contano:</strong> <code class="mono">Credito</code> e
+          <code class="mono">credito</code> sono due scatole diverse. Evitate gli accenti: <strong>quantita</strong>,
+          non <em>quantità</em>. E niente nomi da una lettera come <strong>x</strong>: tra una settimana non vi
+          ricorderete cosa c'era dentro.
+        </div>
+      </div>
+      <div class="speaker-notes">
+        [34'&ndash;36'] I nomi sbagliati danno errore (tranne gli accenti, che Python accetta ma creano problemi con tastiere e altri programmi: per questo li evitiamo). Il C++ usava spesso camelCase (prezzoAcqua): in Python la convenzione è snake_case (prezzo_acqua).
+      </div>
+    </section>
+    <!-- SLIDE 14: CAMBIARE VALORE E FARE CONTI -->
+    <section class="slide" data-slide="14" data-title="Cambiare Valore e Fare Conti">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">LE OPERAZIONI</span>
+          <h2>Cambiare Valore e Fare Conti</h2>
+          <p class="section-lead">Una variabile può usare il suo stesso valore per calcolare quello nuovo.</p>
+        </div>
+
+        <div class="grid-2">
+          <div class="stack">
+            <div class="code-box"><div class="code-box-header"><div class="code-box-dots"><span></span><span></span><span></span></div><span class="code-box-title">monete.py</span><span class="code-box-lang py">PYTHON</span></div><div class="code-body">credito = <span class="c-num">0</span>
+credito = credito + <span class="c-num">100</span>   <span class="c-com"># ora 100</span>
+credito = credito + <span class="c-num">50</span>    <span class="c-com"># ora 150</span>
+<span class="c-fn">print</span>(<span class="c-str">&quot;Credito:&quot;</span>, credito)</div></div>
+            <div class="terminal"><div class="terminal-header"><span class="material-symbols-outlined">terminal</span>TERMINALE</div><div class="terminal-body"><span class="prompt">$</span> python monete.py
+Credito: 150</div></div>
+            <div class="sol-tip"><strong>credito = credito + 100</strong> si legge: prendi il credito di adesso, aggiungi 100,
+              rimetti il risultato nella stessa scatola.</div>
+          </div>
+          <div class="lim-box">
+            <h3>Gli operatori</h3>
+            <table class="op-table">
+              <tr><td>+</td><td>somma</td><td class="res">7 + 2 &rarr; 9</td></tr>
+              <tr><td>-</td><td>sottrazione</td><td class="res">7 - 2 &rarr; 5</td></tr>
+              <tr><td>*</td><td>moltiplicazione</td><td class="res">7 * 2 &rarr; 14</td></tr>
+              <tr><td>/</td><td>divisione <strong>(sempre decimale)</strong></td><td class="res">7 / 2 &rarr; 3.5</td></tr>
+              <tr><td>//</td><td>divisione intera</td><td class="res">7 // 2 &rarr; 3</td></tr>
+              <tr><td>%</td><td>resto della divisione</td><td class="res">7 % 2 &rarr; 1</td></tr>
+            </table>
+            <p class="pipe-note">Attenzione, ex C++: <code class="mono">/</code> in Python dà <strong>sempre</strong>
+              un decimale. Per il vecchio comportamento si usa <code class="mono">//</code>.</p>
+          </div>
+        </div>
+      </div>
+      <div class="speaker-notes">
+        [36'&ndash;39'] credito = credito + 100 in matematica è impossibile, in informatica è l'istruzione più comune. Esiste la scorciatoia credito += 100: si può mostrare a voce, ma oggi negli esercizi usiamo la forma lunga. // e % serviranno per il calcolo delle monete del resto.
+      </div>
+    </section>
+    <!-- SLIDE 15: LEGGERE GLI ERRORI -->
+    <section class="slide" data-slide="15" data-title="Leggere gli Errori">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">QUANDO QUALCOSA VA STORTO</span>
+          <h2>Leggere gli Errori (Senza Panico)</h2>
+          <p class="section-lead">Python vi dice cosa non va. Leggete l'ULTIMA riga del messaggio e il numero di riga (line).</p>
+        </div>
+
+        <div class="grid-2">
+          <div class="err-card">
+            <h3>Virgolette dimenticate</h3>
+            <div class="err-code"><span class="c-fn">print</span>(Benvenuto)</div>
+            <div class="err-msg">NameError: name &#x27;Benvenuto&#x27; is not defined</div>
+            <div class="err-fix">Senza virgolette cerca una variabile che non esiste. <strong>Fix:</strong> print("Benvenuto")</div>
+          </div>
+          <div class="err-card">
+            <h3>Maiuscola sbagliata</h3>
+            <div class="err-code">Print(<span class="c-str">&quot;Ciao&quot;</span>)</div>
+            <div class="err-msg">NameError: name &#x27;Print&#x27; is not defined. Did you mean: &#x27;print&#x27;?</div>
+            <div class="err-fix">Python distingue maiuscole e minuscole. <strong>Fix:</strong> print tutto minuscolo.</div>
+          </div>
+          <div class="err-card">
+            <h3>Spazio nel nome</h3>
+            <div class="err-code">prezzo acqua = <span class="c-num">1</span></div>
+            <div class="err-msg">SyntaxError: invalid syntax</div>
+            <div class="err-fix">Due parole separate non sono un nome valido. <strong>Fix:</strong> prezzo_acqua = 1</div>
+          </div>
+          <div class="err-card">
+            <h3>Testo + numero</h3>
+            <div class="err-code"><span class="c-fn">print</span>(<span class="c-str">&quot;Totale: &quot;</span> + <span class="c-num">5</span>)</div>
+            <div class="err-msg">TypeError: can only concatenate str (not &quot;int&quot;) to str</div>
+            <div class="err-fix">Il + non unisce testo e numeri. <strong>Fix:</strong> usate la virgola: print("Totale:", 5)</div>
+          </div>
+        </div>
+      </div>
+      <div class="speaker-notes">
+        [39'&ndash;42'] Far provocare apposta un errore a tutti (togliere una virgoletta) e leggere insieme il messaggio: File, line 1, e l'ultima riga con il tipo di errore. Gli errori sono indizi, non punizioni. Messaggi verificati con Python 3.12: versioni diverse possono avere parole leggermente diverse.
+      </div>
+    </section>
+    <!-- SLIDE 16: ESEMPIO SVOLTO: LO SCONTRINO (TESTO) -->
+    <section class="slide" data-slide="16" data-title="Esempio Svolto: Lo Scontrino (testo)">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">ESEMPIO SVOLTO &bull; LO SCRIVIAMO INSIEME</span>
+          <h2>Lo Scontrino della Merendina</h2>
+          <p class="section-lead"><span class="difficulty">DIFFICOLTÀ &#9733;&#9734;&#9734;</span></p>
+        </div>
+
+        <div class="problem-layout">
+          <div class="problem-card">
+            <div class="problem-card-label"><span class="material-symbols-outlined">mail</span>Messaggio di Marta</div>
+            <div class="problem-text">
+              <p>&laquo;Ciao ragazzi, vorrei che il distributore stampasse uno scontrino. Esempio: un cliente compra
+                <strong>2</strong> pacchetti di <strong>Crackers</strong> da <strong>0.80 euro</strong> l'uno.&raquo;</p>
+              <div class="expected-label"><span class="material-symbols-outlined">checklist</span>Cosa deve fare il programma</div>
+              <ol class="req-list">
+<li>Mettere prodotto, prezzo e quantità in tre variabili.</li>
+<li>Calcolare il totale in una quarta variabile.</li>
+<li>Stampare lo scontrino come nell'output atteso.</li>
+              </ol>
+            </div>
+          </div>
+          <div class="problem-side">
+            <div class="task-card">
+              <h3><span class="material-symbols-outlined">lightbulb</span>Prima di scrivere, rispondiamo</h3>
+              <ol><li>Quali sono i dati? Che tipo ha ognuno?</li><li>Quale calcolo serve per il totale?</li></ol>
+            </div>
+            <div>
+              <div class="expected-label"><span class="material-symbols-outlined">task_alt</span>Output atteso</div>
+              <div class="terminal"><div class="terminal-header"><span class="material-symbols-outlined">terminal</span>TERMINALE</div><div class="terminal-body">=== SCONTRINO ===
+Prodotto: Crackers
+Prezzo: 0.8 euro
+Quantita: 2
+Totale: 1.6 euro</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="speaker-notes">
+        [42'&ndash;45'] Leggere il messaggio e fare l'I-P-O a voce, come nelle lezioni scorse: Input = prodotto (str), prezzo (float), quantità (int). Elaborazione = prezzo per quantità. Output = lo scontrino. Poi si passa alla slide successiva e si scrive il codice insieme, con la classe che detta.
+      </div>
+    </section>
+    <!-- SLIDE 17: ESEMPIO SVOLTO: LO SCONTRINO (SOLUZIONE) -->
+    <section class="slide" data-slide="17" data-title="Esempio Svolto: Lo Scontrino (soluzione)" data-steps="4">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">ESEMPIO SVOLTO &bull; SOLUZIONE</span>
+          <h2>Lo Scontrino della Merendina</h2>
+          <p class="section-lead">Un passo alla volta: prima i dati, poi il calcolo, poi la stampa.</p>
+        </div>
+
+        <div class="step-bar" data-labels="in:Variabili|rule:Calcolo|ipo:Stampa|test:Esecuzione"></div>
+
+        <div class="sol-layout">
+          <div class="code-box"><div class="code-box-header"><div class="code-box-dots"><span></span><span></span><span></span></div><span class="code-box-title">scontrino.py</span><span class="code-box-lang py">PYTHON</span></div><div class="code-body"><span class="ln reveal" data-step="1"><span class="c-com"># Lo scontrino della merendina</span></span><span class="ln reveal" data-step="1">prodotto = <span class="c-str">&quot;Crackers&quot;</span></span><span class="ln reveal" data-step="1">prezzo = <span class="c-num">0.80</span></span><span class="ln reveal" data-step="1">quantita = <span class="c-num">2</span></span><span class="ln reveal" data-step="1"> </span><span class="ln reveal" data-step="2">totale = prezzo * quantita</span><span class="ln reveal" data-step="2"> </span><span class="ln reveal" data-step="3"><span class="c-fn">print</span>(<span class="c-str">&quot;=== SCONTRINO ===&quot;</span>)</span><span class="ln reveal" data-step="3"><span class="c-fn">print</span>(<span class="c-str">&quot;Prodotto:&quot;</span>, prodotto)</span><span class="ln reveal" data-step="3"><span class="c-fn">print</span>(<span class="c-str">&quot;Prezzo:&quot;</span>, prezzo, <span class="c-str">&quot;euro&quot;</span>)</span><span class="ln reveal" data-step="3"><span class="c-fn">print</span>(<span class="c-str">&quot;Quantita:&quot;</span>, quantita)</span><span class="ln reveal" data-step="3"><span class="c-fn">print</span>(<span class="c-str">&quot;Totale:&quot;</span>, totale, <span class="c-str">&quot;euro&quot;</span>)</span></div></div>
+          <div class="sol-side">
+            <div class="terminal reveal" data-step="4"><div class="terminal-header"><span class="material-symbols-outlined">terminal</span>TERMINALE</div><div class="terminal-body"><span class="prompt">$</span> python scontrino.py
+=== SCONTRINO ===
+Prodotto: Crackers
+Prezzo: 0.8 euro
+Quantita: 2
+Totale: 1.6 euro</div></div>
+            <div class="sol-tip reveal" data-step="4"><strong>Ordine:</strong> la variabile <strong>totale</strong> si può calcolare solo <strong>dopo</strong> aver creato prezzo e quantita. Python legge dall'alto in basso!</div>
+          </div>
+        </div>
+      </div>
+      <div class="speaker-notes">
+        [45'&ndash;52'] Rivelare un passo alla volta con la freccia. Passo 1: chiedere il tipo di ogni variabile. Passo 2: il totale. Passo 3: i print, notare la virgola che aggiunge lo spazio. Passo 4: eseguire davvero in VS Code. Esperimento: spostare la riga del totale in cima e far vedere il NameError.
+      </div>
+    </section>
+    <!-- SLIDE 18: LABORATORIO: COME LAVORIAMO -->
+    <section class="slide" data-slide="18" data-title="Laboratorio: Come Lavoriamo">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">TOCCA A VOI</span>
+          <h2>Laboratorio: Come Lavoriamo</h2>
+          <p class="section-lead">Tre esercizi, dal più facile al meno facile. Ognuno sul proprio PC, potete confrontarvi con il vicino.</p>
+        </div>
+
+        <div class="grid-4">
+          <div class="concept-card">
+            <h3><span class="material-symbols-outlined">note_add</span>1. Un file a testa</h3>
+            <p>Un file per esercizio, nella cartella <strong>python_vending</strong>: <strong>es1_carta.py</strong>,
+              <strong>es2_credito.py</strong>, <strong>es3_resto.py</strong>.</p>
+          </div>
+          <div class="concept-card">
+            <h3><span class="material-symbols-outlined">edit_note</span>2. Prima le variabili</h3>
+            <p>Leggete il messaggio, trovate i dati e scriveteli come <strong>variabili</strong> in cima al file.</p>
+          </div>
+          <div class="concept-card">
+            <h3><span class="material-symbols-outlined">play_circle</span>3. Eseguite spesso</h3>
+            <p>Dopo <strong>ogni 2-3 righe</strong> premete &#9654;. Un errore alla volta si trova subito.</p>
+          </div>
+          <div class="concept-card">
+            <h3><span class="material-symbols-outlined">fact_check</span>4. Confrontate</h3>
+            <p>Il vostro terminale deve mostrare <strong>esattamente</strong> l'output atteso, spazi compresi.</p>
+          </div>
+        </div>
+
+        <div class="lim-banner-big">
+          Tempi: <strong>20 minuti</strong> per ogni esercizio. Dopo ognuno, correzione insieme alla LIM.
+          Chi finisce prima prova il <strong>bonus</strong>.
+        </div>
+      </div>
+      <div class="speaker-notes">
+        [52'&ndash;54'] Spiegare le regole del laboratorio. Girare tra i banchi: l'errore più comune sarà il punto e virgola o la virgoletta mancante. Correggere ogni esercizio alla LIM con la slide della soluzione prima di passare al successivo.
+      </div>
+    </section>
+    <!-- SLIDE 19: ESERCIZIO 1: LA CARTA D'IDENTITÀ (TESTO) -->
+    <section class="slide" data-slide="19" data-title="Esercizio 1: La Carta d&#x27;Identità (testo)">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">ESERCIZIO 1</span>
+          <h2>La Carta d'Identità del Distributore</h2>
+          <p class="section-lead"><span class="difficulty">DIFFICOLTÀ &#9733;&#9734;&#9734;</span></p>
+        </div>
+
+        <div class="problem-layout">
+          <div class="problem-card">
+            <div class="problem-card-label"><span class="material-symbols-outlined">mail</span>Messaggio di Marta</div>
+            <div class="problem-text">
+              <p>&laquo;Per l'inventario mi serve la scheda di ogni macchina. Quella dell'atrio si chiama
+                <strong>VM-02</strong>, sta al piano <strong>2</strong>, dentro ci sono <strong>4.5</strong> gradi
+                ed è <strong>accesa</strong>.&raquo;</p>
+              <div class="expected-label"><span class="material-symbols-outlined">checklist</span>Cosa deve fare il programma</div>
+              <ol class="req-list">
+<li>Create una variabile per ognuno dei 4 dati.</li>
+<li>Stampate la scheda come nell'output atteso.</li>
+              </ol>
+            </div>
+          </div>
+          <div class="problem-side">
+            <div class="task-card">
+              <h3><span class="material-symbols-outlined">description</span>File: es1_carta.py</h3>
+              <ol><li>Che tipo ha ognuno dei 4 dati?</li><li>&laquo;Accesa&raquo; è un sì/no: quale tipo usate?</li></ol>
+              <p class="task-focus">Bonus: stampate anche il tipo di ogni variabile con type().</p>
+            </div>
+            <div>
+              <div class="expected-label"><span class="material-symbols-outlined">task_alt</span>Output atteso</div>
+              <div class="terminal"><div class="terminal-header"><span class="material-symbols-outlined">terminal</span>TERMINALE</div><div class="terminal-body">Distributore: VM-02
+Piano: 2
+Temperatura: 4.5 gradi
+Accesa: True</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="speaker-notes">
+        [54'&ndash;74'] Esercizio di sola creazione di variabili e stampa: nessun calcolo. Obiettivo: usare i 4 tipi. Attenzione a VM-02: va tra virgolette (è un testo, e senza virgolette il - sarebbe un meno).
+      </div>
+    </section>
+    <!-- SLIDE 20: ESERCIZIO 1: LA CARTA D'IDENTITÀ (SOLUZIONE) -->
+    <section class="slide" data-slide="20" data-title="Esercizio 1: La Carta d&#x27;Identità (soluzione)" data-steps="4">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">ESERCIZIO 1 &bull; SOLUZIONE</span>
+          <h2>La Carta d'Identità del Distributore</h2>
+          <p class="section-lead">Quattro dati, quattro tipi diversi: str, int, float, bool.</p>
+        </div>
+
+        <div class="step-bar" data-labels="in:Variabili|rule:Calcolo|ipo:Stampa|test:Esecuzione"></div>
+
+        <div class="sol-layout">
+          <div class="code-box"><div class="code-box-header"><div class="code-box-dots"><span></span><span></span><span></span></div><span class="code-box-title">es1_carta.py</span><span class="code-box-lang py">PYTHON</span></div><div class="code-body"><span class="ln reveal" data-step="1"><span class="c-com"># Carta d&#x27;identita del distributore</span></span><span class="ln reveal" data-step="1">nome_macchina = <span class="c-str">&quot;VM-02&quot;</span></span><span class="ln reveal" data-step="1">piano = <span class="c-num">2</span></span><span class="ln reveal" data-step="1">temperatura = <span class="c-num">4.5</span></span><span class="ln reveal" data-step="1">accesa = <span class="c-bool">True</span></span><span class="ln reveal" data-step="3"> </span><span class="ln reveal" data-step="3"><span class="c-fn">print</span>(<span class="c-str">&quot;Distributore:&quot;</span>, nome_macchina)</span><span class="ln reveal" data-step="3"><span class="c-fn">print</span>(<span class="c-str">&quot;Piano:&quot;</span>, piano)</span><span class="ln reveal" data-step="3"><span class="c-fn">print</span>(<span class="c-str">&quot;Temperatura:&quot;</span>, temperatura, <span class="c-str">&quot;gradi&quot;</span>)</span><span class="ln reveal" data-step="3"><span class="c-fn">print</span>(<span class="c-str">&quot;Accesa:&quot;</span>, accesa)</span><span class="ln reveal" data-step="3"> </span><span class="ln reveal" data-step="3"><span class="c-com"># Bonus</span></span><span class="ln reveal" data-step="3"><span class="c-fn">print</span>(<span class="c-fn">type</span>(nome_macchina), <span class="c-fn">type</span>(piano))</span><span class="ln reveal" data-step="3"><span class="c-fn">print</span>(<span class="c-fn">type</span>(temperatura), <span class="c-fn">type</span>(accesa))</span></div></div>
+          <div class="sol-side">
+            <div class="terminal reveal" data-step="4"><div class="terminal-header"><span class="material-symbols-outlined">terminal</span>TERMINALE</div><div class="terminal-body"><span class="prompt">$</span> python es1_carta.py
+Distributore: VM-02
+Piano: 2
+Temperatura: 4.5 gradi
+Accesa: True
+&lt;class &#x27;str&#x27;&gt; &lt;class &#x27;int&#x27;&gt;
+&lt;class &#x27;float&#x27;&gt; &lt;class &#x27;bool&#x27;&gt;</div></div>
+            <div class="sol-tip reveal" data-step="4"><strong>Niente calcolo</strong> in questo esercizio: il passo 2 è vuoto. <strong>True</strong> va con la maiuscola e <strong>senza</strong> virgolette, altrimenti diventa un testo.</div>
+          </div>
+        </div>
+      </div>
+      <div class="speaker-notes">
+        [74'&ndash;77'] Correzione alla LIM. Il passo 2 (calcolo) non rivela righe: farlo notare, non tutti i programmi calcolano qualcosa. Chiedere: cosa cambia se scrivo accesa = "True"? (diventa str).
+      </div>
+    </section>
+    <!-- SLIDE 21: ESERCIZIO 2: IL CREDITO CHE CRESCE (TESTO) -->
+    <section class="slide" data-slide="21" data-title="Esercizio 2: Il Credito che Cresce (testo)">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">ESERCIZIO 2</span>
+          <h2>Il Credito che Cresce</h2>
+          <p class="section-lead"><span class="difficulty">DIFFICOLTÀ &#9733;&#9733;&#9734;</span></p>
+        </div>
+
+        <div class="problem-layout">
+          <div class="problem-card">
+            <div class="problem-card-label"><span class="material-symbols-outlined">mail</span>Messaggio di Marta</div>
+            <div class="problem-text">
+              <p>&laquo;Voglio vedere il credito salire mentre il cliente inserisce le monete. Si parte da
+                <strong>0</strong>, poi arrivano una moneta da <strong>100</strong> centesimi, una da
+                <strong>50</strong> e una da <strong>20</strong>.&raquo;</p>
+              <div class="expected-label"><span class="material-symbols-outlined">checklist</span>Cosa deve fare il programma</div>
+              <ol class="req-list">
+<li>Create la variabile credito che vale 0 e stampatela.</li>
+<li>Dopo ogni moneta aggiornate credito e stampatelo di nuovo.</li>
+              </ol>
+            </div>
+          </div>
+          <div class="problem-side">
+            <div class="task-card">
+              <h3><span class="material-symbols-outlined">description</span>File: es2_credito.py</h3>
+              <ol><li>Quante variabili vi servono davvero?</li><li>Lavoriamo in centesimi: che tipo è il credito?</li></ol>
+              <p class="task-focus">Bonus: alla fine stampate il credito in euro (diviso 100).</p>
+            </div>
+            <div>
+              <div class="expected-label"><span class="material-symbols-outlined">task_alt</span>Output atteso</div>
+              <div class="terminal"><div class="terminal-header"><span class="material-symbols-outlined">terminal</span>TERMINALE</div><div class="terminal-body">Credito: 0 centesimi
+Credito: 100 centesimi
+Credito: 150 centesimi
+Credito: 170 centesimi</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="speaker-notes">
+        [77'&ndash;97'] Concetto chiave: riassegnare una variabile usando il suo valore (credito = credito + 100). Basta UNA variabile. Se qualcuno crea credito1, credito2, credito3 funziona, ma chiedere: e se le monete fossero 50? Usiamo i centesimi per lo stesso motivo del bug dei 120 euro.
+      </div>
+    </section>
+    <!-- SLIDE 22: ESERCIZIO 2: IL CREDITO CHE CRESCE (SOLUZIONE) -->
+    <section class="slide" data-slide="22" data-title="Esercizio 2: Il Credito che Cresce (soluzione)" data-steps="4">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">ESERCIZIO 2 &bull; SOLUZIONE</span>
+          <h2>Il Credito che Cresce</h2>
+          <p class="section-lead">Una sola scatola che cambia valore: il vecchio contenuto viene sostituito.</p>
+        </div>
+
+        <div class="step-bar" data-labels="in:Variabili|rule:Calcolo|ipo:Stampa|test:Esecuzione"></div>
+
+        <div class="sol-layout">
+          <div class="code-box"><div class="code-box-header"><div class="code-box-dots"><span></span><span></span><span></span></div><span class="code-box-title">es2_credito.py</span><span class="code-box-lang py">PYTHON</span></div><div class="code-body"><span class="ln reveal" data-step="1"><span class="c-com"># Il credito che cresce (in centesimi)</span></span><span class="ln reveal" data-step="1">credito = <span class="c-num">0</span></span><span class="ln reveal" data-step="3"><span class="c-fn">print</span>(<span class="c-str">&quot;Credito:&quot;</span>, credito, <span class="c-str">&quot;centesimi&quot;</span>)</span><span class="ln reveal" data-step="3"> </span><span class="ln reveal" data-step="2">credito = credito + <span class="c-num">100</span></span><span class="ln reveal" data-step="3"><span class="c-fn">print</span>(<span class="c-str">&quot;Credito:&quot;</span>, credito, <span class="c-str">&quot;centesimi&quot;</span>)</span><span class="ln reveal" data-step="2">credito = credito + <span class="c-num">50</span></span><span class="ln reveal" data-step="3"><span class="c-fn">print</span>(<span class="c-str">&quot;Credito:&quot;</span>, credito, <span class="c-str">&quot;centesimi&quot;</span>)</span><span class="ln reveal" data-step="2">credito = credito + <span class="c-num">20</span></span><span class="ln reveal" data-step="3"><span class="c-fn">print</span>(<span class="c-str">&quot;Credito:&quot;</span>, credito, <span class="c-str">&quot;centesimi&quot;</span>)</span><span class="ln reveal" data-step="3"> </span><span class="ln reveal" data-step="3"><span class="c-com"># Bonus</span></span><span class="ln reveal" data-step="3"><span class="c-fn">print</span>(<span class="c-str">&quot;In euro:&quot;</span>, credito / <span class="c-num">100</span>)</span></div></div>
+          <div class="sol-side">
+            <div class="terminal reveal" data-step="4"><div class="terminal-header"><span class="material-symbols-outlined">terminal</span>TERMINALE</div><div class="terminal-body"><span class="prompt">$</span> python es2_credito.py
+Credito: 0 centesimi
+Credito: 100 centesimi
+Credito: 150 centesimi
+Credito: 170 centesimi
+In euro: 1.7</div></div>
+            <div class="sol-tip reveal" data-step="4"><strong>credito = credito + 50</strong>: Python calcola prima la destra (il credito di <em>adesso</em> più 50), poi mette il risultato nella scatola a sinistra.</div>
+          </div>
+        </div>
+      </div>
+      <div class="speaker-notes">
+        [97'&ndash;100'] Fare la tabella di traccia alla lavagna: riga per riga, quanto vale credito? 0, 100, 150, 170. Notare che le righe print sono identiche ma stampano valori diversi: dipende da quando vengono eseguite.
+      </div>
+    </section>
+    <!-- SLIDE 23: ESERCIZIO 3: IL RESTO (TESTO) -->
+    <section class="slide" data-slide="23" data-title="Esercizio 3: Il Resto (testo)">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">ESERCIZIO 3</span>
+          <h2>Il Resto in Centesimi</h2>
+          <p class="section-lead"><span class="difficulty">DIFFICOLTÀ &#9733;&#9733;&#9733;</span></p>
+        </div>
+
+        <div class="problem-layout">
+          <div class="problem-card">
+            <div class="problem-card-label"><span class="material-symbols-outlined">mail</span>Messaggio di Marta</div>
+            <div class="problem-text">
+              <p>&laquo;Le patatine costano <strong>120</strong> centesimi. Un cliente inserisce una moneta da
+                <strong>2 euro</strong>. La macchina deve dire quanto resto restituire.&raquo;</p>
+              <div class="expected-label"><span class="material-symbols-outlined">checklist</span>Cosa deve fare il programma</div>
+              <ol class="req-list">
+<li>Create le variabili prezzo e inserito (attenzione all'unità di misura!).</li>
+<li>Calcolate il resto in una nuova variabile.</li>
+<li>Stampate il resto in centesimi e in euro.</li>
+              </ol>
+            </div>
+          </div>
+          <div class="problem-side">
+            <div class="task-card">
+              <h3><span class="material-symbols-outlined">description</span>File: es3_resto.py</h3>
+              <ol><li>2 euro quanti centesimi sono?</li><li>Come trasformo i centesimi in euro?</li></ol>
+              <p class="task-focus">Bonus: quante monete da 20 centesimi servono per il resto? (usate //)</p>
+            </div>
+            <div>
+              <div class="expected-label"><span class="material-symbols-outlined">task_alt</span>Output atteso</div>
+              <div class="terminal"><div class="terminal-header"><span class="material-symbols-outlined">terminal</span>TERMINALE</div><div class="terminal-body">Prezzo: 120 centesimi
+Inserito: 200 centesimi
+Resto: 80 centesimi
+Resto: 0.8 euro</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="speaker-notes">
+        [100'&ndash;120'] Trappola voluta: 2 euro va scritto come 200 (centesimi), altrimenti 2 - 120 = -118. Collegamento diretto con la lezione del 12/10 (unità di misura). Il bonus anticipa // per il calcolo delle monete del resto, che diventerà una funzione del Vending Machine Manager.
+      </div>
+    </section>
+    <!-- SLIDE 24: ESERCIZIO 3: IL RESTO (SOLUZIONE) -->
+    <section class="slide" data-slide="24" data-title="Esercizio 3: Il Resto (soluzione)" data-steps="4">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">ESERCIZIO 3 &bull; SOLUZIONE</span>
+          <h2>Il Resto in Centesimi</h2>
+          <p class="section-lead">Tutti i soldi in centesimi: si converte in euro solo alla fine, per stampare.</p>
+        </div>
+
+        <div class="step-bar" data-labels="in:Variabili|rule:Calcolo|ipo:Stampa|test:Esecuzione"></div>
+
+        <div class="sol-layout">
+          <div class="code-box"><div class="code-box-header"><div class="code-box-dots"><span></span><span></span><span></span></div><span class="code-box-title">es3_resto.py</span><span class="code-box-lang py">PYTHON</span></div><div class="code-body"><span class="ln reveal" data-step="1"><span class="c-com"># Il resto in centesimi</span></span><span class="ln reveal" data-step="1">prezzo = <span class="c-num">120</span>      <span class="c-com"># centesimi</span></span><span class="ln reveal" data-step="1">inserito = <span class="c-num">200</span>    <span class="c-com"># 2 euro = 200 centesimi</span></span><span class="ln reveal" data-step="1"> </span><span class="ln reveal" data-step="2">resto = inserito - prezzo</span><span class="ln reveal" data-step="2">resto_euro = resto / <span class="c-num">100</span></span><span class="ln reveal" data-step="2"> </span><span class="ln reveal" data-step="3"><span class="c-fn">print</span>(<span class="c-str">&quot;Prezzo:&quot;</span>, prezzo, <span class="c-str">&quot;centesimi&quot;</span>)</span><span class="ln reveal" data-step="3"><span class="c-fn">print</span>(<span class="c-str">&quot;Inserito:&quot;</span>, inserito, <span class="c-str">&quot;centesimi&quot;</span>)</span><span class="ln reveal" data-step="3"><span class="c-fn">print</span>(<span class="c-str">&quot;Resto:&quot;</span>, resto, <span class="c-str">&quot;centesimi&quot;</span>)</span><span class="ln reveal" data-step="3"><span class="c-fn">print</span>(<span class="c-str">&quot;Resto:&quot;</span>, resto_euro, <span class="c-str">&quot;euro&quot;</span>)</span><span class="ln reveal" data-step="3"> </span><span class="ln reveal" data-step="3"><span class="c-com"># Bonus</span></span><span class="ln reveal" data-step="3"><span class="c-fn">print</span>(<span class="c-str">&quot;Monete da 20:&quot;</span>, resto // <span class="c-num">20</span>)</span></div></div>
+          <div class="sol-side">
+            <div class="terminal reveal" data-step="4"><div class="terminal-header"><span class="material-symbols-outlined">terminal</span>TERMINALE</div><div class="terminal-body"><span class="prompt">$</span> python es3_resto.py
+Prezzo: 120 centesimi
+Inserito: 200 centesimi
+Resto: 80 centesimi
+Resto: 0.8 euro
+Monete da 20: 4</div></div>
+            <div class="sol-tip reveal" data-step="4"><strong>Errore tipico:</strong> inserito = 2. Il programma non si lamenta, ma stampa <strong>Resto: -118</strong>. Python non sa cosa intendete: l'unità di misura la decidete voi.</div>
+          </div>
+        </div>
+      </div>
+      <div class="speaker-notes">
+        [120'&ndash;124'] Far vedere dal vivo cosa succede con inserito = 2: nessun errore, ma risultato assurdo. È il tipo di bug più pericoloso, perché il programma 'funziona'. 80 // 20 = 4 monete.
+      </div>
+    </section>
+    <!-- SLIDE 25: RIEPILOGO E PROSSIMA LEZIONE -->
+    <section class="slide" data-slide="25" data-title="Riepilogo e Prossima Lezione">
+      <div class="slide-content">
+        <div class="slide-header">
+          <span class="slide-kicker">PER CHIUDERE</span>
+          <h2>Cosa Sapete Fare da Oggi</h2>
+          <p class="section-lead">Controllate di saper fare ognuna di queste cose senza guardare le slide.</p>
+        </div>
+
+        <div class="grid-2">
+          <div class="lim-box">
+            <h3>Checklist</h3>
+            <ul class="check-list">
+              <li><span class="material-symbols-outlined">check_circle</span>Creo ed eseguo un file .py in VS Code.</li>
+              <li><span class="material-symbols-outlined">check_circle</span>Scrivo senza ; e senza tipo davanti, con True/False maiuscoli.</li>
+              <li><span class="material-symbols-outlined">check_circle</span>Stampo testo e variabili insieme con print e la virgola.</li>
+              <li><span class="material-symbols-outlined">check_circle</span>Creo variabili int, float, str, bool con nomi chiari.</li>
+              <li><span class="material-symbols-outlined">check_circle</span>Aggiorno una variabile: credito = credito + 50.</li>
+              <li><span class="material-symbols-outlined">check_circle</span>Leggo l'ultima riga di un messaggio di errore.</li>
+            </ul>
+          </div>
+          <div class="stack">
+            <div class="lim-box" style="border-color: var(--cherry-primary); background: var(--cherry-tint);">
+              <h3 class="cherry-text">Prossima lezione: input()</h3>
+              <p>Oggi i dati li scriviamo noi nel codice. La prossima volta sarà il <strong>cliente</strong> a
+                inserirli dalla tastiera: il distributore impara ad <strong>ascoltare</strong>.</p>
+            </div>
+            <div class="code-box"><div class="code-box-header"><div class="code-box-dots"><span></span><span></span><span></span></div><span class="code-box-title">anteprima.py</span><span class="code-box-lang py">PYTHON</span></div><div class="code-body">nome = <span class="c-fn">input</span>(<span class="c-str">&quot;Come ti chiami? &quot;</span>)
+<span class="c-fn">print</span>(<span class="c-str">&quot;Ciao&quot;</span>, nome)</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="speaker-notes">
+        [124'&ndash;130'] Giro veloce della checklist per alzata di mano. Chi non è sicuro su un punto lo segna: si riparte da lì la prossima volta. Ricordare di salvare la cartella python_vending: la useremo per tutto l'anno.
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Barra Inferiore di Navigazione -->
+  <footer class="m3-bottom-bar">
+    <div class="bottom-bar-left">
+      <button id="btnPrev" class="m3-btn m3-btn-outlined" title="Indietro (&larr;)">
+        <span class="material-symbols-outlined">arrow_back</span>
+        <span>Indietro</span>
+      </button>
+      <button id="btnNext" class="m3-btn m3-btn-filled" title="Avanti (&rarr; / Spazio)">
+        <span>Avanti</span>
+        <span class="material-symbols-outlined">arrow_forward</span>
+      </button>
+    </div>
+
+    <div class="bottom-bar-center">
+      <div class="m3-counter-display">
+        Slide <span id="currentSlideNum">1</span> / <span id="totalSlidesNum">25</span>
+      </div>
+    </div>
+
+    <div class="bottom-bar-right">
+      <span class="shortcut-tip"><kbd>&rarr;</kbd> passo/slide &bull; <kbd>A</kbd> soluzione &bull; <kbd>Z</kbd> nascondi
+        &bull; <kbd>O</kbd> indice &bull; <kbd>N</kbd> note &bull; <kbd>P</kbd> PDF</span>
+    </div>
+  </footer>
+
+  <!-- Modale Panoramica (Indice delle Slide) -->
+  <div id="overviewModal" class="m3-modal-backdrop hidden">
+    <div class="m3-dialog">
+      <div class="dialog-header">
+        <div class="dialog-title-group">
+          <span class="material-symbols-outlined">grid_view</span>
+          <h3>Indice delle Diapositive</h3>
+        </div>
+        <div class="dialog-actions">
+          <button id="btnModalExportPdf" class="m3-btn m3-btn-outlined m3-btn-sm" title="Esporta tutte le slide in PDF">
+            <span class="material-symbols-outlined">picture_as_pdf</span>
+            <span>Esporta in PDF</span>
+          </button>
+          <button id="btnCloseOverview" class="m3-icon-button" title="Chiudi">
+            <span class="material-symbols-outlined">close</span>
+          </button>
+        </div>
+      </div>
+      <div id="overviewGrid" class="overview-grid">
+        <!-- Generato dinamicamente da app.js -->
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
